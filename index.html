@@ -2106,9 +2106,8 @@ document.documentElement.classList.replace('no-js', 'js');
     };
 
     const fetchGitHubArticles = async () => {
-      const CACHE_TTL = 60 * 60 * 1000; // 1 heure
       const lastFetch = parseInt(localStorage.getItem('us_articles_fetched') || '0');
-      if (Date.now() - lastFetch < CACHE_TTL && Storage.getArticles().length) return;
+      if (Date.now() - lastFetch < 60000 && Storage.getArticles().length) return; // 1 minute
       try {
         const res = await fetch(
           'https://api.github.com/repos/universalstations/universalstations/contents/_articles',
