@@ -13,7 +13,7 @@ Il est né dans le Bronx, par une nuit d'été de 1973, sur les platines de DJ K
 
 Universal Stations t'emmène faire le tour du monde du rap et du hip-hop en 2026.
 
-🎧 **Écoute notre [Playlist Hip-Hop](https://open.spotify.com/playlist/3OmEq4Shr3SvNgWq9m8wgV?si=230e8553be934dec)** — la sélection rap d'Universal Stations.
+🎧 **Écoute notre [Playlist NUANCE](https://open.spotify.com/playlist/3OmEq4Shr3SvNgWq9m8wgV?si=230e8553be934dec)** — la sélection rap d'Universal Stations.
 📻 **Retrouve notre [Saison 1 entièrement dédiée au hip-hop](https://universalstations.com/#sec-episodes)** — épisodes, interviews et playlists.
 
 ---
@@ -95,6 +95,6 @@ Ce qui unit tous ces mouvements géographiques, c'est la démocratisation du str
 
 En 2026, le hip-hop n'est plus une culture américaine exportée. C'est une culture mondiale en mutation permanente, nourrie par des millions d'artistes sur tous les continents — chacun apportant sa langue, ses rythmes et ses histoires à un mouvement qui continue de réinventer le monde.
 
-🎧 Plonge dans notre sélection avec la **[Playlist Hip-Hop](https://open.spotify.com/playlist/3OmEq4Shr3SvNgWq9m8wgV?si=230e8553be934dec)** et explore nos épisodes de la **[Saison 1](https://universalstations.com/#sec-episodes)** entièrement dédiée au hip-hop.
+🎧 Plonge dans notre sélection avec la **[Playlist NUANCE](https://open.spotify.com/playlist/3OmEq4Shr3SvNgWq9m8wgV?si=230e8553be934dec)** et explore nos épisodes de la **[Saison 1](https://universalstations.com/#sec-episodes)** entièrement dédiée au hip-hop.
 
 **Universal Stations** continuera de suivre ces évolutions, épisode après épisode, playlist après playlist.
