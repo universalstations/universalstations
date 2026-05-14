@@ -19,4 +19,5 @@ collections:
       - { label: "Extrait", name: "excerpt", widget: "text", hint: "Résumé court affiché sur la carte" }
       - { label: "Contenu", name: "body", widget: "markdown" }
       - { label: "Date de publication", name: "date", widget: "datetime", format: "DD MMMM YYYY", date_format: "DD MMMM YYYY", time_format: false }
+      - { label: "Image de couverture", name: "image", widget: "image", required: false, hint: "Photo d'en-tête de l'article" }
       - { label: "Article mis en avant", name: "featured", widget: "boolean", default: false }
