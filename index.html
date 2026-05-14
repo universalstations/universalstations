@@ -983,6 +983,7 @@ document.documentElement.classList.replace('no-js', 'js');
   /** Convertit du Markdown basique en HTML. */
   /** Convertit le Markdown basique en HTML. @param {string} text */
   const md2html = text => text
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" style="color:var(--amber);text-decoration:underline">$1</a>')
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.*?)\*/g,    '<em>$1</em>')
     .replace(/^## (.+)$/gm,  '%%H2%%$1%%/H2%%')
@@ -994,12 +995,31 @@ document.documentElement.classList.replace('no-js', 'js');
     .map(b => {
       const t = b.trim();
       if (!t) return '';
-      if (t.startsWith('%%H2%%'))  return t.replace(/%%H2%%(.+?)%%\/H2%%/g, '<h2 class="article-h2">$1</h2>');
-      if (t.startsWith('%%H3%%'))  return t.replace(/%%H3%%(.+?)%%\/H3%%/g, '<h3 class="article-h3">$1</h3>');
-      if (t.startsWith('%%BQ%%'))  return t.replace(/%%BQ%%(.+?)%%\/BQ%%/g, '<blockquote class="article-quote">$1</blockquote>');
-      if (t.includes('%%LI%%'))    return '<ul class="article-list">' + t.replace(/%%LI%%(.+?)%%\/LI%%/g, '<li>$1</li>') + '</ul>';
-      if (t === '%%HR%%')          return '<hr class="article-hr">';
-      return '<p class="art-p">' + t + '</p>';
+      if (t === '%%HR%%') return '<hr class="article-hr">';
+      let out = t
+        .replace(/%%H2%%(.+?)%%\/H2%%/g, '<h2 class="article-h2">$1</h2>')
+        .replace(/%%H3%%(.+?)%%\/H3%%/g, '<h3 class="article-h3">$1</h3>')
+        .replace(/%%BQ%%(.+?)%%\/BQ%%/g, '<blockquote class="article-quote">$1</blockquote>');
+      if (out.includes('%%LI%%')) {
+        const lines = out.split('\n');
+        let result = '';
+        let inList = false;
+        for (const line of lines) {
+          if (line.includes('%%LI%%')) {
+            if (!inList) { result += '<ul class="article-list">'; inList = true; }
+            result += line.replace(/%%LI%%(.+?)%%\/LI%%/g, '<li>$1</li>');
+          } else {
+            if (inList) { result += '</ul>'; inList = false; }
+            result += line;
+          }
+        }
+        if (inList) result += '</ul>';
+        out = result;
+      }
+      if (!t.startsWith('%%H2%%') && !t.startsWith('%%H3%%') && !t.startsWith('%%BQ%%') && !t.includes('%%LI%%')) {
+        return '<p class="art-p">' + out + '</p>';
+      }
+      return out;
     })
     .join('\n');
 
