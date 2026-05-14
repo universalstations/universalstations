@@ -13,7 +13,7 @@ Il fut un temps où la pop, c'était simple : une mélodie accrocheuse, un refra
 
 La pop est le genre le plus streamé de l'histoire, le seul capable de faire pleurer une adolescente à Tokyo et danser un retraité à Dakar sur le même titre. Universal Stations te propose un tour du monde de ce phénomène sonore unique.
 
-🎧 **Écoute notre [Playlist Pop](https://open.spotify.com/playlist/1nJf1uFnETKvIbK2f0i5V3?si=7e380caabfaf4364)** — la sélection pop d'Universal Stations.
+🎧 **Écoute notre [Playlist CAVIAR](https://open.spotify.com/playlist/1nJf1uFnETKvIbK2f0i5V3?si=7e380caabfaf4364)** — la sélection pop d'Universal Stations.
 📻 **Retrouve notre [Saison 2 entièrement dédiée à la pop](https://universalstations.com/#sec-episodes)** — épisodes, interviews et playlists.
 
 ---
@@ -106,6 +106,6 @@ Ce qui définit la pop en 2026, c'est l'effacement des frontières géographique
 
 La pop est devenue ce qu'elle a toujours voulu être : vraiment universelle.
 
-🎧 Plonge dans notre sélection avec la **[Playlist Pop](https://open.spotify.com/playlist/1nJf1uFnETKvIbK2f0i5V3?si=7e380caabfaf4364)** et explore nos épisodes de la **[Saison 2](https://universalstations.com/#sec-episodes)** entièrement dédiée à la pop.
+🎧 Plonge dans notre sélection avec la **[Playlist CAVIAR](https://open.spotify.com/playlist/1nJf1uFnETKvIbK2f0i5V3?si=7e380caabfaf4364)** et explore nos épisodes de la **[Saison 2](https://universalstations.com/#sec-episodes)** entièrement dédiée à la pop.
 
 **Universal Stations** continuera de suivre ces évolutions, épisode après épisode, playlist après playlist.
