@@ -3,6 +3,7 @@ title: " Hip-Hop Mondial 2026 : Le Tour du Globe d'une Culture Planétaire"
 tag: Dossier · Hip-Hop
 excerpt: Du Bronx aux favelas, de Paris à Lagos…
 date: 14 May 2026
+image: https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&q=80
 featured: true
 ---
 Hip-Hop Mondial 2026 : Le Tour du Globe d'une Culture Planétaire
