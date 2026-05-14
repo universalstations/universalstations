@@ -61,7 +61,7 @@ Aide Google à comprendre le contenu du site
 .feat-img{width:42%;min-height:260px;height:auto;border-radius:0 4px 4px 0;margin:0;flex-shrink:0;object-fit:cover}
 .feat-img-placeholder{background:var(--bg-2);width:42%;flex-shrink:0}
 .article-hero-img{width:100%;max-height:400px;object-fit:cover;border-radius:6px;margin-bottom:2rem}
-.article-reader{padding:2.5rem 2rem;max-width:800px}
+.article-reader{grid-column:1 / -1;width:100%;max-width:860px;padding:2.5rem 2rem}
 .article-back-btn{background:none;border:none;color:var(--amber);font-family:var(--font-m);font-size:.55rem;letter-spacing:.15em;cursor:pointer;padding:0;margin-bottom:2rem;display:flex;align-items:center;gap:.4rem;text-transform:uppercase}
 .article-reader-tag{font-family:var(--font-m);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:var(--violet-light);margin:0 0 .5rem}
 .article-reader-title{font-family:var(--font-d);font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;line-height:1.2;color:var(--text);margin:0 0 .5rem}
@@ -1914,7 +1914,7 @@ document.documentElement.classList.replace('no-js', 'js');
       if (!grid) return;
 
       grid.innerHTML = `
-        <div class="article-reader" role="article" aria-labelledby="article-reader-title" style="padding:2rem 2.5rem;max-width:800px">
+        <div class="article-reader" role="article" aria-labelledby="article-reader-title">
           <button onclick="renderBlogGrid()" class="article-back-btn"
                   aria-label="Retour au blog">
             ← Retour au blog
