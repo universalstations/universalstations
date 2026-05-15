@@ -3,7 +3,7 @@ title: "Ye — Bully : Le Chaos Créatif à l'État Pur"
 tag: "Saison 1 · Hip-Hop"
 excerpt: "Avec Bully, Ye continue de défier toute logique artistique et commerciale. Un album qui dérange, provoque et fascine — comme tout ce que Kanye West a toujours fait de plus intéressant."
 date: "31 Mars 2026"
-image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&q=80"
+image: "https://images.unsplash.com/photo-1578070181910-f1e514afdd08?w=1200&q=80"
 featured: false
 ---
 

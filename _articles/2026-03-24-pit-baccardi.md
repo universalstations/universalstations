@@ -3,7 +3,7 @@ title: "Pit Baccardi : La Légende Silencieuse du Rap Français"
 tag: "Saison 1 · Rap Français"
 excerpt: "Pionnier du rap de rue, figure respectée de tous, Pit Baccardi a construit une œuvre dense et cohérente sans jamais chercher la lumière des projecteurs. Portrait d'un artiste dont le respect dépasse largement la notoriété."
 date: "24 Mars 2026"
-image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&q=80"
+image: "https://images.unsplash.com/photo-1468164016595-6108e4c60c8b?w=1200&q=80"
 featured: false
 ---
 

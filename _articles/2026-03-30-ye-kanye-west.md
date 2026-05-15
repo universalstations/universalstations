@@ -3,7 +3,7 @@ title: "Ye : Le Génie Incontrôlable qui a Réinventé le Hip-Hop"
 tag: "Saison 1 · Hip-Hop"
 excerpt: "Du sampling soul de College Dropout à l'avant-garde de Yeezus, des 808s and Heartbreak au chaos de Donda — Kanye West, alias Ye, est peut-être l'artiste le plus influent de sa génération. Une trajectoire fascinante et troublante."
 date: "30 Mars 2026"
-image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&q=80"
+image: "https://images.unsplash.com/photo-1415886710085-859b9a5eca4c?w=1200&q=80"
 featured: false
 ---
 

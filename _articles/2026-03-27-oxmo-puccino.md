@@ -3,7 +3,7 @@ title: "Oxmo Puccino : Le Mafioso de la Rime, Poète Malgré Tout"
 tag: "Saison 1 · Rap Français"
 excerpt: "Voix de velours, flow cinématographique, textes qui mêlent le mafioso et le poète — Oxmo Puccino est une anomalie dans le rap français. Un artiste qui a réussi à être populaire et exigeant, street et littéraire, dur et tendre."
 date: "27 Mars 2026"
-image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&q=80"
+image: "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=1200&q=80"
 featured: false
 ---
 

@@ -3,7 +3,7 @@ title: "Booba, Pit Baccardi, Lino, Oxmo : Quand les Légendes se Retrouvent"
 tag: "Saison 1 · Rap Français"
 excerpt: "Quatre noms qui représentent l'âge d'or du rap français. Un épisode spécial qui met en perspective l'héritage de ces artistes majeurs et ce qui les unit au-delà de leurs différences."
 date: "28 Mars 2026"
-image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&q=80"
+image: "https://images.unsplash.com/photo-1458560871784-56d23406c091?w=1200&q=80"
 featured: false
 ---
 
