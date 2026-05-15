@@ -1908,6 +1908,16 @@ document.documentElement.classList.replace('no-js', 'js');
       const grid = $('blog-grid');
       if (!grid) return;
 
+      // Tri : Dossiers en premier, puis Saison 1, 2, 3... par date décroissante
+      const sortKey = a => {
+        const tag = (a.tag || '').toLowerCase();
+        if (tag.includes('dossier')) return '0_' + (a.date || '');
+        const m = tag.match(/saison\s*(\d+)/);
+        const s = m ? m[1].padStart(2, '0') : '99';
+        return s + '_' + (a.date || '');
+      };
+      articles = [...articles].sort((a, b) => sortKey(a).localeCompare(sortKey(b)));
+
       const featured = articles.find(a => a.featured) ?? articles[0];
       const rest     = articles.filter(a => a.id !== featured?.id);
 
