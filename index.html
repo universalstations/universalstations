@@ -133,17 +133,17 @@ Aide Google à comprendre le contenu du site
 
       <ul class="nav-links" role="list">
         <li>
-          <a href="/podcast" onclick="showSection('episodes', this)" class="active"
+          <a href="#" onclick="event.preventDefault(); showSection('episodes', this)" class="active"
              aria-current="page">Podcast</a>
         </li>
         <li>
-          <a href="/playlists" onclick="showSection('playlists', this)">Playlists</a>
+          <a href="#" onclick="event.preventDefault(); showSection('playlists', this)">Playlists</a>
         </li>
         <li>
-          <a href="/about" onclick="showSection('about', this)">À propos</a>
+          <a href="#" onclick="event.preventDefault(); showSection('about', this)">À propos</a>
         </li>
         <li>
-          <a href="/blog" onclick="showSection('blog', this)">Blog</a>
+          <a href="#" onclick="event.preventDefault(); showSection('blog', this)">Blog</a>
         </li>
       </ul>
 
@@ -164,10 +164,10 @@ Aide Google à comprendre le contenu du site
 
     <!-- Menu mobile -->
     <nav id="mobile-menu" class="mobile-menu" aria-label="Menu mobile" aria-hidden="true">
-      <a href="/podcast" onclick="showSection('episodes', this); toggleMobile()">Podcast</a>
-      <a href="/playlists" onclick="showSection('playlists', this); toggleMobile()">Playlists</a>
-      <a href="/about" onclick="showSection('about', this); toggleMobile()">À propos</a>
-      <a href="/blog" onclick="showSection('blog', this); toggleMobile()">Blog</a>
+      <a href="#" onclick="event.preventDefault(); showSection('episodes', this); toggleMobile()">Podcast</a>
+      <a href="#" onclick="event.preventDefault(); showSection('playlists', this); toggleMobile()">Playlists</a>
+      <a href="#" onclick="event.preventDefault(); showSection('about', this); toggleMobile()">À propos</a>
+      <a href="#" onclick="event.preventDefault(); showSection('blog', this); toggleMobile()">Blog</a>
       <a href="#newsletter" onclick="toggleMobile()">Newsletter</a>
       <a href="https://open.spotify.com/show/4Drtr3vcLpNsiYZVmGoprn"
          target="_blank" rel="noopener noreferrer">
@@ -202,13 +202,13 @@ Aide Google à comprendre le contenu du site
         </p>
 
         <div class="hero-actions">
-          <a href="/podcast" onclick="showSection('episodes', null)" class="btn btn-p">
+          <a href="#" onclick="event.preventDefault(); showSection('episodes', null)" class="btn btn-p">
             <svg width="11" height="13" viewBox="0 0 11 13" aria-hidden="true" focusable="false">
               <path d="M1 1.5L9.5 6.5L1 11.5V1.5Z" fill="currentColor"/>
             </svg>
             Écouter maintenant
           </a>
-          <a href="/about" onclick="showSection('about', null)" class="btn btn-g">
+          <a href="#" onclick="event.preventDefault(); showSection('about', null)" class="btn btn-g">
             Notre histoire
           </a>
         </div>
@@ -1223,11 +1223,13 @@ document.documentElement.classList.replace('no-js', 'js');
       if (name === 'blog') Blog.renderGrid();
       if (name === 'playlists') PlaylistManager.update();
 
-      // Update URL cleanly
+      // Update URL cleanly (try/catch for file:// mode)
       const cleanUrl = SECTION_URLS[name] || '/';
-      if (window.location.pathname !== cleanUrl) {
-        history.pushState({ section: name }, '', cleanUrl);
-      }
+      try {
+        if (window.location.pathname !== cleanUrl) {
+          history.pushState({ section: name }, '', cleanUrl);
+        }
+      } catch(e) { /* file:// mode — ignore pushState error */ }
 
       const target = $(`sec-${name}`);
       if (target) {
@@ -2314,7 +2316,7 @@ document.documentElement.classList.replace('no-js', 'js');
     if (ssSection) { sessionStorage.removeItem('us_init_section'); }
     const initSection = ssSection || urlToSection[window.location.pathname];
     if (initSection) {
-      showSection(initSection, document.querySelector(\`.nav-links a[onclick*="\${initSection}"]\`));
+      showSection(initSection, document.querySelector('.nav-links a[onclick*="' + initSection + '"]'));
     }
 
     Blog.renderGrid();
