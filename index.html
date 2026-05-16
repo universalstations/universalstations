@@ -96,7 +96,7 @@ Aide Google à comprendre le contenu du site
 .svc-btn-playlist:hover{background:var(--violet);color:#fff;transform:translateY(-3px);box-shadow:0 12px 32px var(--violet-glow)}
 .svc-btn-blog{color:var(--green);border-color:rgba(34,197,94,.25);background:rgba(34,197,94,.10)}
 .svc-btn-blog:hover{background:var(--green);color:#000;transform:translateY(-3px);box-shadow:0 12px 32px rgba(34,197,94,.20)}
-.ac-logo-wrap{position:relative;width:160px;margin:0 auto 2.5rem}
+.ac-logo-wrap{position:relative;width:min(420px,80%);margin:0 auto 2.5rem}
 .ac-logo-wrap img{width:100%;border-radius:16px;filter:drop-shadow(0 0 40px rgba(139,92,246,.4));animation:float 8s ease-in-out infinite}
 /* Saison Focus */
 .sf{position:relative;z-index:1;border-top:1px solid var(--border)}
@@ -275,7 +275,7 @@ Aide Google à comprendre le contenu du site
   <main id="main-content" tabindex="-1">
 
     <!-- ── HERO ── -->
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero" aria-labelledby="hero-title" hidden>
       <div class="hero-content">
 
         <p class="eyebrow" aria-hidden="true">Music · Urban Culture · Podcast</p>
@@ -371,6 +371,7 @@ Aide Google à comprendre le contenu du site
           <div class="ac-logo-wrap">
             <div class="ring ring-1"></div>
             <div class="ring ring-2"></div>
+            <div class="ring ring-3"></div>
             <picture>
               <source srcset="/logo.webp" type="image/webp">
               <img src="/logo.png" alt="Universal Stations" width="160" height="160">
@@ -431,9 +432,14 @@ Aide Google à comprendre le contenu du site
           <div class="sf-pl reveal">
             <div class="sf-pl-header">
               <span class="sf-pl-label">♫ Playlist officielle — Saison 3 Reggae</span>
-              <a href="https://open.spotify.com/playlist/" class="sf-pl-open" target="_blank" rel="noopener noreferrer">Ouvrir Spotify ↗</a>
+              <a href="https://open.spotify.com/playlist/54is6RvS5F3thhUomIUPN0" class="sf-pl-open" target="_blank" rel="noopener noreferrer">Ouvrir Spotify ↗</a>
             </div>
-            <div class="sf-pl-empty">La playlist Saison 3 sera disponible dès la mise en ligne du premier épisode.</div>
+            <div class="sf-pl-embed">
+              <iframe src="https://open.spotify.com/embed/playlist/54is6RvS5F3thhUomIUPN0?utm_source=generator&theme=0"
+                      width="100%" height="352" frameBorder="0" allowfullscreen=""
+                      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                      loading="lazy"></iframe>
+            </div>
           </div>
         </div>
       </div>
@@ -1486,6 +1492,10 @@ document.documentElement.classList.replace('no-js', 'js');
         if (el) el.hidden = id !== name;
       });
 
+      // Hero original visible seulement hors Accueil
+      const heroEl = document.querySelector('.hero');
+      if (heroEl) heroEl.hidden = name === 'accueil';
+
       $$('.nav-links a').forEach(a => a.classList.remove('active'));
       linkEl?.classList.add('active');
 
@@ -1500,16 +1510,20 @@ document.documentElement.classList.replace('no-js', 'js');
         }
       } catch(e) { /* file:// mode — ignore pushState error */ }
 
-      const target = $(`sec-${name}`);
-      if (target) {
-        const top = target.getBoundingClientRect().top + window.scrollY - 64;
-        window.scrollTo({ top, behavior: 'smooth' });
+      if (name === 'accueil') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        const target = $(`sec-${name}`);
+        if (target) {
+          const top = target.getBoundingClientRect().top + window.scrollY - 64;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
       }
     };
 
     // Handle browser back/forward
     window.addEventListener('popstate', e => {
-      const sec = e.state?.section || 'episodes';
+      const sec = e.state?.section || 'accueil';
       showSection(sec, null);
     });
 
