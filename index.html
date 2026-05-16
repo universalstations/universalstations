@@ -809,7 +809,7 @@ Aide Google à comprendre le contenu du site
 
     <div class="footer-bottom">
       <p class="footer-copy">
-        <small>© 2025 Universal Stations — universalstations.com</small>
+        <small>© 2026 Universal Stations — universalstations.com</small>
       </p>
       <nav class="footer-legal" aria-label="Liens légaux">
         <a href="#">Mentions légales</a>
@@ -1003,6 +1003,14 @@ document.documentElement.classList.replace('no-js', 'js');
   /** @param {string} sel @returns {NodeList} */
   const $$ = sel => document.querySelectorAll(sel);
 
+  /** Échappe les caractères HTML spéciaux pour prévenir les XSS. @param {string} s */
+  const escHTML = s => String(s ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
   /** Extrait le texte brut depuis un fragment HTML. @param {string} html */
   const stripHTML = html => {
     const div = document.createElement('div');
@@ -1028,10 +1036,14 @@ document.documentElement.classList.replace('no-js', 'js');
   const seasonClass = season =>
     ({ '1': 'rap', '2': 'pop', '3': 'reggae' })[season] ?? '';
 
-  /** Convertit du Markdown basique en HTML. */
-  /** Convertit le Markdown basique en HTML. @param {string} text */
+  /** Convertit du Markdown basique en HTML. @param {string} text */
   const md2html = text => text
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" style="color:var(--amber);text-decoration:underline">$1</a>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, url) => {
+      // Sécurité : bloquer javascript: et data: URLs
+      const safe = /^(https?:\/\/|\/|#)/i.test(url.trim());
+      if (!safe) return escHTML(label);
+      return `<a href="${escHTML(url)}" target="_blank" rel="noopener noreferrer" style="color:var(--amber);text-decoration:underline">${escHTML(label)}</a>`;
+    })
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.*?)\*/g,    '<em>$1</em>')
     .replace(/^## (.+)$/gm,  '%%H2%%$1%%/H2%%')
@@ -1393,12 +1405,18 @@ document.documentElement.classList.replace('no-js', 'js');
   ───────────────────────────────────────────────────────── */
 
   const Episodes = (() => {
-    const episodeCardHTML = ep => `
+    const episodeCardHTML = ep => {
+      const t  = escHTML(ep.title);
+      const d  = escHTML(ep.desc);
+      const dt = escHTML(ep.date);
+      const im = escHTML(ep.img ?? '');
+      const lk = /^https?:\/\//i.test(ep.link ?? '') ? escHTML(ep.link) : '';
+      return `
       <div class="ep-card" onclick="openPanel(${ep.i})" role="listitem"
-           tabindex="0" aria-label="${ep.title}">
+           tabindex="0" aria-label="${t}">
         <div class="ep-card-img">
-          ${ep.img
-            ? `<img src="${ep.img}" alt="${ep.title}" loading="lazy"
+          ${im
+            ? `<img src="${im}" alt="${t}" loading="lazy"
                     onerror="this.style.display='none'">`
             : `<div class="ep-card-img-ph" aria-hidden="true">
                  <svg width="48" height="48" viewBox="0 0 48 48">
@@ -1408,7 +1426,7 @@ document.documentElement.classList.replace('no-js', 'js');
                </div>`}
           ${ep.season
             ? `<span class="ep-season-pill ${seasonClass(ep.season)}">
-                 ${SEASON_LABELS[ep.season] ?? `S${ep.season}`}
+                 ${SEASON_LABELS[ep.season] ?? `S${escHTML(ep.season)}`}
                </span>`
             : ''}
           ${ep.playlistId
@@ -1418,12 +1436,12 @@ document.documentElement.classList.replace('no-js', 'js');
         <div class="ep-card-body">
           <div class="ep-meta">
             <span class="ep-num">EP. ${String(ep.ep).padStart(2, '0')}</span>
-            <span class="ep-date">${ep.date}</span>
+            <span class="ep-date">${dt}</span>
           </div>
-          <h3 class="ep-title">${ep.title}</h3>
-          <p class="ep-desc">${ep.desc}</p>
+          <h3 class="ep-title">${t}</h3>
+          <p class="ep-desc">${d}</p>
           <div class="ep-foot">
-            <button class="ep-play-btn" aria-label="Voir l'épisode ${ep.title}">
+            <button class="ep-play-btn" aria-label="Voir l'épisode ${t}">
               <span class="ep-play-ico" aria-hidden="true">
                 <svg width="8" height="10" viewBox="0 0 8 10">
                   <path d="M1 1L7 5L1 9V1Z" fill="currentColor"/>
@@ -1431,8 +1449,8 @@ document.documentElement.classList.replace('no-js', 'js');
               </span>
               Voir l'épisode
             </button>
-            ${ep.link
-              ? `<a class="ep-sp" href="${ep.link}" target="_blank"
+            ${lk
+              ? `<a class="ep-sp" href="${lk}" target="_blank"
                     rel="noopener noreferrer"
                     onclick="event.stopPropagation()"
                     aria-label="Ouvrir sur Spotify">Spotify ↗</a>`
@@ -1440,6 +1458,7 @@ document.documentElement.classList.replace('no-js', 'js');
           </div>
         </div>
       </div>`;
+    };
 
     const render = (episodes = state.episodes) => {
       const grid = $('eps-grid');
@@ -1840,30 +1859,35 @@ document.documentElement.classList.replace('no-js', 'js');
       const table = $('mgr-table');
       if (!table) return;
 
-      table.innerHTML = state.episodes.map(ep => `
-        <div class="mgr-row ${ep.playlistId ? 'linked' : ''}" role="listitem">
+      table.innerHTML = state.episodes.map(ep => {
+        const t  = escHTML(ep.title);
+        const dt = escHTML(ep.date ?? '');
+        const pl = /^[A-Za-z0-9]{15,30}$/.test(ep.playlistId ?? '') ? ep.playlistId : '';
+        return `
+        <div class="mgr-row ${pl ? 'linked' : ''}" role="listitem">
           <span style="font-family:var(--font-m);font-size:.58rem;letter-spacing:.15em;color:var(--amber)">
             EP.${String(ep.ep).padStart(2, '0')}
           </span>
           <div>
-            <div class="mgr-row-title">${ep.title}</div>
+            <div class="mgr-row-title">${t}</div>
             <div class="mgr-row-meta">
-              ${ep.season ? (SEASON_LABELS[ep.season] ?? `S${ep.season}`) : ''} ${ep.date ? `· ${ep.date}` : ''}
+              ${ep.season ? (SEASON_LABELS[ep.season] ?? `S${escHTML(ep.season)}`) : ''} ${dt ? `· ${dt}` : ''}
             </div>
           </div>
           <div>
-            ${ep.playlistId
-              ? `<a href="https://open.spotify.com/playlist/${ep.playlistId}"
+            ${pl
+              ? `<a href="https://open.spotify.com/playlist/${pl}"
                     target="_blank" rel="noopener noreferrer"
                     class="mgr-playlist-link">
-                   ♫ ${ep.playlistId.slice(0, 18)}…
+                   ♫ ${pl.slice(0, 18)}…
                  </a>`
               : `<span class="mgr-no-playlist">— non liée</span>`}
           </div>
           <button onclick="openPanel(${ep.i})" class="art-btn">
-            ${ep.playlistId ? 'Modifier' : '+ Ajouter'}
+            ${pl ? 'Modifier' : '+ Ajouter'}
           </button>
-        </div>`).join('');
+        </div>`;
+      }).join('');
     };
 
     const exportConfig = () => {
