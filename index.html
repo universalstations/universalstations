@@ -1512,15 +1512,7 @@ document.documentElement.classList.replace('no-js', 'js');
         }
       } catch(e) { /* file:// mode — ignore pushState error */ }
 
-      if (name === 'accueil') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        const target = $(`sec-${name}`);
-        if (target) {
-          const top = target.getBoundingClientRect().top + window.scrollY - 64;
-          window.scrollTo({ top, behavior: 'smooth' });
-        }
-      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     // Handle browser back/forward
