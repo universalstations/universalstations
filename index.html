@@ -96,7 +96,7 @@ Aide Google à comprendre le contenu du site
 .svc-btn-playlist:hover{background:var(--violet);color:#fff;transform:translateY(-3px);box-shadow:0 12px 32px var(--violet-glow)}
 .svc-btn-blog{color:var(--green);border-color:rgba(34,197,94,.25);background:rgba(34,197,94,.10)}
 .svc-btn-blog:hover{background:var(--green);color:#000;transform:translateY(-3px);box-shadow:0 12px 32px rgba(34,197,94,.20)}
-.ac-logo-wrap{position:relative;width:min(420px,80%);margin:0 auto 2.5rem}
+.ac-logo-wrap{position:relative;width:min(420px,90%);margin:0 auto 2.5rem}.hero[hidden]{display:none!important}
 .ac-logo-wrap img{width:100%;border-radius:16px;filter:drop-shadow(0 0 40px rgba(139,92,246,.4));animation:float 8s ease-in-out infinite}
 /* Saison Focus */
 .sf{position:relative;z-index:1;border-top:1px solid var(--border)}
@@ -374,7 +374,7 @@ Aide Google à comprendre le contenu du site
             <div class="ring ring-3"></div>
             <picture>
               <source srcset="/logo.webp" type="image/webp">
-              <img src="/logo.png" alt="Universal Stations" width="160" height="160">
+              <img src="/logo.png" alt="Universal Stations" width="420" height="420">
             </picture>
           </div>
           <p class="ac-eyebrow">Podcast · Playlists · Blog</p>
@@ -507,7 +507,7 @@ Aide Google à comprendre le contenu du site
           </div>
           <div class="blog-grid reveal">
             <div class="blog-card feat" onclick="window.location='/articles/reggae-mondial.html'">
-              <div class="feat-img-placeholder"></div>
+              <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80" alt="Reggae Mondial" class="feat-img" loading="lazy">
               <div style="padding:2rem;flex:1;display:flex;flex-direction:column;gap:.75rem">
                 <span class="blog-tag">À la une · Reggae</span>
                 <h3 class="blog-title">Le reggae mondial : des racines jamaïcaines aux métissages contemporains</h3>
@@ -516,12 +516,14 @@ Aide Google à comprendre le contenu du site
               </div>
             </div>
             <div class="blog-card" onclick="window.location='/articles/rap-hip-hop-mondial.html'">
+              <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80" alt="Rap Hip-Hop Mondial" class="blog-card-img" loading="lazy">
               <span class="blog-tag">Dossier · Rap</span>
               <h3 class="blog-title">Rap & Hip-Hop mondial : les scènes qui redéfinissent le genre</h3>
               <p class="blog-ex">Un tour du monde du rap contemporain, des États-Unis à l'Afrique.</p>
               <div class="blog-meta"><span>14 Mai 2026</span><span class="blog-read">Lire →</span></div>
             </div>
             <div class="blog-card" onclick="window.location='/articles/pop-mondiale.html'">
+              <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=600&q=80" alt="Pop Mondiale" class="blog-card-img" loading="lazy">
               <span class="blog-tag">Dossier · Pop</span>
               <h3 class="blog-title">Pop mondiale : les nouveaux visages d'un genre sans frontières</h3>
               <p class="blog-ex">La pop se réinvente depuis tous les coins de la planète.</p>
