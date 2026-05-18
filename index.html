@@ -173,9 +173,21 @@ Aide Google à comprendre le contenu du site
       });
     }
   </script>
-<!-- ═══ Google Analytics 4 ═══ -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-D9CC7GKN3F"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-D9CC7GKN3F');</script>
+<!-- ═══ Google Analytics 4 — chargé uniquement si consentement cookies ═══ -->
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments)}
+  function loadGA4(){
+    if(document.getElementById('ga4-script'))return;
+    var s=document.createElement('script');
+    s.id='ga4-script';s.async=true;
+    s.src='https://www.googletagmanager.com/gtag/js?id=G-D9CC7GKN3F';
+    document.head.appendChild(s);
+    gtag('js',new Date());
+    gtag('config','G-D9CC7GKN3F');
+  }
+  if(localStorage.getItem('us_cookies')==='accepted')loadGA4();
+</script>
 </head>
 
 <body>
@@ -1106,7 +1118,7 @@ Aide Google à comprendre le contenu du site
           </li>
           <li><a href="#">Presse &amp; Partenariats</a></li>
           <li><a href="#">Mentions légales</a></li>
-          <li><a href="#">Politique de confidentialité</a></li>
+          <li><a href="/privacy-policy.html">Politique de confidentialité</a></li>
         </ul>
       </address>
 
@@ -2726,6 +2738,58 @@ document.documentElement.classList.replace('no-js', 'js');
 
 })();
 
+  </script>
+
+  <!-- ══════════════════════════════════════════
+       BANDEAU COOKIES — RGPD
+  ══════════════════════════════════════════ -->
+  <div id="cookie-banner"
+       role="dialog" aria-label="Gestion des cookies"
+       style="position:fixed;bottom:0;left:0;right:0;z-index:9999;
+              background:#0D1A0C;border-top:1px solid rgba(245,158,11,.25);
+              padding:1rem 2rem;align-items:center;justify-content:space-between;
+              gap:1.5rem;flex-wrap:wrap;display:none">
+    <p style="font-family:var(--font-b);font-size:.75rem;color:rgba(255,255,255,.55);
+              line-height:1.7;flex:1;min-width:220px;margin:0">
+      Nous utilisons des cookies pour mesurer l'audience du site (Google Analytics).
+      Aucune donnée personnelle n'est vendue à des tiers.
+      <a href="/privacy-policy.html"
+         style="color:var(--amber);text-decoration:none;margin-left:.3rem;white-space:nowrap">
+        Politique de confidentialité →
+      </a>
+    </p>
+    <div style="display:flex;gap:.6rem;flex-shrink:0">
+      <button id="cookie-refuse"
+              style="padding:.55rem 1.1rem;border:1px solid rgba(255,255,255,.2);
+                     background:transparent;color:rgba(255,255,255,.6);border-radius:6px;
+                     font-size:.7rem;letter-spacing:.08em;font-family:var(--font-m);
+                     cursor:pointer;transition:border-color .2s,color .2s">
+        Refuser
+      </button>
+      <button id="cookie-accept"
+              style="padding:.55rem 1.2rem;background:var(--amber);border:none;
+                     color:#000;border-radius:6px;font-size:.7rem;font-weight:700;
+                     letter-spacing:.08em;font-family:var(--font-m);cursor:pointer;
+                     transition:background .2s">
+        Accepter
+      </button>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var banner = document.getElementById('cookie-banner');
+      var choice = localStorage.getItem('us_cookies');
+      if(!choice) banner.style.display = 'flex';
+      document.getElementById('cookie-accept').addEventListener('click', function(){
+        localStorage.setItem('us_cookies','accepted');
+        banner.style.display = 'none';
+        loadGA4();
+      });
+      document.getElementById('cookie-refuse').addEventListener('click', function(){
+        localStorage.setItem('us_cookies','refused');
+        banner.style.display = 'none';
+      });
+    })();
   </script>
 
 </body>
