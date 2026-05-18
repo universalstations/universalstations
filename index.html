@@ -923,10 +923,8 @@ Aide Google à comprendre le contenu du site
           </ul>
         </div>
 
-        <!-- Formulaire systeme.io — remplacer l'action par votre URL de formulaire systeme.io -->
-        <!-- Exemple : action="https://app.systeme.io/cf/YOUR_FORM_ID/subscribe" -->
         <form class="nl-form"
-              action="https://app.systeme.io/cf/VOTRE_ID_FORMULAIRE/subscribe"
+              action="https://app.systeme.io/cf/22ccf117/contact"
               method="POST"
               target="_blank"
               aria-label="Formulaire d'inscription à la newsletter">
@@ -1308,12 +1306,12 @@ document.documentElement.classList.replace('no-js', 'js');
       if (!safe) return escHTML(label);
       return `<a href="${escHTML(url)}" target="_blank" rel="noopener noreferrer" style="color:var(--amber);text-decoration:underline">${escHTML(label)}</a>`;
     })
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.*?)\*/g,    '<em>$1</em>')
-    .replace(/^## (.+)$/gm,  '%%H2%%$1%%/H2%%')
-    .replace(/^### (.+)$/gm, '%%H3%%$1%%/H3%%')
-    .replace(/^> (.+)$/gm,   '%%BQ%%$1%%/BQ%%')
-    .replace(/^- (.+)$/gm,   '%%LI%%$1%%/LI%%')
+    .replace(/\*\*(.*?)\*\*/g, (_, t) => `<strong>${escHTML(t)}</strong>`)
+    .replace(/\*(.*?)\*/g,    (_, t) => `<em>${escHTML(t)}</em>`)
+    .replace(/^## (.+)$/gm,  (_, t) => `%%H2%%${escHTML(t)}%%/H2%%`)
+    .replace(/^### (.+)$/gm, (_, t) => `%%H3%%${escHTML(t)}%%/H3%%`)
+    .replace(/^> (.+)$/gm,   (_, t) => `%%BQ%%${escHTML(t)}%%/BQ%%`)
+    .replace(/^- (.+)$/gm,   (_, t) => `%%LI%%${escHTML(t)}%%/LI%%`)
     .replace(/\n---\n/g,     '\n%%HR%%\n')
     .split(/\n\n/)
     .map(b => {
@@ -2004,8 +2002,9 @@ document.documentElement.classList.replace('no-js', 'js');
       // Liens
       const linksEl = $('p-ep-links');
       if (linksEl) {
-        linksEl.innerHTML = ep.link
-          ? `<a href="${ep.link}" target="_blank" rel="noopener noreferrer"
+        const safeLink = /^https?:\/\//i.test(ep.link ?? '') ? ep.link : '';
+        linksEl.innerHTML = safeLink
+          ? `<a href="${safeLink}" target="_blank" rel="noopener noreferrer"
                 class="ep-link-btn spotify"
                 aria-label="Ouvrir dans Spotify">
                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -2241,21 +2240,21 @@ document.documentElement.classList.replace('no-js', 'js');
       const slug = article.id.replace(/^\d{4}-\d{2}-\d{2}-/, '');
       const articleUrl = `/articles/${slug}`;
       const imgEl = article.image
-        ? `<img src="${article.image}" alt="${article.title}" class="blog-card-img${isFeat ? ' feat-img' : ''}" loading="lazy">`
+        ? `<img src="${escHTML(article.image)}" alt="${escHTML(article.title)}" class="blog-card-img${isFeat ? ' feat-img' : ''}" loading="lazy">`
         : (isFeat ? `<div class="blog-card-img feat-img feat-img-placeholder"></div>` : '');
       const textEl = `
-        <span class="blog-tag">${article.tag ?? ''}</span>
-        <h3 class="blog-title">${article.title}</h3>
-        <p class="blog-ex">${article.excerpt ?? article.body?.slice(0, 150) ?? ''}</p>
+        <span class="blog-tag">${escHTML(article.tag ?? '')}</span>
+        <h3 class="blog-title">${escHTML(article.title)}</h3>
+        <p class="blog-ex">${escHTML(article.excerpt ?? article.body?.slice(0, 150) ?? '')}</p>
         <div class="blog-meta">
-          <span>${article.date ?? ''}</span>
+          <span>${escHTML(article.date ?? '')}</span>
           <span class="blog-read">Lire →</span>
         </div>`;
       return `
       <a class="blog-card ${isFeat ? 'feat' : ''}"
          href="${articleUrl}"
          role="listitem"
-         aria-label="${article.title}">
+         aria-label="${escHTML(article.title)}">
         ${isFeat ? `<div class="blog-feat-text">${textEl}</div>${imgEl}` : `${imgEl}${textEl}`}
       </a>`;
     };
@@ -2331,10 +2330,10 @@ document.documentElement.classList.replace('no-js', 'js');
                   aria-label="Retour au blog">
             ← Retour au blog
           </button>
-          ${article.image ? `<img src="${article.image}" alt="${article.title}" class="article-hero-img" loading="lazy">` : ''}
-          <p class="article-reader-tag">${article.tag ?? ''}</p>
-          <h1 id="article-reader-title" class="article-reader-title">${article.title}</h1>
-          <time class="article-reader-date">${article.date ?? ''}</time>
+          ${article.image ? `<img src="${escHTML(article.image)}" alt="${escHTML(article.title)}" class="article-hero-img" loading="lazy">` : ''}
+          <p class="article-reader-tag">${escHTML(article.tag ?? '')}</p>
+          <h1 id="article-reader-title" class="article-reader-title">${escHTML(article.title)}</h1>
+          <time class="article-reader-date">${escHTML(article.date ?? '')}</time>
           <div class="article-reader-body">
             ${md2html(article.body ?? '')}
           </div>
