@@ -923,10 +923,11 @@ Aide Google à comprendre le contenu du site
           </ul>
         </div>
 
-        <form class="nl-form"
-              action="https://universalstations.systeme.io/22ccf117"
+        <!-- Formulaire POST natif → iframe caché pour éviter la navigation de page -->
+        <form class="nl-form" id="nl-form"
               method="POST"
-              target="_blank"
+              action="https://universalstations.systeme.io/22ccf117"
+              target="nl-frame"
               aria-label="Formulaire d'inscription à la newsletter">
           <input type="hidden" name="locale" value="fr">
           <div>
@@ -941,11 +942,35 @@ Aide Google à comprendre le contenu du site
                    placeholder="Votre adresse email"
                    autocomplete="email" required>
           </div>
-          <button type="submit" class="btn btn-p">S'abonner gratuitement</button>
+          <button type="submit" class="btn btn-p" id="nl-btn">S'abonner gratuitement</button>
           <p class="nl-disclaimer">
             <small>Pas de spam. Désinscription en un clic.</small>
           </p>
         </form>
+        <!-- La réponse de systeme.io atterrit ici, invisible pour le visiteur -->
+        <iframe name="nl-frame" id="nl-frame" style="display:none" aria-hidden="true"></iframe>
+        <script>
+          document.getElementById('nl-form').addEventListener('submit', function(e) {
+            const email = document.getElementById('nl-email').value;
+            if (!email) { e.preventDefault(); return; }
+            const form = this;
+            const btn  = document.getElementById('nl-btn');
+            btn.disabled = true;
+            btn.textContent = 'Envoi…';
+            // Le formulaire se soumet normalement vers l'iframe (target="nl-frame")
+            // On affiche le message de succès après un court délai
+            setTimeout(function() {
+              form.innerHTML =
+                '<div style="padding:1.5rem;text-align:center;border:1px solid rgba(34,197,94,.3);' +
+                'border-radius:10px;background:rgba(34,197,94,.06)">' +
+                '<p style="font-family:var(--font-d);font-size:1.4rem;color:#22c55e;margin-bottom:.5rem">' +
+                '✓ Inscription confirmée !</p>' +
+                '<p style="font-family:var(--font-m);font-size:.62rem;letter-spacing:.1em;color:var(--text-2)">' +
+                'Bienvenue dans la communauté Universal Stations.</p>' +
+                '</div>';
+            }, 1200);
+          });
+        </script>
 
       </div>
     </section>
