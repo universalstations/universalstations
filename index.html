@@ -923,13 +923,19 @@ Aide Google à comprendre le contenu du site
           </ul>
         </div>
 
-        <!-- Formulaire POST natif → iframe caché pour éviter la navigation de page -->
+        <!-- Netlify Forms — détecté automatiquement au déploiement -->
         <form class="nl-form" id="nl-form"
+              name="newsletter"
               method="POST"
-              action="https://universalstations.systeme.io/22ccf117"
-              target="nl-frame"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
               aria-label="Formulaire d'inscription à la newsletter">
+          <!-- Champ anti-spam caché (honeypot) -->
+          <input type="hidden" name="form-name" value="newsletter">
           <input type="hidden" name="locale" value="fr">
+          <p style="display:none">
+            <label>Ne pas remplir : <input name="bot-field"></label>
+          </p>
           <div>
             <label for="nl-prenom" class="sr-only">Votre prénom</label>
             <input type="text" id="nl-prenom" name="first_name"
@@ -947,19 +953,27 @@ Aide Google à comprendre le contenu du site
             <small>Pas de spam. Désinscription en un clic.</small>
           </p>
         </form>
-        <!-- La réponse de systeme.io atterrit ici, invisible pour le visiteur -->
-        <iframe name="nl-frame" id="nl-frame" style="display:none" aria-hidden="true"></iframe>
         <script>
           document.getElementById('nl-form').addEventListener('submit', function(e) {
-            const email = document.getElementById('nl-email').value;
-            if (!email) { e.preventDefault(); return; }
+            e.preventDefault();
             const form = this;
             const btn  = document.getElementById('nl-btn');
+            const email = document.getElementById('nl-email').value;
+            if (!email) return;
             btn.disabled = true;
             btn.textContent = 'Envoi…';
-            // Le formulaire se soumet normalement vers l'iframe (target="nl-frame")
-            // On affiche le message de succès après un court délai
-            setTimeout(function() {
+            // Envoi AJAX à Netlify (encode en application/x-www-form-urlencoded)
+            fetch('/', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: new URLSearchParams({
+                'form-name': 'newsletter',
+                'email': email,
+                'first_name': document.getElementById('nl-prenom').value,
+                'locale': 'fr'
+              }).toString()
+            })
+            .then(function() {
               form.innerHTML =
                 '<div style="padding:1.5rem;text-align:center;border:1px solid rgba(34,197,94,.3);' +
                 'border-radius:10px;background:rgba(34,197,94,.06)">' +
@@ -968,7 +982,11 @@ Aide Google à comprendre le contenu du site
                 '<p style="font-family:var(--font-m);font-size:.62rem;letter-spacing:.1em;color:var(--text-2)">' +
                 'Bienvenue dans la communauté Universal Stations.</p>' +
                 '</div>';
-            }, 1200);
+            })
+            .catch(function() {
+              btn.disabled = false;
+              btn.textContent = "S'abonner gratuitement";
+            });
           });
         </script>
 
