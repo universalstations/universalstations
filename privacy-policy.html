@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#06060b">
+  <meta name="robots" content="noindex, follow">
+  <title>Politique de Confidentialité — Universal Stations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#06060b; --bg-2:#0e0f18; --bg-3:#151623; --bg-4:#1d1e2f;
+      --violet:#8b5cf6; --violet-light:#a78bfa; --violet-dim:rgba(139,92,246,.10);
+      --violet-border:rgba(139,92,246,.18);
+      --amber:#f59e0b; --amber-light:#fcd34d; --amber-dim:rgba(245,158,11,.10);
+      --amber-glow:rgba(245,158,11,.20); --amber-border:rgba(245,158,11,.22);
+      --green:#22c55e; --red:#ef4444; --blue:#60a5fa;
+      --border:rgba(139,92,246,.14); --border-strong:rgba(245,158,11,.35);
+      --text:#f1f0fa; --text-2:#8b8ba8; --text-3:#42425a;
+      --font-d:'Syne',sans-serif; --font-b:'Plus Jakarta Sans',sans-serif;
+      --font-m:'JetBrains Mono',monospace;
+      --ease:cubic-bezier(.22,1,.36,1);
+      --nav-h:64px; --max-w:900px; --radius:10px; --radius-sm:6px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-b);
+      font-size: 1rem;
+      line-height: 1.7;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--violet); border-radius: 2px; }
+
+    /* Ambient glow */
+    .bg-glow {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(ellipse 75% 55% at 50% 0, rgba(139,92,246,.12) 0, transparent 60%),
+        radial-gradient(ellipse 45% 45% at 88% 85%, rgba(245,158,11,.06) 0, transparent 55%);
+    }
+
+    /* ── NAV ── */
+    .site-header {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(6,6,11,.85);
+      backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid var(--border);
+      height: var(--nav-h);
+      display: flex; align-items: center;
+      padding: 0 3rem;
+      gap: 1rem;
+    }
+    .nav-logo-txt {
+      font-family: var(--font-d);
+      font-size: 1.1rem;
+      letter-spacing: .1em;
+      color: var(--text);
+    }
+    .nav-logo-txt span { color: var(--amber); }
+    .nav-back {
+      margin-left: auto;
+      font-family: var(--font-m);
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--text-2);
+      border: 1px solid var(--border);
+      padding: .4rem 1rem;
+      border-radius: var(--radius-sm);
+      transition: color .2s, border-color .2s;
+    }
+    .nav-back:hover { color: var(--amber); border-color: var(--amber-border); }
+
+    /* ── MAIN ── */
+    main {
+      position: relative; z-index: 1;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    /* ── HERO ── */
+    .page-hero {
+      margin-bottom: 3.5rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-label {
+      display: inline-flex; align-items: center; gap: .6rem;
+      font-family: var(--font-m);
+      font-size: .6rem;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      border: 1px solid var(--amber-border);
+      padding: .3rem .9rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-label::before {
+      content: '';
+      width: 1.5rem; height: 1px;
+      background: var(--amber);
+    }
+    h1 {
+      font-family: var(--font-d);
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: .04em;
+      color: var(--text);
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+    h1 em {
+      font-style: normal;
+      color: var(--amber);
+    }
+    .hero-meta {
+      font-family: var(--font-m);
+      font-size: .58rem;
+      letter-spacing: .12em;
+      color: var(--text-3);
+    }
+
+    /* ── SECTION CARD ── */
+    .section {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      transition: border-color .3s;
+    }
+    .section:hover { border-color: var(--violet-border); }
+
+    .section-header {
+      display: flex; align-items: center; gap: .85rem;
+      padding: 1.1rem 1.6rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(139,92,246,.04);
+    }
+    .section-num {
+      font-family: var(--font-m);
+      font-size: .54rem;
+      letter-spacing: .2em;
+      color: var(--amber);
+      flex-shrink: 0;
+    }
+    h2 {
+      font-family: var(--font-d);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      color: var(--text);
+    }
+
+    .section-body {
+      padding: 1.5rem 1.6rem;
+    }
+    .section-body p {
+      font-size: .9rem;
+      color: var(--text-2);
+      margin-bottom: .85rem;
+      line-height: 1.8;
+    }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body strong { color: var(--text); font-weight: 500; }
+    .section-body a { color: var(--amber); transition: opacity .2s; }
+    .section-body a:hover { opacity: .75; }
+
+    /* ── TABLE ── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: .75rem;
+      font-size: .82rem;
+    }
+    .data-table th {
+      text-align: left;
+      padding: .55rem 1rem;
+      background: rgba(139,92,246,.08);
+      color: var(--amber);
+      font-family: var(--font-m);
+      font-size: .56rem;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+    .data-table td {
+      padding: .7rem 1rem;
+      color: var(--text-2);
+      border-bottom: 1px solid rgba(139,92,246,.08);
+      vertical-align: top;
+      font-size: .83rem;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table td:first-child { color: var(--text); font-weight: 500; }
+    .data-table a { color: var(--amber); }
+
+    /* ── TAGS ── */
+    .tag {
+      display: inline-block;
+      padding: .15rem .55rem;
+      border-radius: 4px;
+      font-family: var(--font-m);
+      font-size: .56rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      margin: .1rem;
+    }
+    .tag-analytics { background: rgba(139,92,246,.15); color: var(--violet-light); border: 1px solid var(--violet-border); }
+    .tag-form      { background: var(--amber-dim);       color: var(--amber);        border: 1px solid var(--amber-border); }
+    .tag-social    { background: rgba(96,165,250,.1);    color: var(--blue);         border: 1px solid rgba(96,165,250,.25); }
+    .tag-music     { background: rgba(34,197,94,.1);     color: var(--green);        border: 1px solid rgba(34,197,94,.25); }
+
+    /* ── RIGHTS GRID ── */
+    .rights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: .65rem;
+      margin-top: .75rem;
+    }
+    .right-item {
+      display: flex; align-items: flex-start; gap: .65rem;
+      padding: .85rem 1rem;
+      background: rgba(139,92,246,.05);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+    }
+    .right-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--amber);
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+    .right-item strong { display: block; font-size: .82rem; color: var(--text); font-weight: 500; margin-bottom: .2rem; }
+    .right-item p { font-size: .78rem; color: var(--text-3); margin: 0 !important; }
+
+    /* ── DIVIDER ── */
+    .amber-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--amber-border), transparent);
+      margin: 1.25rem 0;
+    }
+
+    /* ── CONTACT BOX ── */
+    .contact-box {
+      background: var(--amber-dim);
+      border: 1px solid var(--amber-border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+    .contact-box h3 {
+      font-family: var(--font-d);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--amber-light);
+      margin-bottom: .6rem;
+      letter-spacing: .04em;
+    }
+    .contact-box p { color: var(--text-2); font-size: .88rem; margin-bottom: 1.4rem; }
+    .contact-link {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: var(--font-m);
+      font-size: .66rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #000;
+      background: var(--amber);
+      padding: .75rem 1.8rem;
+      border-radius: var(--radius-sm);
+      transition: background .2s, transform .15s;
+    }
+    .contact-link:hover { background: var(--amber-light); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-family: var(--font-m);
+      font-size: .56rem;
+      letter-spacing: .1em;
+      color: var(--text-3);
+    }
+    footer a { color: var(--amber); transition: opacity .2s; }
+    footer a:hover { opacity: .7; }
+
+    /* ── COOKIE BANNER ── */
+    #cookie-banner {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
+      background: rgba(14,15,24,.97);
+      border-top: 1px solid var(--border);
+      backdrop-filter: blur(20px);
+      padding: 1.2rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1.5rem; flex-wrap: wrap;
+    }
+    #cookie-banner p {
+      font-size: .8rem;
+      color: var(--text-2);
+      flex: 1; min-width: 200px;
+    }
+    #cookie-banner p a { color: var(--amber); text-decoration: underline; }
+    .cookie-actions { display: flex; gap: .6rem; flex-shrink: 0; }
+    .btn-refuse {
+      padding: .5rem 1.2rem;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-2);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-m);
+      font-size: .6rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color .2s, color .2s;
+    }
+    .btn-refuse:hover { border-color: var(--text-2); color: var(--text); }
+    .btn-accept {
+      padding: .5rem 1.4rem;
+      background: var(--amber);
+      color: #000;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-m);
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .btn-accept:hover { background: var(--amber-light); }
+
+    @media (max-width: 600px) {
+      .site-header { padding: 0 1.2rem; }
+      main { padding: 2.5rem 1.2rem 5rem; }
+      .section-body { padding: 1.2rem; }
+      .section-header { padding: 1rem 1.2rem; }
+      .rights-grid { grid-template-columns: 1fr; }
+      #cookie-banner { flex-direction: column; align-items: flex-start; }
+      .data-table { font-size: .75rem; }
+      .data-table th, .data-table td { padding: .5rem .65rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <!-- Nav -->
+  <header class="site-header">
+    <span class="nav-logo-txt">UNIVERSAL <span>STATIONS</span></span>
+    <a href="/" class="nav-back">← Retour au site</a>
+  </header>
+
+  <!-- Main -->
+  <main>
+
+    <!-- Hero -->
+    <div class="page-hero">
+      <span class="hero-label">Légal &amp; Confidentialité</span>
+      <h1>Politique de <em>Confidentialité</em></h1>
+      <p class="hero-meta">Dernière mise à jour : Mai 2026 &nbsp;·&nbsp; Responsable : Universal Stations &nbsp;·&nbsp; France</p>
+    </div>
+
+    <!-- 1 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2>Qui sommes-nous ?</h2>
+      </div>
+      <div class="section-body">
+        <p><strong>Universal Stations</strong> est une plateforme dédiée à la musique et à la culture urbaine, combinant une série de podcasts et des playlists curatoriales. Ce site est édité et exploité par Universal Stations.</p>
+        <p><strong>Contact :</strong> <a href="mailto:contact@universalstations.com">contact@universalstations.com</a></p>
+        <p>Cette politique vous informe sur la manière dont nous collectons, utilisons et protégeons vos données personnelles, conformément au <strong>Règlement Général sur la Protection des Données (RGPD)</strong> et à la loi Informatique et Libertés.</p>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2>Données collectées et finalités</h2>
+      </div>
+      <div class="section-body">
+        <p>Nous collectons uniquement les données nécessaires au bon fonctionnement du site :</p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Données collectées</th>
+              <th>Finalité</th>
+              <th>Base légale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tag tag-analytics">Google Analytics</span></td>
+              <td>Adresse IP anonymisée, pages visitées, durée de session, appareil</td>
+              <td>Mesure d'audience et amélioration du site</td>
+              <td>Consentement</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-form">Newsletter</span></td>
+              <td>Adresse e-mail</td>
+              <td>Envoi de notre newsletter musicale et annonces de sorties</td>
+              <td>Consentement</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-form">Formulaire de contact</span></td>
+              <td>Nom, adresse e-mail, message</td>
+              <td>Répondre à vos demandes</td>
+              <td>Intérêt légitime</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-music">Spotify Embed</span></td>
+              <td>Cookies Spotify (si connecté), interactions lecture</td>
+              <td>Lecture de playlists intégrées sur le site</td>
+              <td>Consentement</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-social">Réseaux sociaux</span></td>
+              <td>Données gérées par les plateformes tierces</td>
+              <td>Liens de redirection vers nos pages officielles</td>
+              <td>Intérêt légitime</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-music">Streaming</span></td>
+              <td>Données gérées par les plateformes (Spotify, Apple Music, Deezer…)</td>
+              <td>Liens de redirection vers nos contenus</td>
+              <td>Intérêt légitime</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2>Cookies</h2>
+      </div>
+      <div class="section-body">
+        <p>Notre site utilise des cookies. Voici les types utilisés :</p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Catégorie</th>
+              <th>Nom / Émetteur</th>
+              <th>Durée</th>
+              <th>Rôle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Essentiels</td>
+              <td>us_cookies (interne)</td>
+              <td>12 mois</td>
+              <td>Mémoriser votre choix de consentement</td>
+            </tr>
+            <tr>
+              <td>Analytics</td>
+              <td>_ga, _gid (Google Analytics)</td>
+              <td>2 ans / 24 h</td>
+              <td>Mesure d'audience anonymisée</td>
+            </tr>
+            <tr>
+              <td>Médias tiers</td>
+              <td>sp_t, sp_dc (Spotify)</td>
+              <td>Session / 1 an</td>
+              <td>Lecture des players Spotify intégrés</td>
+            </tr>
+            <tr>
+              <td>Réseaux sociaux</td>
+              <td>ig_did, yt-remote (Instagram, YouTube)</td>
+              <td>Variable</td>
+              <td>Intégration des widgets réseaux sociaux</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="amber-divider"></div>
+        <p>Vous pouvez retirer votre consentement à tout moment via la bannière de cookies ou en configurant votre navigateur pour bloquer les cookies tiers.</p>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2>Services et plateformes tierces</h2>
+      </div>
+      <div class="section-body">
+        <p>Notre site intègre ou redirige vers des services tiers disposant de leur propre politique de confidentialité :</p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Plateforme</th>
+              <th>Politique de confidentialité</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Google Analytics</td>
+              <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td>
+            </tr>
+            <tr>
+              <td>Spotify</td>
+              <td><a href="https://www.spotify.com/fr/legal/privacy-policy/" target="_blank" rel="noopener">spotify.com — Politique de confidentialité</a></td>
+            </tr>
+            <tr>
+              <td>systeme.io (newsletter)</td>
+              <td><a href="https://systeme.io/fr/politique-de-confidentialite" target="_blank" rel="noopener">systeme.io — Politique de confidentialité</a></td>
+            </tr>
+            <tr>
+              <td>Instagram</td>
+              <td><a href="https://privacycenter.instagram.com/policy" target="_blank" rel="noopener">privacycenter.instagram.com</a></td>
+            </tr>
+            <tr>
+              <td>YouTube</td>
+              <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td>
+            </tr>
+            <tr>
+              <td>Apple Music / Deezer</td>
+              <td>Consultez les conditions générales de chaque plateforme</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="amber-divider"></div>
+        <p>Universal Stations n'est <strong>pas responsable</strong> des traitements de données effectués par ces plateformes après la redirection.</p>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2>Durée de conservation des données</h2>
+      </div>
+      <div class="section-body">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Type de données</th>
+              <th>Durée de conservation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Données de contact (formulaire)</td>
+              <td>3 ans à compter du dernier contact</td>
+            </tr>
+            <tr>
+              <td>Adresses e-mail (newsletter)</td>
+              <td>Jusqu'à désinscription + 3 ans</td>
+            </tr>
+            <tr>
+              <td>Données analytiques (Google Analytics)</td>
+              <td>14 mois (paramétrage RGPD)</td>
+            </tr>
+            <tr>
+              <td>Logs de connexion</td>
+              <td>12 mois maximum</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">06</span>
+        <h2>Vos droits</h2>
+      </div>
+      <div class="section-body">
+        <p>Conformément au RGPD, vous disposez des droits suivants sur vos données personnelles :</p>
+        <div class="rights-grid">
+          <div class="right-item">
+            <div class="right-dot"></div>
+            <div><strong>Droit d'accès</strong><p>Obtenir une copie de vos données</p></div>
+          </div>
+          <div class="right-item">
+            <div class="right-dot"></div>
+            <div><strong>Droit de rectification</strong><p>Corriger des données inexactes</p></div>
+          </div>
+          <div class="right-item">
+            <div class="right-dot"></div>
+            <div><strong>Droit à l'effacement</strong><p>Supprimer vos données (droit à l'oubli)</p></div>
+          </div>
+          <div class="right-item">
+            <div class="right-dot"></div>
+            <div><strong>Droit d'opposition</strong><p>Vous opposer à certains traitements</p></div>
+          </div>
+          <div class="right-item">
+            <div class="right-dot"></div>
+            <div><strong>Droit à la limitation</strong><p>Limiter temporairement le traitement</p></div>
+          </div>
+          <div class="right-item">
+            <div class="right-dot"></div>
+            <div><strong>Droit à la portabilité</strong><p>Recevoir vos données dans un format structuré</p></div>
+          </div>
+          <div class="right-item">
+            <div class="right-dot"></div>
+            <div><strong>Retrait du consentement</strong><p>Retirer à tout moment votre consentement cookies / newsletter</p></div>
+          </div>
+          <div class="right-item">
+            <div class="right-dot"></div>
+            <div><strong>Réclamation CNIL</strong><p>Déposer une plainte sur <a href="https://www.cnil.fr" target="_blank">cnil.fr</a></p></div>
+          </div>
+        </div>
+        <div class="amber-divider"></div>
+        <p>Pour exercer vos droits : <a href="mailto:contact@universalstations.com">contact@universalstations.com</a>. Nous vous répondrons dans un délai de <strong>30 jours</strong>.</p>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">07</span>
+        <h2>Sécurité des données</h2>
+      </div>
+      <div class="section-body">
+        <p>Universal Stations met en œuvre les mesures techniques et organisationnelles appropriées pour protéger vos données contre tout accès non autorisé, perte ou divulgation. Le site est hébergé sur <strong>Netlify</strong> (certifié SOC 2 Type II), avec connexion sécurisée <strong>HTTPS/TLS</strong>.</p>
+        <p>Les données collectées via le formulaire de contact ne sont pas revendues à des tiers commerciaux.</p>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">08</span>
+        <h2>Modifications de la politique</h2>
+      </div>
+      <div class="section-body">
+        <p>Universal Stations se réserve le droit de modifier cette politique à tout moment, notamment pour se conformer aux évolutions légales ou aux changements de nos services. Toute modification sera signalée par la mise à jour de la date en haut de cette page.</p>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="contact-box">
+      <h3>Une question sur vos données ?</h3>
+      <p>Notre équipe est disponible pour répondre à toute demande concernant vos données personnelles.</p>
+      <a href="mailto:contact@universalstations.com" class="contact-link">✉ &nbsp;contact@universalstations.com</a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Universal Stations — Tous droits réservés &nbsp;|&nbsp; <a href="/">Retour au site</a> &nbsp;|&nbsp; <a href="mailto:contact@universalstations.com">Contact</a></p>
+  </footer>
+
+  <!-- Cookie Banner -->
+  <div id="cookie-banner">
+    <p>
+      Nous utilisons des cookies pour mesurer l'audience (Google Analytics) et intégrer des contenus Spotify.
+      En cliquant sur « Accepter », vous consentez à leur utilisation.
+      <a href="/privacy-policy.html">En savoir plus</a>
+    </p>
+    <div class="cookie-actions">
+      <button class="btn-refuse" onclick="refuseCookies()">Refuser</button>
+      <button class="btn-accept" onclick="acceptCookies()">Accepter</button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const consent = localStorage.getItem('us_cookies');
+      if (consent) {
+        document.getElementById('cookie-banner').style.display = 'none';
+        if (consent === 'accepted') loadAnalytics();
+      }
+    })();
+
+    function acceptCookies() {
+      localStorage.setItem('us_cookies', 'accepted');
+      document.getElementById('cookie-banner').style.display = 'none';
+      loadAnalytics();
+    }
+
+    function refuseCookies() {
+      localStorage.setItem('us_cookies', 'refused');
+      document.getElementById('cookie-banner').style.display = 'none';
+    }
+
+    function loadAnalytics() {
+      const script = document.createElement('script');
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-D9CC7GKN3F';
+      script.async = true;
+      document.head.appendChild(script);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-D9CC7GKN3F', { anonymize_ip: true });
+    }
+  </script>
+
+</body>
+</html>
