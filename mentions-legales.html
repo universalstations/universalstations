@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#06060b">
+  <meta name="robots" content="noindex, follow">
+  <title>Mentions Légales — Universal Stations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#06060b; --bg-2:#0e0f18; --bg-3:#151623; --bg-4:#1d1e2f;
+      --violet:#8b5cf6; --violet-light:#a78bfa; --violet-dim:rgba(139,92,246,.10);
+      --violet-border:rgba(139,92,246,.18);
+      --amber:#f59e0b; --amber-light:#fcd34d; --amber-dim:rgba(245,158,11,.10);
+      --amber-glow:rgba(245,158,11,.20); --amber-border:rgba(245,158,11,.22);
+      --green:#22c55e; --red:#ef4444; --blue:#60a5fa;
+      --border:rgba(139,92,246,.14); --border-strong:rgba(245,158,11,.35);
+      --text:#f1f0fa; --text-2:#8b8ba8; --text-3:#42425a;
+      --font-d:'Syne',sans-serif; --font-b:'Plus Jakarta Sans',sans-serif;
+      --font-m:'JetBrains Mono',monospace;
+      --ease:cubic-bezier(.22,1,.36,1);
+      --nav-h:64px; --max-w:900px; --radius:10px; --radius-sm:6px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-b);
+      font-size: 1rem;
+      line-height: 1.7;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--violet); border-radius: 2px; }
+
+    /* Ambient glow */
+    .bg-glow {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(ellipse 75% 55% at 50% 0, rgba(139,92,246,.12) 0, transparent 60%),
+        radial-gradient(ellipse 45% 45% at 88% 85%, rgba(245,158,11,.06) 0, transparent 55%);
+    }
+
+    /* ── NAV ── */
+    .site-header {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(6,6,11,.85);
+      backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid var(--border);
+      height: var(--nav-h);
+      display: flex; align-items: center;
+      padding: 0 3rem;
+      gap: 1rem;
+    }
+    .nav-logo-txt {
+      font-family: var(--font-d);
+      font-size: 1.1rem;
+      letter-spacing: .1em;
+      color: var(--text);
+    }
+    .nav-logo-txt span { color: var(--amber); }
+    .nav-back {
+      margin-left: auto;
+      font-family: var(--font-m);
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--text-2);
+      border: 1px solid var(--border);
+      padding: .4rem 1rem;
+      border-radius: var(--radius-sm);
+      transition: color .2s, border-color .2s;
+    }
+    .nav-back:hover { color: var(--amber); border-color: var(--amber-border); }
+
+    /* ── MAIN ── */
+    main {
+      position: relative; z-index: 1;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    /* ── HERO ── */
+    .page-hero {
+      margin-bottom: 3.5rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-label {
+      display: inline-flex; align-items: center; gap: .6rem;
+      font-family: var(--font-m);
+      font-size: .6rem;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      border: 1px solid var(--amber-border);
+      padding: .3rem .9rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-label::before {
+      content: '';
+      width: 1.5rem; height: 1px;
+      background: var(--amber);
+    }
+    h1 {
+      font-family: var(--font-d);
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: .04em;
+      color: var(--text);
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+    h1 em {
+      font-style: normal;
+      color: var(--amber);
+    }
+    .hero-meta {
+      font-family: var(--font-m);
+      font-size: .58rem;
+      letter-spacing: .12em;
+      color: var(--text-3);
+    }
+
+    /* ── SECTION CARD ── */
+    .section {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      transition: border-color .3s;
+    }
+    .section:hover { border-color: var(--violet-border); }
+
+    .section-header {
+      display: flex; align-items: center; gap: .85rem;
+      padding: 1.1rem 1.6rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(139,92,246,.04);
+    }
+    .section-num {
+      font-family: var(--font-m);
+      font-size: .54rem;
+      letter-spacing: .2em;
+      color: var(--amber);
+      flex-shrink: 0;
+    }
+    h2 {
+      font-family: var(--font-d);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      color: var(--text);
+    }
+
+    .section-body {
+      padding: 1.5rem 1.6rem;
+    }
+    .section-body p {
+      font-size: .9rem;
+      color: var(--text-2);
+      margin-bottom: .85rem;
+      line-height: 1.8;
+    }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body strong { color: var(--text); font-weight: 500; }
+    .section-body a { color: var(--amber); transition: opacity .2s; }
+    .section-body a:hover { opacity: .75; }
+
+    /* ── INFO GRID ── */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: .65rem;
+      margin-top: .75rem;
+    }
+    .info-item {
+      padding: 1rem 1.2rem;
+      background: rgba(139,92,246,.05);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+    }
+    .info-label {
+      font-family: var(--font-m);
+      font-size: .52rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: .35rem;
+    }
+    .info-value {
+      font-size: .88rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .info-value a { color: var(--amber); }
+
+    /* ── DIVIDER ── */
+    .amber-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--amber-border), transparent);
+      margin: 1.2rem 0;
+    }
+
+    /* ── CONTACT BOX ── */
+    .contact-box {
+      background: linear-gradient(135deg, rgba(139,92,246,.08), rgba(245,158,11,.06));
+      border: 1px solid var(--amber-border);
+      border-radius: var(--radius);
+      padding: 2rem 2.2rem;
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+    .contact-box h3 {
+      font-family: var(--font-d);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: .5rem;
+    }
+    .contact-box p {
+      font-size: .88rem;
+      color: var(--text-2);
+      margin-bottom: 1.2rem;
+    }
+    .contact-link {
+      display: inline-block;
+      font-family: var(--font-m);
+      font-size: .7rem;
+      letter-spacing: .1em;
+      color: var(--amber);
+      border: 1px solid var(--amber-border);
+      padding: .55rem 1.4rem;
+      border-radius: var(--radius-sm);
+      transition: background .2s, color .2s;
+    }
+    .contact-link:hover { background: var(--amber-dim); }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 2rem 3rem;
+      text-align: center;
+      font-family: var(--font-m);
+      font-size: .58rem;
+      letter-spacing: .1em;
+      color: var(--text-3);
+    }
+    footer a { color: var(--text-2); transition: color .2s; }
+    footer a:hover { color: var(--amber); }
+
+    /* ── COOKIE BANNER ── */
+    #cookie-banner {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: #0D1A0C;
+      border-top: 1px solid rgba(245,158,11,.25);
+      padding: 1rem 2rem;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    #cookie-banner p {
+      font-family: var(--font-b);
+      font-size: .75rem;
+      color: rgba(255,255,255,.55);
+      flex: 1;
+      min-width: 200px;
+      margin: 0;
+      line-height: 1.6;
+    }
+    #cookie-banner p a { color: var(--amber); text-decoration: underline; }
+    .cookie-actions { display: flex; gap: .6rem; flex-shrink: 0; }
+    .btn-refuse {
+      font-family: var(--font-m); font-size: .58rem; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase;
+      padding: .45rem 1rem; border-radius: var(--radius-sm);
+      border: 1px solid rgba(255,255,255,.15); background: transparent;
+      color: rgba(255,255,255,.45); cursor: pointer; transition: border-color .2s, color .2s;
+    }
+    .btn-refuse:hover { border-color: rgba(255,255,255,.35); color: rgba(255,255,255,.7); }
+    .btn-accept {
+      font-family: var(--font-m); font-size: .58rem; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase;
+      padding: .45rem 1rem; border-radius: var(--radius-sm);
+      border: 1px solid var(--amber-border); background: var(--amber-dim);
+      color: var(--amber); cursor: pointer; transition: background .2s;
+    }
+    .btn-accept:hover { background: rgba(245,158,11,.2); }
+
+    @media (max-width: 600px) {
+      .site-header { padding: 0 1.2rem; }
+      main { padding: 2.5rem 1.2rem 5rem; }
+      footer { padding: 1.5rem 1.2rem; }
+      .info-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <!-- Nav -->
+  <header class="site-header">
+    <a href="/" class="nav-logo-txt">UNIVERSAL<span> STATIONS</span></a>
+    <a href="/" class="nav-back">← Retour au site</a>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <div class="page-hero">
+      <div class="hero-label">Informations légales</div>
+      <h1>Mentions <em>Légales</em></h1>
+      <p class="hero-meta">Mise à jour : mai 2026 &nbsp;·&nbsp; Conformément à la loi LCEN du 21 juin 2004</p>
+    </div>
+
+    <!-- 1 — Éditeur -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2>Éditeur du site</h2>
+      </div>
+      <div class="section-body">
+        <p>Le site <strong>universalstations.com</strong> est édité par :</p>
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-label">Raison sociale</div>
+            <div class="info-value">POLYGO INNOVATIONS</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Forme juridique</div>
+            <div class="info-value">Société par Actions Simplifiée Unipersonnelle (SASU)</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">SIREN</div>
+            <div class="info-value">937 884 237</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">SIRET (siège social)</div>
+            <div class="info-value">937 884 237 00010</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Numéro de TVA intracommunautaire</div>
+            <div class="info-value">FR10937884237</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Siège social</div>
+            <div class="info-value">40 rue Alexandre Dumas, 75011 Paris, France</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Directeur de la publication</div>
+            <div class="info-value">Fabrice IMARE</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Contact</div>
+            <div class="info-value"><a href="mailto:business@universalstations.com">business@universalstations.com</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 — Hébergeur -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2>Hébergeur</h2>
+      </div>
+      <div class="section-body">
+        <p>Le site est hébergé par :</p>
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-label">Société</div>
+            <div class="info-value">Netlify, Inc.</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Adresse</div>
+            <div class="info-value">512 2nd Street, Suite 200<br>San Francisco, CA 94107 — États-Unis</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Site web</div>
+            <div class="info-value"><a href="https://www.netlify.com" target="_blank" rel="noopener">www.netlify.com</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 — Propriété intellectuelle -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2>Propriété intellectuelle</h2>
+      </div>
+      <div class="section-body">
+        <p>L'ensemble des contenus présents sur le site <strong>universalstations.com</strong> (textes, images, logos, sons, vidéos, architecture du site) est la propriété exclusive de <strong>POLYGO INNOVATIONS</strong> ou de ses partenaires, et est protégé par les lois françaises et internationales relatives à la propriété intellectuelle.</p>
+        <p>Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des contenus du site, quel que soit le moyen ou le procédé utilisé, est interdite sans l'autorisation préalable et écrite de POLYGO INNOVATIONS, sauf exceptions légales.</p>
+        <p>Les marques, logos et signes distinctifs reproduits sur le site sont la propriété de leurs titulaires respectifs.</p>
+      </div>
+    </div>
+
+    <!-- 4 — Responsabilité -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2>Limitation de responsabilité</h2>
+      </div>
+      <div class="section-body">
+        <p>POLYGO INNOVATIONS s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur ce site. Toutefois, elle ne peut garantir l'exhaustivité ni l'absence d'erreur des informations publiées.</p>
+        <p>Le site peut contenir des liens hypertextes vers des sites tiers. POLYGO INNOVATIONS n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu ou à leur politique de confidentialité.</p>
+        <p>POLYGO INNOVATIONS ne saurait être tenu responsable des dommages directs ou indirects résultant de l'accès ou de l'utilisation du site.</p>
+      </div>
+    </div>
+
+    <!-- 5 — Données personnelles -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2>Données personnelles & Cookies</h2>
+      </div>
+      <div class="section-body">
+        <p>Le traitement des données personnelles collectées via ce site est décrit dans notre <a href="/privacy-policy.html">Politique de confidentialité</a>, conformément au Règlement Général sur la Protection des Données (RGPD — UE 2016/679) et à la loi Informatique et Libertés.</p>
+        <p>Pour toute question relative à vos données personnelles, contactez : <a href="mailto:business@universalstations.com">business@universalstations.com</a></p>
+      </div>
+    </div>
+
+    <!-- 6 — Droit applicable -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">06</span>
+        <h2>Droit applicable et juridiction</h2>
+      </div>
+      <div class="section-body">
+        <p>Les présentes mentions légales sont régies par le droit français. En cas de litige, et après échec de toute tentative de résolution amiable, les tribunaux compétents de Paris seront seuls compétents.</p>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="contact-box">
+      <h3>Une question ?</h3>
+      <p>Notre équipe est disponible pour toute demande d'information concernant ce site.</p>
+      <a href="mailto:business@universalstations.com" class="contact-link">✉ &nbsp;business@universalstations.com</a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Universal Stations — Tous droits réservés &nbsp;|&nbsp; <a href="/">Retour au site</a> &nbsp;|&nbsp; <a href="/privacy-policy.html">Politique de confidentialité</a> &nbsp;|&nbsp; <a href="mailto:business@universalstations.com">Contact</a></p>
+  </footer>
+
+  <!-- Cookie Banner -->
+  <div id="cookie-banner">
+    <p>
+      Nous utilisons des cookies pour mesurer l'audience du site (Google Analytics).
+      Aucune donnée personnelle n'est vendue à des tiers.
+      <a href="/privacy-policy.html">Politique de confidentialité →</a>
+    </p>
+    <div class="cookie-actions">
+      <button class="btn-refuse" onclick="refuseCookies()">Refuser</button>
+      <button class="btn-accept" onclick="acceptCookies()">Accepter</button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const consent = localStorage.getItem('us_cookies');
+      if (!consent) document.getElementById('cookie-banner').style.display = 'flex';
+      if (consent === 'accepted') loadAnalytics();
+    })();
+
+    function acceptCookies() {
+      localStorage.setItem('us_cookies', 'accepted');
+      document.getElementById('cookie-banner').style.display = 'none';
+      loadAnalytics();
+    }
+
+    function refuseCookies() {
+      localStorage.setItem('us_cookies', 'refused');
+      document.getElementById('cookie-banner').style.display = 'none';
+    }
+
+    function loadAnalytics() {
+      if (document.getElementById('ga4-script')) return;
+      const s = document.createElement('script');
+      s.id = 'ga4-script'; s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-D9CC7GKN3F';
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-D9CC7GKN3F', { anonymize_ip: true });
+    }
+  </script>
+
+</body>
+</html>
