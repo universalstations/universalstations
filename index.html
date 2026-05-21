@@ -160,6 +160,48 @@ Aide Google à comprendre le contenu du site
 .bp-lk:hover{color:var(--amber)}
 @media(max-width:1024px){.sf-eps{grid-template-columns:1fr 1fr}.sv-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:768px){.ac-hero{padding:calc(var(--nav-h) + 2rem) 1.5rem 4rem}.sf-inner,.sv-inner,.bp-inner{padding:3.5rem 1.5rem}.sf-header{flex-direction:column;align-items:flex-start}.sf-eps{grid-template-columns:1fr}.sv-grid{grid-template-columns:1fr}.ac-services{flex-direction:column;align-items:center}.svc-btn{justify-content:center;width:100%;max-width:280px}}
+@media(max-width:480px){
+  .season-tabs{flex-wrap:wrap;width:100%}
+  .s-tab{flex:1;text-align:center}
+  .hero-actions{flex-direction:column}
+  .hero-actions .btn{justify-content:center;width:100%}
+  .hero-stats{gap:.75rem;flex-wrap:wrap;justify-content:space-around}
+  .stat-v{font-size:1.5rem}
+  .ac-hero{padding:calc(var(--nav-h) + 1.5rem) 1rem 3rem}
+  .ac-title{font-size:clamp(2.2rem,9vw,3rem)}
+  .ac-sub{font-size:.9rem}
+  .svc-btn{max-width:100%;width:100%}
+  .container{padding:2.5rem 1rem}
+  .sf-inner,.sv-inner,.bp-inner{padding:2.5rem 1rem}
+  .nl-inner{padding:2.5rem 1rem}
+  .nl-form input,.nl-form .btn{font-size:.85rem}
+  .playlists-hero{padding:2.5rem 1rem 1.5rem}
+  .playlists-stats{padding:0 1rem;gap:.5rem}
+  .about-stats{flex-wrap:wrap;gap:1.5rem}
+  .about-stat-v{font-size:1.6rem}
+  .blog-filters{gap:.3rem}
+  .bf-btn{padding:.4rem .75rem;font-size:.52rem}
+  .blog-card{padding:1.5rem}
+  .footer-main{padding:2.5rem 1rem 1.5rem}
+  .footer-bottom{padding:1.25rem 1rem}
+  .footer-legal{gap:1rem}
+  .sec-header{gap:.6rem;margin-bottom:1.75rem}
+  .pl-card-header,.pl-card-desc,.pl-card-actions{padding-left:1.25rem;padding-right:1.25rem}
+  .ep-card-body{padding:1rem}
+  #main-nav{padding:0 1rem}
+}
+.nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--amber)}
+.nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--amber)}
+@media(max-width:375px){
+  .ac-title{font-size:2rem}
+  .hero-stats{justify-content:flex-start;gap:.5rem}
+  .stat-v{font-size:1.35rem}
+  .stat-l{font-size:.5rem}
+  .nl-content h2{font-size:1.6rem}
+  .footer-legal{flex-direction:column;align-items:center;gap:.5rem}
+  .footer-social{justify-content:center}
+}
 </style>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
   <script>
