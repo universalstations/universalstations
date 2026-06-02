@@ -332,8 +332,7 @@ Aide Google à comprendre le contenu du site
   <!-- BANNIÈRE ABONNEMENT SPOTIFY -->
   <div class="promo-bar" id="promoBar" role="banner">
     <div class="promo-bar-text">
-      <span>🔒</span>
-      <span id="promo-bar-msg">Accède à <strong>3 épisodes exclusifs</strong> en t'abonnant sur Spotify</span>
+      <span id="promo-bar-msg">Accède à <strong>6 épisodes exclusifs</strong> en t'abonnant sur Spotify</span>
     </div>
     <a class="promo-bar-cta" href="https://open.spotify.com/show/4Drtr3vcLpNsiYZVmGoprn" target="_blank" rel="noopener noreferrer">
       S'abonner ↗
@@ -1398,6 +1397,27 @@ document.documentElement.classList.replace('no-js', 'js');
       season: '3',
       img: 'jimmy.jpg',
     },
+    {
+      title: 'Stephen Marley (L\'Alchimiste de l\'Héritage)',
+      desc: '8 Grammy Awards. Producteur de ses frères et sœurs. Directeur musical de la famille. Le nom que tout le monde connaît sans vraiment le connaître.',
+      link: 'https://open.spotify.com/episode/7iMvlRdN86fOrXxQybCPgC',
+      season: '3',
+      img: 'stephenmarley.jpg',
+    },
+    {
+      title: 'Shenseea (La Princesse Dancehall-Pop)',
+      desc: 'Kingston. Vybz Kartel. Puis Kanye West. Shenseea n\'a pas gravi les échelons — elle les a sautés.',
+      link: 'https://open.spotify.com/episode/3ea94RffNAgPkHF5NByT7K',
+      season: '3',
+      img: 'shen.jpg',
+    },
+    {
+      title: 'Pix\'L (Le Succès Mondial du Créole Réunionnais)',
+      desc: 'La Réunion. Le créole. La soul. Et une voix qui a fini par résonner jusqu\'au Casino de Paris.',
+      link: 'https://open.spotify.com/episode/1wjFvSFDnh6ssu8s4csQEK',
+      season: '3',
+      img: 'pixl.jpg',
+    },
   ];
 
   const STORAGE_KEY = {
@@ -1944,7 +1964,7 @@ document.documentElement.classList.replace('no-js', 'js');
           <span style="position:absolute;top:8px;right:8px;background:rgba(0,0,0,.55);
                        backdrop-filter:blur(4px);border-radius:4px;padding:3px 7px;
                        font-size:.55rem;letter-spacing:.1em;color:#fcd34d;font-weight:700">
-            🔒 EXCLUSIF
+            EXCLUSIF
           </span>
         </div>
         <div class="ep-card-body">
@@ -1972,7 +1992,7 @@ document.documentElement.classList.replace('no-js', 'js');
       const activeSeason = document.querySelector('.s-tab.active')?.dataset?.season ?? 'all';
       const showPremium = activeSeason === 'all' || activeSeason === '3';
       const premiumHTML = showPremium && PREMIUM_EPISODES.length
-        ? `<div class="premium-sep" style="grid-column:1/-1">🔒 Épisodes exclusifs Spotify</div>` +
+        ? `<div class="premium-sep" style="grid-column:1/-1">✦ Épisodes exclusifs Spotify</div>` +
           PREMIUM_EPISODES.map(premiumCardHTML).join('') +
           `<div class="premium-sep" style="grid-column:1/-1">🎙️ Épisodes gratuits</div>`
         : '';
