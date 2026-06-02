@@ -267,13 +267,24 @@ Aide Google à comprendre le contenu du site
   .footer-legal{flex-direction:column;align-items:center;gap:.5rem}
   .footer-social{justify-content:center}
 }
+/* ── AC-HERO 2 COLONNES ── */
+.ac-hero{display:grid!important;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;min-height:100vh;padding:calc(var(--nav-h) + 40px + 2rem) 3rem 4rem!important;text-align:left}
+.ac-content{position:relative;z-index:2}
+.ac-visual{position:relative;z-index:2;display:flex;align-items:center;justify-content:center}
+.ac-eyebrow{display:flex!important;align-items:center;gap:1rem;justify-content:flex-start;margin-bottom:1.5rem}
+.ac-eyebrow::after{display:none}
+.ac-title{font-size:clamp(2.6rem,5vw,5rem);text-align:left;margin-bottom:1.25rem}
+.ac-sub{text-align:left;margin:0 0 2.5rem;max-width:50ch}
+.ac-services{justify-content:flex-start}
+.ac-logo-wrap{width:min(420px,90%);margin:0 auto;position:relative}
+.ac-logo-wrap img{position:relative;z-index:1;border-radius:16px;filter:drop-shadow(0 0 40px rgba(139,92,246,.4));animation:float 8s ease-in-out infinite;width:100%}
 /* ── HERO + NAV RESPONSIVE MOBILE ── */
 @media(max-width:768px){
   /* Cacher le bouton ÉCOUTER — le hamburger suffit */
   .nav-cta{display:none!important}
   /* Nav logo plus compact */
   .nav-logo-txt{font-size:1rem;letter-spacing:.06em}
-  /* Hero colonne unique */
+  /* Hero principal colonne unique */
   .hero{grid-template-columns:1fr;min-height:auto;padding:calc(var(--nav-h) + 40px + 1.5rem) 1.5rem 3rem;gap:1.5rem;text-align:center}
   .hero-visual{order:-1}
   .hero-logo-wrap{width:min(220px,60%);margin:0 auto}
@@ -282,11 +293,16 @@ Aide Google à comprendre le contenu du site
   .hero-stats{justify-content:center;gap:2rem}
   .eyebrow{justify-content:center}
   .hero-actions{justify-content:center}
-  .hero-streaming{justify-content:center}
-  /* Section accueil — cacher les éléments secondaires sur mobile */
-  #sec-accueil .sv-grid{grid-template-columns:1fr}
-  #sec-accueil .playlists-grid{grid-template-columns:1fr}
   .hero-streaming{display:none}
+  /* AC-HERO mobile : colonne unique, logo au-dessus */
+  .ac-hero{grid-template-columns:1fr!important;min-height:auto;padding:calc(var(--nav-h) + 40px + 1rem) 1.5rem 3rem!important;gap:1.5rem;text-align:center}
+  .ac-visual{order:-1}
+  .ac-logo-wrap{width:min(200px,55%)!important}
+  .ac-eyebrow{justify-content:center}
+  .ac-eyebrow::after{display:block}
+  .ac-title{text-align:center;font-size:clamp(2rem,9vw,3rem)}
+  .ac-sub{text-align:center;max-width:100%}
+  .ac-services{justify-content:center}
 }
 </style>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
@@ -516,18 +532,10 @@ Aide Google à comprendre le contenu du site
     <!-- ══ SECTION ACCUEIL ══ -->
     <section id="sec-accueil" aria-label="Accueil">
 
-      <!-- Hero accueil -->
+      <!-- Hero accueil — 2 colonnes -->
       <div class="ac-hero">
-        <div class="ac-inner">
-          <div class="ac-logo-wrap">
-            <div class="ring ring-1"></div>
-            <div class="ring ring-2"></div>
-            <div class="ring ring-3"></div>
-            <picture>
-              <source srcset="/logo.webp" type="image/webp">
-              <img src="/logo.png" alt="Universal Stations" width="420" height="420">
-            </picture>
-          </div>
+        <!-- Colonne gauche : texte -->
+        <div class="ac-content">
           <p class="ac-eyebrow">Podcast · Playlists · Blog</p>
           <h1 class="ac-title">La culture musicale,<br>épisode par <span class="ag">épisode</span></h1>
           <p class="ac-sub">Rap, Pop, Reggae — Universal Stations décrypte les artistes, les sons et les mouvements qui définissent notre époque. Chaque épisode, une histoire. Chaque playlist, un voyage.</p>
@@ -544,6 +552,19 @@ Aide Google à comprendre le contenu du site
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
               Lire le blog
             </button>
+          </div>
+        </div>
+        <!-- Colonne droite : logo + rings -->
+        <div class="ac-visual">
+          <div class="ac-logo-wrap">
+            <div class="ring ring-1"></div>
+            <div class="ring ring-2"></div>
+            <div class="ring ring-3"></div>
+            <picture>
+              <source srcset="/logo.avif" type="image/avif">
+              <source srcset="/logo-small.png" type="image/png">
+              <img src="/logo.png" alt="Universal Stations" width="420" height="420" loading="eager">
+            </picture>
           </div>
         </div>
       </div>
