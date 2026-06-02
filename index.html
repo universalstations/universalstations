@@ -267,8 +267,13 @@ Aide Google à comprendre le contenu du site
   .footer-legal{flex-direction:column;align-items:center;gap:.5rem}
   .footer-social{justify-content:center}
 }
-/* ── HERO RESPONSIVE MOBILE ── */
+/* ── HERO + NAV RESPONSIVE MOBILE ── */
 @media(max-width:768px){
+  /* Cacher le bouton ÉCOUTER — le hamburger suffit */
+  .nav-cta{display:none!important}
+  /* Nav logo plus compact */
+  .nav-logo-txt{font-size:1rem;letter-spacing:.06em}
+  /* Hero colonne unique */
   .hero{grid-template-columns:1fr;min-height:auto;padding:calc(var(--nav-h) + 40px + 1.5rem) 1.5rem 3rem;gap:1.5rem;text-align:center}
   .hero-visual{order:-1}
   .hero-logo-wrap{width:min(220px,60%);margin:0 auto}
@@ -278,6 +283,10 @@ Aide Google à comprendre le contenu du site
   .eyebrow{justify-content:center}
   .hero-actions{justify-content:center}
   .hero-streaming{justify-content:center}
+  /* Section accueil — cacher les éléments secondaires sur mobile */
+  #sec-accueil .sv-grid{grid-template-columns:1fr}
+  #sec-accueil .playlists-grid{grid-template-columns:1fr}
+  .hero-streaming{display:none}
 }
 </style>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
