@@ -3274,16 +3274,14 @@ function dismissPromoBar() {
         ctx.clearRect(0,0,SIZE,SIZE);
         const tiltX=tilt, rotOff=rot;
 
-        const grad=ctx.createRadialGradient(cx,cy,R*0.55,cx,cy,R*1.35);
-        grad.addColorStop(0,'rgba(245,158,11,0.07)'); grad.addColorStop(1,'rgba(245,158,11,0)');
-        ctx.fillStyle=grad; ctx.fillRect(0,0,SIZE,SIZE);
-
+        /* disque océan très subtil (se fond dans le fond du site) */
         ctx.beginPath(); ctx.arc(cx,cy,R,0,Math.PI*2);
-        ctx.fillStyle='rgba(20,22,40,0.55)'; ctx.fill();
+        ctx.fillStyle='rgba(20,22,40,0.30)'; ctx.fill();
 
-        const atmo=ctx.createRadialGradient(cx,cy,R*0.92,cx,cy,R*1.12);
-        atmo.addColorStop(0,'rgba(245,158,11,0)'); atmo.addColorStop(0.5,'rgba(252,211,77,0.18)'); atmo.addColorStop(1,'rgba(245,158,11,0)');
-        ctx.beginPath(); ctx.arc(cx,cy,R*1.12,0,Math.PI*2); ctx.fillStyle=atmo; ctx.fill();
+        /* halo atmosphérique léger sur le bord du globe */
+        const atmo=ctx.createRadialGradient(cx,cy,R*0.95,cx,cy,R*1.10);
+        atmo.addColorStop(0,'rgba(245,158,11,0)'); atmo.addColorStop(0.5,'rgba(252,211,77,0.09)'); atmo.addColorStop(1,'rgba(245,158,11,0)');
+        ctx.beginPath(); ctx.arc(cx,cy,R*1.10,0,Math.PI*2); ctx.fillStyle=atmo; ctx.fill();
 
         if(land.ready){
           for(const p of land.points){
