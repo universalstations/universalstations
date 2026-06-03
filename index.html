@@ -3221,12 +3221,12 @@ function dismissPromoBar() {
     const land = { points:[], ready:false };
     const img=new Image(); img.crossOrigin='anonymous';
     img.onload=()=>{
-      const off=document.createElement('canvas'); const W=600,H=300;
+      const off=document.createElement('canvas'); const W=1200,H=600;
       off.width=W; off.height=H;
       const o=off.getContext('2d'); o.drawImage(img,0,0,W,H);
       const data=o.getImageData(0,0,W,H).data;
       function isLand(lat,lon){const u=Math.floor(((lon+180)/360)*W)%W;const v=Math.floor(((90-lat)/180)*H);const i=(v*W+u)*4;return (data[i]+data[i+1]+data[i+2])/3 < 100;}
-      const pts=[]; const stepLat=2.2, stepLon=2.2;
+      const pts=[]; const stepLat=1.4, stepLon=1.4;
       for(let lat=-78;lat<=82;lat+=stepLat){
         const lonStep=stepLon/Math.max(0.35,Math.cos(lat*Math.PI/180));
         for(let lon=-180;lon<180;lon+=lonStep){ if(isLand(lat,lon)) pts.push(latLonToVec(lat,lon)); }
@@ -3289,7 +3289,7 @@ function dismissPromoBar() {
             if(q.z<-0.05) continue;
             const depth=(q.z+1)/2;
             ctx.beginPath();
-            ctx.arc(cx+q.x*R, cy-q.y*R, 0.5+depth*1.3, 0, Math.PI*2);
+            ctx.arc(cx+q.x*R, cy-q.y*R, 0.35+depth*0.95, 0, Math.PI*2);
             ctx.fillStyle=`rgba(180,180,215,${0.2+depth*0.6})`; ctx.fill();
           }
         }
