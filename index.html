@@ -276,8 +276,9 @@ Aide Google à comprendre le contenu du site
 /* ── AC-HERO 2 COLONNES ── */
 .ac-hero{display:grid!important;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;min-height:100vh;padding:calc(var(--nav-h) + 40px + 2rem) 3rem 4rem!important;text-align:left}
 .ac-content{position:relative;z-index:2}
-.ac-visual{position:relative;z-index:2;display:flex;align-items:center;justify-content:center}
-.globe-canvas{display:block;max-width:100%}
+.ac-visual{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;overflow:visible}
+.hero-visual{overflow:visible}
+.globe-canvas{display:block}
 .ac-eyebrow{display:flex!important;align-items:center;gap:1rem;justify-content:flex-start;margin-bottom:1.5rem}
 .ac-eyebrow::after{display:none}
 .ac-title{font-size:clamp(2.4rem,3.8vw,4.2rem)!important}
@@ -3246,9 +3247,9 @@ function dismissPromoBar() {
       let SIZE = 0, cx, cy, R;
       function resize(){
         const box = canvas.parentElement;
-        const w = box.clientWidth;
-        if (!w) return;                 /* conteneur caché : on attend qu'il soit visible */
-        const newSize = Math.min(460, w);
+        if (!box.clientWidth) return;   /* conteneur caché : on attend qu'il soit visible */
+        /* taille basée sur la largeur de l'écran, plafonnée à 650px */
+        const newSize = Math.min(650, Math.floor(window.innerWidth * 0.5));
         if (newSize === SIZE) return;   /* pas de changement */
         SIZE = newSize;
         canvas.width = SIZE*DPR; canvas.height = SIZE*DPR;
