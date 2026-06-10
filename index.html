@@ -36,7 +36,7 @@ href="https://anchor.fm/s/10f73d178/podcast/rss"><!--═════════
 6.PWA — Progressive Web App&mobile natif
 ════════════════════════════════════════════════════════════════--><!--Permettre l'ajout à l'écran d'accueil iOS--><meta name="apple-mobile-web-app-capable"content="yes"><meta name="apple-mobile-web-app-status-bar-style"content="black-translucent"><meta name="apple-mobile-web-app-title"content="Universal Stations"><!--Android--><meta name="mobile-web-app-capable"content="yes"><meta name="application-name"content="Universal Stations"><!--═══════════════════════════════════════════════════════════════
 7.FAVICONS — Icônes du site
-════════════════════════════════════════════════════════════════--><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"><link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180"><!--═══════════════════════════════════════════════════════════════
+════════════════════════════════════════════════════════════════--><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"><link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180"><!--═══════════════════════════════════════════════════════════════
 8.RESOURCE HINTS — Optimisations réseau
 ════════════════════════════════════════════════════════════════--><!--DNS prefetch:résolution DNS anticipée des domaines tiers--><link rel="dns-prefetch"href="//fonts.googleapis.com"><link rel="dns-prefetch"href="//fonts.gstatic.com"><link rel="dns-prefetch"href="//open.spotify.com"><link rel="dns-prefetch"href="//api.allorigins.win"><link rel="dns-prefetch"href="//corsproxy.io"><link rel="dns-prefetch"href="//api.rss2json.com"><!--Preconnect:connexion TCP/TLS anticipée(pour les polices)--><link rel="preconnect"href="https://fonts.googleapis.com"><link rel="preconnect"href="https://fonts.gstatic.com"crossorigin><!--═══════════════════════════════════════════════════════════════
 9.POLICES — Google Fonts avec font-display:swap
@@ -120,7 +120,7 @@ Aide Google à comprendre le contenu du site
 .sf-ep-desc{font-size:.8rem;color:var(--text-2);line-height:1.7;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;flex:1}
 .sf-ep-foot{display:flex;align-items:center;justify-content:space-between;padding-top:.85rem;border-top:1px solid var(--border);margin-top:auto}
 .sf-ep-date{font-family:var(--font-m);font-size:.5rem;letter-spacing:.12em;color:var(--text-3)}
-.sf-ep-pill{font-family:var(--font-m);font-size:.48rem;letter-spacing:.18em;text-transform:uppercase;padding:.22rem .65rem;background:rgba(6,6,11,.8);border:1px solid rgba(34,197,94,.35);color:var(--green);border-radius:var(--radius-sm)}.sf-ep-pill.rap{border-color:var(--violet-border);color:var(--violet-light)}.sf-ep-pill.pop{border-color:rgba(96,165,250,.35);color:var(--blue)}.sf-ep-pill.reggae{border-color:rgba(34,197,94,.35);color:var(--green)}.sf-ep-num.rap{color:var(--violet-light)}.sf-ep-num.pop{color:var(--blue)}.sf-ep-num.reggae{color:var(--green)}
+.sf-ep-pill{font-family:var(--font-m);font-size:.48rem;letter-spacing:.18em;text-transform:uppercase;padding:.22rem .65rem;background:rgba(6,6,11,.8);border:1px solid rgba(34,197,94,.35);color:var(--green);border-radius:var(--radius-sm)}.sf-ep-pill.rap{border-color:var(--violet-border);color:var(--violet-light)}.sf-ep-pill.pop{border-color:rgba(96,165,250,.35);color:var(--blue)}.sf-ep-pill.reggae{border-color:rgba(34,197,94,.35);color:var(--green)}.sf-ep-pill.rnb{border-color:var(--amber-border);color:var(--amber)}.sf-ep-num.rap{color:var(--violet-light)}.sf-ep-num.pop{color:var(--blue)}.sf-ep-num.reggae{color:var(--green)}.sf-ep-num.rnb{color:var(--amber)}.sf-ep.rnb:hover{border-color:var(--amber-border)!important;box-shadow:0 10px 36px var(--amber-glow);background:var(--amber-dim)!important}
 .sf-pl{background:var(--bg-2);border:1px solid rgba(34,197,94,.25);border-radius:var(--radius);overflow:hidden}.sf-pl-embed{border-radius:var(--radius);overflow:hidden}.sf-pl-embed iframe{border-radius:var(--radius)}#season-playlist-embed{border-radius:var(--radius);overflow:hidden}#season-playlist-embed iframe{border-radius:var(--radius)}
 .sf-pl-header{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.75rem;border-bottom:1px solid var(--border);background:linear-gradient(135deg,rgba(34,197,94,.08) 0,transparent 100%)}
 .sf-pl-label{font-family:var(--font-m);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green)}
@@ -579,13 +579,19 @@ Aide Google à comprendre le contenu du site
         <div class="sf-inner">
           <div class="sf-header reveal">
             <div>
-              <div class="sf-badge" style="background:rgba(139,92,246,.15);border-color:rgba(139,92,246,.35);color:var(--violet-light)">✦ Saison 4 — Bientôt</div>
-              <h2 class="sf-title">Une nouvelle saison <span style="color:var(--violet-light)">arrive</span></h2>
-              <p class="sf-sub">Quatre artistes. Quatre univers que vous n'attendez pas. Tout ce qu'on peut dire pour l'instant — ça va changer quelque chose. En attendant, (ré)écoutez ces épisodes.</p>
+              <div class="sf-badge" style="background:var(--amber-dim);border-color:var(--amber-border);color:var(--amber)">✦ Saison 4 — Disponible</div>
+              <h2 class="sf-title">La Saison 4 <span style="color:var(--amber)">commence</span></h2>
+              <p class="sf-sub">Ray Charles ouvre la Saison 4 — premier épisode disponible dès maintenant. Et ce n'est que le début. En attendant la suite, (ré)écoutez aussi nos essentiels.</p>
             </div>
             <button class="sf-lk" onclick="showSection('episodes', document.querySelector('.nav-links a[onclick*=\'episodes\']'))">Tous les épisodes →</button>
           </div>
           <div class="sf-eps reveal">
+            <div class="sf-ep rnb" onclick="window.open('https://open.spotify.com/episode/2kFQPqLJLKflEsI7JBLZBD','_blank','noopener,noreferrer')" role="button" tabindex="0" aria-label="Écouter l'épisode Ray Charles">
+              <div class="sf-ep-num rnb">S4 · RnB · NOUVEAU</div>
+              <div class="sf-ep-title">Ray Charles, l'architecte de la soul</div>
+              <div class="sf-ep-desc">Aveugle. Génie. Révolutionnaire. Ray Charles a tout réinventé sans jamais rien voir. L'homme qui a marié le gospel et le blues — et posé les fondations de la soul.</div>
+              <div class="sf-ep-foot"><span class="sf-ep-date">Saison 4 · RnB</span><span class="sf-ep-pill rnb">RnB</span></div>
+            </div>
             <div class="sf-ep reggae" onclick="window.open('https://open.spotify.com/episode/2ZPZa44eANk7iaLNVrEkjF','_blank','noopener,noreferrer')" role="button" tabindex="0" aria-label="Écouter l'épisode Bob Marley">
               <div class="sf-ep-num reggae">S3 · Reggae</div>
               <div class="sf-ep-title">Bob Marley</div>
@@ -597,12 +603,6 @@ Aide Google à comprendre le contenu du site
               <div class="sf-ep-title">Michael Jackson</div>
               <div class="sf-ep-desc">Moonwalk. Thriller. Bad. Avant les icônes, il y avait un enfant prodige. Avant le mythe, il y avait un son. L'histoire de celui qui a tout redéfini.</div>
               <div class="sf-ep-foot"><span class="sf-ep-date">Saison 2 · Pop</span><span class="sf-ep-pill pop">Pop</span></div>
-            </div>
-            <div class="sf-ep rap" onclick="window.open('https://open.spotify.com/episode/5ToXCSledrhMzoS3fL7phi','_blank','noopener,noreferrer')" role="button" tabindex="0" aria-label="Écouter l'épisode Booba">
-              <div class="sf-ep-num rap">S1 · Rap</div>
-              <div class="sf-ep-title">Booba</div>
-              <div class="sf-ep-desc">B2O. Le Duc de Boulogne. Un empire bâti sur des mots que personne n'avait osé aligner avant lui. Le rap français a un avant et un après.</div>
-              <div class="sf-ep-foot"><span class="sf-ep-date">Saison 1 · Rap</span><span class="sf-ep-pill rap">Rap</span></div>
             </div>
             <div class="sf-ep reggae" onclick="window.open('https://open.spotify.com/episode/3ea94RffNAgPkHF5NByT7K','_blank','noopener,noreferrer')" role="button" tabindex="0" aria-label="Écouter l'épisode Shenseea">
               <div class="sf-ep-num reggae">S3 · Reggae</div>
