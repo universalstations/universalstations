@@ -285,6 +285,73 @@ Aide Google à comprendre le contenu du site
 .hero.acc-violet .eyebrow,.hero.acc-violet #hero-title .ac{color:var(--violet-light)} .hero.acc-violet .eyebrow::before{background:var(--violet-light)}
 .hero.acc-blue .eyebrow,.hero.acc-blue #hero-title .ac{color:var(--blue)} .hero.acc-blue .eyebrow::before{background:var(--blue)}
 .hero.acc-rose .eyebrow,.hero.acc-rose #hero-title .ac{color:#fb7185} .hero.acc-rose .eyebrow::before{background:#fb7185}
+/* Hero : 2 boutons empilés, même dimension + bouton secondaire rempli */
+.hero-actions{flex-direction:column;align-items:flex-start}
+.hero-actions .btn{width:100%;max-width:270px;justify-content:center}
+.hero-actions .btn-g{background:var(--violet);color:#fff;border-color:transparent}
+.hero-actions .btn-g:hover{background:var(--violet-light);color:#000;border-color:transparent;transform:translateY(-2px);box-shadow:0 8px 28px var(--violet-glow)}
+/* Accueil : 3 boutons remplis (pleins) */
+.svc-btn-podcast{color:#000!important;background:var(--amber)!important;border-color:transparent!important}
+.svc-btn-playlist{color:#fff!important;background:var(--violet)!important;border-color:transparent!important}
+.svc-btn-blog{color:#fff!important;background:#fb7185!important;border-color:transparent!important}
+.svc-btn-podcast:hover{background:var(--amber-light)!important}
+.svc-btn-playlist:hover{background:var(--violet-light)!important;color:#000!important}
+.svc-btn-blog:hover{background:#f43f5e!important;color:#fff!important}
+/* ════ MODULE RECHERCHE US ════ */
+.us-fab{position:fixed;right:22px;bottom:22px;z-index:700;width:62px;height:62px;border-radius:50%;cursor:pointer;background:linear-gradient(135deg,#0e0f18,#06060b);border:1.5px solid var(--amber-border);box-shadow:0 8px 30px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;transition:transform .2s,box-shadow .3s;animation:fabglow 2.8s ease-in-out infinite}
+.us-fab:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 14px 40px rgba(0,0,0,.6),0 0 26px rgba(245,158,11,.35)}
+.us-fab-txt{font-family:var(--font-d);font-weight:800;font-size:1.32rem;letter-spacing:-1px;line-height:1}
+.us-fab-txt .u{color:#fff}.us-fab-txt .s{color:var(--amber-light)}
+@keyframes fabglow{0%,100%{box-shadow:0 8px 30px rgba(0,0,0,.5),0 0 0 0 rgba(245,158,11,.35)}50%{box-shadow:0 8px 30px rgba(0,0,0,.5),0 0 0 8px rgba(245,158,11,0)}}
+.us-modal{position:fixed;inset:0;z-index:1000;display:flex;align-items:flex-start;justify-content:center;padding:5vh 1.25rem}
+.us-modal[hidden]{display:none}
+.us-backdrop{position:absolute;inset:0;background:rgba(4,4,10,.74);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.us-panel{position:relative;width:min(640px,100%);max-height:90vh;overflow:auto;background:var(--bg-2);border:1px solid var(--amber-border);border-radius:18px;padding:1.5rem;box-shadow:0 30px 80px rgba(0,0,0,.6);animation:us-pop .25s ease}
+@keyframes us-pop{from{opacity:0;transform:translateY(-14px) scale(.98)}to{opacity:1;transform:none}}
+.us-close{position:absolute;top:1rem;right:1rem;width:34px;height:34px;border-radius:50%;border:1px solid var(--border);background:var(--bg-3);color:var(--text-2);cursor:pointer;font-size:1rem}
+.us-close:hover{color:var(--amber);border-color:var(--amber-border)}
+.us-head{display:flex;align-items:center;gap:.9rem;margin-bottom:1.1rem}
+.us-badge{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#0e0f18,#06060b);border:1.5px solid var(--amber-border);display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-weight:800;font-size:1rem;letter-spacing:-.5px;flex-shrink:0}
+.us-badge .u{color:#fff}.us-badge .s{color:var(--amber-light)}
+.us-head h2{font-family:var(--font-d);font-weight:700;font-size:1.12rem;letter-spacing:.03em}
+.us-head p{font-size:.76rem;color:var(--text-2);margin-top:.15rem}
+.us-sbar{display:flex;align-items:center;gap:.55rem;background:var(--bg-3);border:1px solid var(--amber-border);border-radius:12px;padding:.45rem .45rem .45rem 1rem;transition:border-color .2s}
+.us-sbar.listening{border-color:var(--red)}
+#us-q{flex:1;background:0;border:0;outline:0;color:var(--text);font-family:var(--font-b);font-size:.98rem;padding:.65rem 0;min-width:0}
+#us-q::placeholder{color:var(--text-3)}
+.us-mic{width:44px;height:44px;border-radius:11px;border:0;cursor:pointer;background:var(--amber);color:#000;display:flex;align-items:center;justify-content:center;transition:transform .15s,background .2s;flex-shrink:0}
+.us-mic:hover{background:var(--amber-light);transform:translateY(-1px)}
+.us-mic.listening{background:var(--red);color:#fff}
+.us-viz{height:0;overflow:hidden;transition:height .25s ease}
+.us-viz.on{height:56px;margin-top:.7rem}
+.us-viz canvas{width:100%;height:56px;display:block;border-radius:10px;background:linear-gradient(180deg,rgba(245,158,11,.04),transparent)}
+.us-modes{display:flex;align-items:center;gap:1.1rem;margin-top:.7rem;flex-wrap:wrap}
+.us-mode{display:flex;align-items:center;gap:.32rem;font-family:var(--font-m);font-size:.55rem;letter-spacing:.06em;color:var(--text-2)}
+.us-mode b{color:var(--amber)}
+.us-tog{display:flex;align-items:center;gap:.4rem;font-family:var(--font-m);font-size:.55rem;color:var(--text-2);cursor:pointer;margin-left:auto}
+.us-tog input{accent-color:var(--amber);width:15px;height:15px}
+.us-filters{display:flex;gap:.4rem;margin-top:1rem;flex-wrap:wrap}
+.us-filter{font-family:var(--font-m);font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);background:var(--bg-3);border:1px solid var(--border);border-radius:20px;padding:.4rem .8rem;cursor:pointer;transition:all .2s}
+.us-filter.active{background:var(--amber);color:#000;border-color:var(--amber)}
+.us-chips{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.7rem}
+.us-chip{font-family:var(--font-m);font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);background:0;border:1px dashed var(--border);border-radius:20px;padding:.38rem .8rem;cursor:pointer;transition:all .2s}
+.us-chip:hover{border-style:solid;border-color:var(--amber-border);color:var(--amber)}
+.us-status{margin:1.1rem 0 .4rem;font-family:var(--font-m);font-size:.6rem;letter-spacing:.08em;color:var(--text-2);min-height:1.1em}
+.us-status b{color:var(--amber)}
+.us-group{margin-bottom:1.3rem}
+.us-gt{display:flex;align-items:center;gap:.6rem;font-family:var(--font-m);font-size:.57rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:.6rem}
+.us-gt::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+.us-g-playlist .us-gt{color:var(--amber)}.us-g-episode .us-gt{color:var(--violet-light)}.us-g-article .us-gt{color:#fb7185}
+.us-res{display:flex;align-items:center;gap:.85rem;background:var(--bg-3);border:1px solid var(--border);border-radius:8px;padding:.7rem 1rem;margin-bottom:.5rem;text-decoration:none;color:inherit;transition:border-color .2s,transform .15s,background .2s}
+.us-res:hover,.us-res:focus-visible{border-color:var(--amber-border);transform:translateX(3px);background:var(--bg-4);outline:none}
+.us-res-ico{width:34px;height:34px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.95rem}
+.us-g-playlist .us-res-ico{background:var(--amber-dim);color:var(--amber)}.us-g-episode .us-res-ico{background:rgba(139,92,246,.12);color:var(--violet-light)}.us-g-article .us-res-ico{background:rgba(251,113,133,.12);color:#fb7185}
+.us-res-body{min-width:0;flex:1}.us-res-title{font-family:var(--font-d);font-size:.95rem;letter-spacing:.02em;line-height:1.2}
+.us-res-title mark{background:rgba(245,158,11,.28);color:var(--amber-light);border-radius:3px;padding:0 2px}
+.us-res-meta{font-family:var(--font-m);font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin-top:.2rem}
+.us-empty{color:var(--text-2);font-size:.88rem;line-height:1.7;padding:1.25rem;text-align:center;background:var(--bg-3);border:1px dashed var(--border);border-radius:12px}
+.us-empty b{color:var(--amber)}
+@media(max-width:480px){.us-fab{width:54px;height:54px;right:16px;bottom:16px}.us-fab-txt{font-size:1.1rem}}
 /* ── Façade Spotify (chargement au clic) ── */
 .pl-facade{width:100%;border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;gap:1rem;padding:1.1rem 1.4rem;border-radius:var(--radius);background:linear-gradient(135deg,var(--bg-3),var(--bg-2));text-align:left;transition:transform .2s var(--ease),box-shadow .25s,border-color .25s;font-family:inherit}
 .pl-facade:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.35);border-color:rgba(29,185,84,.4)}
@@ -295,8 +362,8 @@ Aide Google à comprendre le contenu du site
 .pl-facade-sub{font-family:var(--font-m);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2)}
 /* Accueil : titre en majuscules + bouton blog rose/corail */
 .ac-title{text-transform:uppercase}
-.svc-btn-blog{color:#fb7185!important;border-color:rgba(251,113,133,.25)!important;background:rgba(251,113,133,.10)!important}
-.svc-btn-blog:hover{background:#fb7185!important;color:#000!important;box-shadow:0 12px 32px rgba(251,113,133,.20)!important}
+.svc-btn-blog{color:#fff!important;border-color:transparent!important;background:#fb7185!important}
+.svc-btn-blog:hover{background:#f43f5e!important;color:#fff!important;box-shadow:0 12px 32px rgba(251,113,133,.25)!important}
 .ac-eyebrow{display:flex!important;align-items:center;gap:1rem;justify-content:flex-start;margin-bottom:1.5rem}
 .ac-eyebrow::after{display:none}
 .ac-title{font-size:clamp(2.4rem,3.8vw,4.2rem)!important}
@@ -1523,6 +1590,8 @@ document.documentElement.classList.replace('no-js', 'js');
     '3': { id: '54is6RvS5F3thhUomIUPN0', label: 'Saison 3 — Caramel Reggae', name: 'CARAMEL', genre: 'Reggae', tracks: 100, cardClass: 'pl-card--reggae', desc: 'La sélection complète des artistes de la Saison 3 — les sons qui définissent le reggae contemporain.' },
     '4': { id: '6JdqN6rJ3DpmKSYkMipuCG', label: 'Saison 4 — Lotus RnB',     name: 'LOTUS',   genre: 'RnB',    tracks: 100, cardClass: 'pl-card--rnb',    desc: 'La sélection de la Saison 4 — la soul et le RnB, des fondations de Ray Charles aux voix qui les prolongent aujourd\'hui.' },
   };
+  /* exposés pour le module de recherche US (index auto-mis à jour) */
+  try{ window.__playlists = SEASON_PLAYLISTS; window.__premiumEpisodes = PREMIUM_EPISODES; }catch(e){}
 
   const DEFAULT_ARTICLES = [
     {
@@ -3418,6 +3487,157 @@ function dismissPromoBar() {
     }
 
     canvases.forEach(makeGlobe);
+  })();
+  </script>
+
+  <!-- ══ MODULE RECHERCHE US (bouton + modale + voix + visualiseur) ══ -->
+  <button class="us-fab" id="us-fab" aria-haspopup="dialog" aria-label="Ouvrir la recherche Universal Stations">
+    <span class="us-fab-txt"><span class="u">U</span><span class="s">S</span></span>
+  </button>
+  <div class="us-modal" id="us-modal" role="dialog" aria-modal="true" aria-label="Recherche Universal Stations" hidden>
+    <div class="us-backdrop" data-usclose></div>
+    <div class="us-panel">
+      <button class="us-close" data-usclose aria-label="Fermer">✕</button>
+      <div class="us-head">
+        <span class="us-badge" aria-hidden="true"><span class="u">U</span><span class="s">S</span></span>
+        <div><h2>Recherche Universal Stations</h2><p>Tape (résultats en direct) ou clique le micro pour parler.</p></div>
+      </div>
+      <div class="us-sbar" id="us-sbar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8b8ba8" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+        <input id="us-q" type="text" autocomplete="off" placeholder="Ex : saison 3, playlist pop, Ray Charles…" aria-label="Rechercher">
+        <button class="us-mic" id="us-mic" aria-label="Parler"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      </div>
+      <div class="us-viz" id="us-viz"><canvas id="us-canvas" width="600" height="112" aria-hidden="true"></canvas></div>
+      <div class="us-modes">
+        <span class="us-mode">⌨️ <b>Taper</b></span><span class="us-mode">🎙️ <b>Parler</b></span>
+        <span id="us-srsup" style="font-family:var(--font-m);font-size:.52rem;color:var(--text-3)"></span>
+        <label class="us-tog"><input type="checkbox" id="us-vout" checked> 🔊 Vocal</label>
+      </div>
+      <div class="us-filters" role="group" aria-label="Filtrer">
+        <button class="us-filter active" data-f="all">Tout</button>
+        <button class="us-filter" data-f="playlist">♫ Playlists</button>
+        <button class="us-filter" data-f="episode">🎙 Épisodes</button>
+        <button class="us-filter" data-f="article">✎ Articles</button>
+      </div>
+      <div class="us-chips">
+        <button class="us-chip" data-q="saison 1">Saison 1</button>
+        <button class="us-chip" data-q="saison 3">Saison 3</button>
+        <button class="us-chip" data-q="saison 4">Saison 4</button>
+        <button class="us-chip" data-q="ray charles">Ray Charles</button>
+        <button class="us-chip" data-q="jamaique">Jamaïque</button>
+      </div>
+      <div class="us-status" id="us-status" role="status" aria-live="polite"></div>
+      <div id="us-results" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    /* ── Articles du site (statique) ── */
+    const ARTICLES=[
+      {t:"Booba — L'Empire du Duc",s:1,g:'Rap',u:'/articles/booba',k:['booba','b2o']},
+      {t:'MC Solaar',s:1,g:'Rap',u:'/articles/mc-solaar',k:['mc solaar']},
+      {t:'Oxmo Puccino',s:1,g:'Rap',u:'/articles/oxmo-puccino',k:['oxmo puccino']},
+      {t:"Diam's",s:1,g:'Rap',u:'/articles/diams',k:['diams']},
+      {t:'Disiz',s:1,g:'Rap',u:'/articles/disiz',k:['disiz']},
+      {t:'PLK',s:1,g:'Rap',u:'/articles/plk',k:['plk']},
+      {t:'Pit Baccardi',s:1,g:'Rap',u:'/articles/pit-baccardi',k:['pit baccardi']},
+      {t:'J. Cole',s:1,g:'Rap',u:'/articles/j-cole',k:['j cole','jcole']},
+      {t:'Légendes du rap français',s:1,g:'Rap',u:'/articles/legends-rap-francais',k:['legendes','rap francais']},
+      {t:'Le rap & hip-hop mondial',s:1,g:'Rap',u:'/articles/rap-hip-hop-mondial',k:['hip hop','mondial']},
+      {t:'Zaho',s:2,g:'Pop',u:'/articles/zaho',k:['zaho']},
+      {t:'Théodora',s:2,g:'Pop',u:'/articles/theodora',k:['theodora']},
+      {t:'Kanye West — Ye',s:2,g:'Pop',u:'/articles/ye-kanye-west',k:['kanye west','ye']},
+      {t:'La pop mondiale',s:2,g:'Pop',u:'/articles/pop-mondiale',k:['pop','mondiale']},
+      {t:'Tems',s:3,g:'Reggae',u:'/articles/tems',k:['tems','afrobeats']},
+      {t:'Le reggae mondial',s:3,g:'Reggae',u:'/articles/reggae-mondial',k:['reggae','mondial','jamaique']},
+    ];
+    const GBS={1:'Rap',2:'Pop',3:'Reggae',4:'RnB'};
+    const SPOT='https://open.spotify.com/';
+
+    /* ── Index construit depuis les VRAIES données (auto-mis à jour) ── */
+    function buildIndex(){
+      const idx=[];
+      const pls=window.__playlists||{};
+      Object.keys(pls).forEach(n=>{const p=pls[n];idx.push({type:'playlist',title:p.name,season:+n,genre:p.genre,url:SPOT+'playlist/'+p.id,desc:p.desc||'',kw:[p.name,p.genre,'playlist']});});
+      const eps=(window.__freeEpisodes||[]).concat(window.__premiumEpisodes||[]);
+      eps.forEach(e=>{if(!e||!e.title)return;const s=parseInt(e.season)||null;idx.push({type:'episode',title:e.title,season:s,genre:s?GBS[s]:'',url:e.link||'#',desc:e.desc||'',kw:[e.title,s?GBS[s]:'']});});
+      ARTICLES.forEach(a=>idx.push({type:'article',title:a.t,season:a.s,genre:a.g,url:a.u,desc:'',kw:a.k.concat([a.g])}));
+      return idx;
+    }
+    const TM={playlist:{label:'Playlists',ico:'♫'},episode:{label:'Épisodes',ico:'🎙'},article:{label:'Articles',ico:'✎'}};
+    const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
+    const STOP=['us','recherche','recherches','cherche','chercher','trouve','trouver','moi','le','la','les','un','une','des','de','du','sur','pour','et','dans','quoi','est','que','qui','saison','saisons'];
+    function detSeason(q){q=' '+norm(q)+' ';
+      if(/\b(saison 4|s4|rnb|soul|lotus|blues|gospel)\b/.test(q))return 4;
+      if(/\b(saison 3|s3|reggae|caramel|jamaique|dancehall|rasta|dub|ska)\b/.test(q))return 3;
+      if(/\b(saison 2|s2|pop|caviar)\b/.test(q))return 2;
+      if(/\b(saison 1|s1|rap|nuance|hip hop|rappeur)\b/.test(q))return 1;return null;}
+    function detType(q){q=norm(q);if(/playlist/.test(q))return'playlist';if(/article/.test(q))return'article';if(/podcast|episode|ecout/.test(q))return'episode';return null;}
+    function fuzzy(a,b){if(a===b)return true;if(Math.abs(a.length-b.length)>1)return false;let i=0,j=0,d=0;while(i<a.length&&j<b.length){if(a[i]===b[j]){i++;j++;}else{d++;if(d>1)return false;if(a.length>b.length)i++;else if(a.length<b.length)j++;else{i++;j++;}}}return d+(a.length-i)+(b.length-j)<=1;}
+    function search(raw){
+      const q=norm(raw),season=detSeason(raw),wantType=detType(raw);
+      const tokens=q.split(' ').filter(w=>w.length>2&&STOP.indexOf(w)<0);
+      const scored=buildIndex().map(it=>{let sc=0;const words=norm(it.title+' '+it.kw.join(' ')+' '+(it.genre||'')+' '+it.desc).split(' ');
+        tokens.forEach(t=>{let hit=false;for(const w of words){if(w.indexOf(t)>=0||(t.length>3&&fuzzy(t,w))){hit=true;break;}}if(hit)sc+=2;});
+        if(season&&it.season===season)sc+=3;if(wantType&&it.type===wantType)sc+=2;return{it,sc};}).filter(x=>x.sc>0).sort((a,b)=>b.sc-a.sc);
+      return{scored,season,tokens};}
+
+    const $=id=>document.getElementById(id);
+    const input=$('us-q'),results=$('us-results'),status=$('us-status'),modal=$('us-modal'),sbar=$('us-sbar');
+    let activeFilter='all',lastQ='';
+    function hi(text,tokens){let out=text;tokens.forEach(t=>{if(t.length<3)return;try{out=out.replace(new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<mark>$1</mark>');}catch(e){}});return out;}
+    function speak(t){if(!$('us-vout').checked||!('speechSynthesis'in window))return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='fr-FR';u.rate=1.02;speechSynthesis.speak(u);}catch(e){}}
+    function render(raw,silent){
+      lastQ=raw;if(!norm(raw)){results.innerHTML='';status.textContent='';return;}
+      const {scored,season,tokens}=search(raw);let list=scored.map(x=>x.it);
+      if(activeFilter!=='all')list=list.filter(it=>it.type===activeFilter);
+      results.innerHTML='';
+      if(!list.length){status.innerHTML='Aucun résultat pour « <b>'+raw+'</b> »';results.innerHTML='<div class="us-empty">Rien trouvé.<br>Essaie : <b>saison 3</b>, <b>playlist pop</b>, <b>Ray Charles</b>.</div>';if(!silent)speak("Aucun résultat pour "+raw);return;}
+      const g={playlist:[],episode:[],article:[]};list.forEach(it=>g[it.type].push(it));
+      let html='',counts=[];
+      ['playlist','episode','article'].forEach(type=>{const items=g[type];if(!items.length)return;counts.push(items.length+' '+TM[type].label.toLowerCase());
+        html+='<div class="us-group us-g-'+type+'"><div class="us-gt">'+TM[type].label+' ('+items.length+')</div>';
+        items.slice(0,12).forEach(it=>{const ext=it.url.indexOf('http')===0;html+='<a class="us-res" href="'+it.url+'"'+(ext?' target="_blank" rel="noopener"':'')+'><span class="us-res-ico" aria-hidden="true">'+TM[type].ico+'</span><span class="us-res-body"><span class="us-res-title">'+hi(it.title,tokens)+'</span><span class="us-res-meta">'+(it.season?('Saison '+it.season+(it.genre?' · '+it.genre:'')+' · '):'')+TM[type].label.replace(/s$/,'')+'</span></span><span style="color:var(--text-3)">→</span></a>';});
+        html+='</div>';});
+      results.innerHTML=html;
+      status.innerHTML='<b>'+list.length+'</b> résultat(s)'+(season?(' · Saison '+season):'');
+      if(!silent)speak('Pour '+(season?('la Saison '+season+', '+GBS[season]):('« '+raw+' »'))+', j\'ai trouvé '+counts.join(', ')+'.');
+    }
+
+    /* visualiseur vague de points (blanc/jaune) */
+    const vizWrap=$('us-viz'),canvas=$('us-canvas'),vctx=canvas.getContext('2d');
+    let raf=null,analyser=null,data=null,stream=null,actx=null,decorative=false,vizOn=false;
+    function startViz(){vizOn=true;vizWrap.classList.add('on');sbar.classList.add('listening');canvas.width=canvas.clientWidth*2;canvas.height=112;
+      if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){navigator.mediaDevices.getUserMedia({audio:true}).then(st=>{stream=st;actx=new (window.AudioContext||window.webkitAudioContext)();const src=actx.createMediaStreamSource(st);analyser=actx.createAnalyser();analyser.fftSize=64;src.connect(analyser);data=new Uint8Array(analyser.frequencyBinCount);decorative=false;}).catch(()=>{decorative=true;});}else decorative=true;
+      drawViz();}
+    function stopViz(){vizOn=false;vizWrap.classList.remove('on');sbar.classList.remove('listening');if(raf)cancelAnimationFrame(raf);if(stream)stream.getTracks().forEach(t=>t.stop());if(actx&&actx.close)try{actx.close();}catch(e){}analyser=null;}
+    function drawViz(){if(!vizOn)return;const w=canvas.width,h=canvas.height;vctx.clearRect(0,0,w,h);if(!decorative&&analyser)analyser.getByteFrequencyData(data);
+      const dots=46,step=w/dots,t=Date.now()/1000;
+      for(let i=0;i<dots;i++){let v;if(decorative||!analyser){v=0.5+0.46*Math.sin(t*3+i*0.45)*(0.6+0.4*Math.sin(t*1.3+i*0.7));}else{const idx=Math.floor(i/dots*data.length);v=0.5+((data[idx]||0)/255-0.2);}v=Math.min(1,Math.max(0,v));
+        const amp=Math.abs(v-0.5)*2,x=i*step+step/2,y=h/2+(v-0.5)*h*0.82,r=1.5+amp*3.6,cg=Math.round(211+amp*44),cb=Math.round(77+amp*178);
+        vctx.beginPath();vctx.arc(x,y,r,0,6.28);vctx.fillStyle='rgba(255,'+cg+','+cb+','+(0.4+amp*0.6)+')';vctx.shadowColor='rgba(252,211,77,0.9)';vctx.shadowBlur=amp*14;vctx.fill();
+        const y2=h/2-(v-0.5)*h*0.30;vctx.beginPath();vctx.arc(x,y2,Math.max(.8,r*0.5),0,6.28);vctx.fillStyle='rgba(255,255,255,'+(0.10+amp*0.22)+')';vctx.shadowBlur=0;vctx.fill();}
+      vctx.shadowBlur=0;raf=requestAnimationFrame(drawViz);}
+
+    const SR=window.SpeechRecognition||window.webkitSpeechRecognition,mic=$('us-mic');let rec=null,listening=false;
+    if(SR){$('us-srsup').textContent='🎙️ voix dispo';rec=new SR();rec.lang='fr-FR';rec.interimResults=false;
+      rec.onstart=()=>{listening=true;mic.classList.add('listening');status.textContent='🎙️ Je t\'écoute…';};
+      rec.onend=()=>{listening=false;mic.classList.remove('listening');stopViz();};
+      rec.onerror=()=>{status.textContent='Micro indisponible — tape ta recherche.';};
+      rec.onresult=e=>{const t=e.results[0][0].transcript;input.value=t;render(t);};
+    }else{$('us-srsup').textContent='⌨️ voix non supportée — saisie texte';}
+    mic.addEventListener('click',()=>{if(listening||vizOn){if(rec)try{rec.stop();}catch(e){}stopViz();return;}startViz();if(rec){try{rec.start();}catch(e){}}});
+
+    function open(){modal.hidden=false;setTimeout(()=>input.focus(),60);}
+    function close(){modal.hidden=true;stopViz();if('speechSynthesis'in window)speechSynthesis.cancel();}
+    $('us-fab').addEventListener('click',open);
+    modal.querySelectorAll('[data-usclose]').forEach(el=>el.addEventListener('click',close));
+    document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();modal.hidden?open():close();}if(e.key==='Escape'&&!modal.hidden)close();});
+    let deb;input.addEventListener('input',()=>{clearTimeout(deb);deb=setTimeout(()=>render(input.value,true),120);});
+    input.addEventListener('keydown',e=>{if(e.key==='Enter')render(input.value);});
+    document.querySelectorAll('.us-chip').forEach(c=>c.addEventListener('click',()=>{input.value=c.dataset.q;render(c.dataset.q);}));
+    document.querySelectorAll('.us-filter').forEach(f=>f.addEventListener('click',()=>{document.querySelectorAll('.us-filter').forEach(x=>x.classList.remove('active'));f.classList.add('active');activeFilter=f.dataset.f;if(lastQ)render(lastQ,true);}));
   })();
   </script>
 
