@@ -63,7 +63,7 @@
     if(!sentences.length){player.style.display='none';return;}
 
     let voice=null;
-    function pick(){const vs=synth.getVoices().filter(v=>/fr(-|_)?/i.test(v.lang));voice=vs.find(v=>/thomas|jacques|amelie|amélie|enhanced|premium|siri/i.test(v.name))||vs[0]||null;voicename.textContent=voice?voice.name:'défaut';}
+    function pick(){const vs=synth.getVoices().filter(v=>/fr(-|_)?/i.test(v.lang));voice=vs.find(v=>/aurelie|aurélie/i.test(v.name))||vs.find(v=>/thomas|jacques|amelie|amélie|enhanced|premium|siri/i.test(v.name))||vs[0]||null;voicename.textContent=voice?voice.name:'défaut';}
     pick(); if(synth.onvoiceschanged!==undefined)synth.onvoiceschanged=pick;
 
     let idx=0,playing=false,paused=false,raf=null,vizRun=false;
