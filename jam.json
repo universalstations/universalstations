@@ -1,6 +1,6 @@
 {
   "status": "live",
-  "url": "",
-  "fallback": "https://spotify.link/K10g9nVa93b",
+  "url": "https://spotify.link/K10g9nVa93b",
+  "fallback": "",
   "label": "Fête de la Musique"
 }
