@@ -934,6 +934,70 @@ Aide Google à comprendre le contenu du site
           </p>
         </header>
 
+        <style id="jamCSS">
+        .jb{position:relative;overflow:hidden;border-radius:18px;background:var(--bg-2);border:1px solid rgba(29,185,84,.30);padding:1.5rem 1.7rem;display:grid;grid-template-columns:1fr auto;gap:1.6rem;align-items:center;margin:0 0 2.2rem}
+        .jb[hidden]{display:none}
+        .jb::before{content:'';position:absolute;inset:0;border-radius:18px;padding:1px;background:linear-gradient(120deg,#1db954,#f59e0b,#fb7185,#8b5cf6,#1db954);background-size:300% 300%;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:jbflow 6s linear infinite}
+        @keyframes jbflow{0%{background-position:0 50%}100%{background-position:300% 50%}}
+        .jb-main{position:relative;z-index:1}
+        .jb-live{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-m);font-size:.55rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#1db954;background:rgba(29,185,84,.10);border:1px solid rgba(29,185,84,.35);border-radius:999px;padding:.3rem .8rem;margin-bottom:.8rem}
+        .jb-dot{width:7px;height:7px;border-radius:50%;background:#1db954;animation:jbp 1.6s infinite}
+        @keyframes jbp{0%{box-shadow:0 0 0 0 rgba(29,185,84,.55)}70%{box-shadow:0 0 0 9px rgba(29,185,84,0)}100%{box-shadow:0 0 0 0 rgba(29,185,84,0)}}
+        .jb-ti{font-family:var(--font-d);font-weight:700;font-size:1.5rem;margin-bottom:.5rem;letter-spacing:.02em}
+        .jb-ti span{background:linear-gradient(90deg,#1db954,#fcd34d);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+        .jb-sub{font-size:.9rem;color:var(--text-2);line-height:1.7;max-width:46ch;margin-bottom:1.2rem}
+        .jb-btns{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center}
+        .jb-join{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--font-b);font-weight:700;font-size:.8rem;color:#04140a;background:#1db954;border-radius:999px;padding:.8rem 1.5rem;text-decoration:none}
+        .jb-meta{font-family:var(--font-m);font-size:.64rem;letter-spacing:.06em;color:rgba(241,240,250,.72)}
+        .jb-qr{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+        .jb-qrbox{width:128px;height:128px;border-radius:12px;background:#fff;padding:9px}
+        .jb-qrbox svg{width:100%;height:100%;display:block}
+        .jb-cap{font-family:var(--font-m);font-size:.58rem;font-weight:500;letter-spacing:.1em;color:rgba(241,240,250,.85);text-transform:uppercase}
+        .jb.ended .jb-live{color:var(--amber);background:rgba(245,158,11,.10);border-color:rgba(245,158,11,.35)}
+        .jb.ended .jb-dot{background:var(--amber);animation:none}
+        .jb.ended .jb-join{background:var(--amber)}
+        .jb.ended .jb-ti span{background:linear-gradient(90deg,#f59e0b,#fcd34d);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+        @media(max-width:640px){.jb{grid-template-columns:1fr}}
+        </style>
+        <div id="jamLive" class="jb" hidden role="group" aria-label="Jam Universal Stations">
+          <div class="jb-main">
+            <span class="jb-live"><span class="jb-dot"></span><span id="jbLabel">En direct</span></span>
+            <h3 class="jb-ti">Jam <span>Universal Stations</span></h3>
+            <p class="jb-sub" id="jbSub">Écoutez ensemble, en temps réel. Ajoutez vos titres, votez, laissez la file d'attente vivre. Une seule platine, tout le monde aux commandes.</p>
+            <div class="jb-btns">
+              <a class="jb-join" id="jbJoin" href="#" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="#04140a"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm4.6 14.4a.62.62 0 01-.86.21c-2.35-1.44-5.3-1.76-8.79-.96a.62.62 0 11-.28-1.22c3.81-.87 7.08-.5 9.72 1.11.3.18.39.57.21.86zm1.23-2.74a.78.78 0 01-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 11-.45-1.49c3.63-1.1 8.15-.56 11.24 1.33.36.22.48.69.25 1.07zm.11-2.85C14.83 8.95 9.4 8.76 6.3 9.7a.93.93 0 11-.54-1.79c3.56-1.08 9.56-.87 13.34 1.38a.93.93 0 01-.95 1.6z"/></svg><span id="jbJoinTxt">Rejoindre le Jam</span></a>
+              <span class="jb-meta" id="jbMeta">↗ Ouvre Spotify · écoute en invité possible</span>
+            </div>
+          </div>
+          <div class="jb-qr"><div class="jb-qrbox" id="jbQR"></div><span class="jb-cap" id="jbCap">Scanne pour rejoindre</span></div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+        <script>
+        (function(){
+          var PODCAST='https://open.spotify.com/show/4Drtr3vcLpNsiYZVmGoprn';
+          function qr(u){try{var q=qrcode(0,'M');q.addData(u);q.make();document.getElementById('jbQR').innerHTML=q.createSvgTag({cellSize:4,margin:0,scalable:true});}catch(e){}}
+          function render(d){var c=document.getElementById('jamLive');var st=d?(d.status||(d.active?'live':'off')):'off';
+            if(st==='live'&&d.url){c.classList.remove('ended');
+              document.getElementById('jbLabel').textContent='En direct'+(d.label?' · '+d.label:'');
+              document.getElementById('jbSub').textContent='Écoutez ensemble, en temps réel. Ajoutez vos titres, votez, laissez la file d\'attente vivre. Une seule platine, tout le monde aux commandes.';
+              document.getElementById('jbJoinTxt').textContent='Rejoindre le Jam';
+              document.getElementById('jbJoin').href=d.url;
+              document.getElementById('jbMeta').textContent='↗ Ouvre Spotify · écoute en invité possible';
+              document.getElementById('jbCap').textContent='Scanne pour rejoindre';
+              qr(d.url);c.hidden=false;
+            }else if(st==='ended'){var fb=d.fallback||PODCAST;c.classList.add('ended');
+              document.getElementById('jbLabel').textContent='Jam terminé'+(d.label?' · '+d.label:'');
+              document.getElementById('jbSub').textContent='Le Jam est terminé — mais la musique continue. Découvre le podcast Universal Stations sur Spotify.';
+              document.getElementById('jbJoinTxt').textContent='Découvrir le podcast';
+              document.getElementById('jbJoin').href=fb;
+              document.getElementById('jbMeta').textContent='↗ Tous les épisodes sur Spotify';
+              document.getElementById('jbCap').textContent='Scanne pour écouter';
+              qr(fb);c.hidden=false;
+            }else{c.hidden=true;}}
+          fetch('/jam.json',{cache:'no-store'}).then(function(r){return r.json();}).then(render).catch(function(){render({active:false});});
+        })();
+        </script>
+
         <!-- Statistiques playlists -->
         <dl class="playlists-stats" id="playlists-stats">
           <div class="pl-stat">
