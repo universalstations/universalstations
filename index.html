@@ -481,7 +481,7 @@ Aide Google à comprendre le contenu du site
   <!-- BANNIÈRE ABONNEMENT SPOTIFY -->
   <div class="promo-bar" id="promoBar" role="banner">
     <div class="promo-bar-text">
-      <span id="promo-bar-msg">Accède à <strong>6 épisodes exclusifs</strong> en t'abonnant sur Spotify</span>
+      <span id="promo-bar-msg">Accède à <strong>9 épisodes exclusifs</strong> en t'abonnant sur Spotify</span>
     </div>
     <a class="promo-bar-cta" href="https://open.spotify.com/show/4Drtr3vcLpNsiYZVmGoprn" target="_blank" rel="noopener noreferrer">
       S'abonner ↗
@@ -1612,6 +1612,27 @@ document.documentElement.classList.replace('no-js', 'js');
   /* ── Épisodes exclusifs Spotify — ajouter un bloc pour chaque nouvel épisode ── */
   const PREMIUM_EPISODES = [
     {
+      title: 'Chris Brown (L\'Hybride R&B-Performance)',
+      desc: 'De la Dance-Pop à l\'Afrobeats, du chant au graffiti — Chris Brown a transformé le R&B en terrain d\'expérimentation sans limites.',
+      link: 'https://open.spotify.com/episode/3mEb4VY3PyR07LgAEKU093',
+      season: '4',
+      img: 'https://i.scdn.co/image/ab6765630000ba8acc355a1b63d9ee0d228923e1',
+    },
+    {
+      title: 'Giveon, le Baryton Envoûtant',
+      desc: 'Il ouvre la bouche, la pièce s\'arrête. La voix la plus reconnaissable du R&B — un baryton de Long Beach qui ramène la grâce des grands crooners.',
+      link: 'https://open.spotify.com/episode/1V7eQVt9N8lCDZyGhzajZK',
+      season: '4',
+      img: 'https://i.scdn.co/image/ab6765630000ba8ae16789194b1a61175f1c18e2',
+    },
+    {
+      title: 'Lucky Daye, le Prince du Funk-Soul',
+      desc: 'La Nouvelle-Orléans dans le sang, les cuivres dans l\'âme. Lucky Daye est l\'antidote à la tristesse du R&B — une soul festive et organique.',
+      link: 'https://open.spotify.com/episode/50oydounkvU05h9aQB61Xs',
+      season: '4',
+      img: 'https://i.scdn.co/image/ab6765630000ba8a2fa4327c7c18f96a227f8cfd',
+    },
+    {
       title: 'Patoranking (L\'Afro-Reggae Solaire)',
       desc: 'Lagos parle patois jamaïcain. Kingston danse sur des percussions nigérianes. Patoranking a construit ce pont tout seul.',
       link: 'https://open.spotify.com/episode/72GcXpu5VxQipqLBDSgb0Y',
@@ -1676,7 +1697,7 @@ document.documentElement.classList.replace('no-js', 'js');
     '4': { id: '6JdqN6rJ3DpmKSYkMipuCG', label: 'Saison 4 — Lotus RnB',     name: 'LOTUS',   genre: 'RnB',    tracks: 100, cardClass: 'pl-card--rnb',    desc: 'La sélection de la Saison 4 — la soul et le RnB, des fondations de Ray Charles aux voix qui les prolongent aujourd\'hui.' },
   };
   /* exposés pour le module de recherche US (index auto-mis à jour) */
-  try{ window.__playlists = SEASON_PLAYLISTS; window.__premiumEpisodes = PREMIUM_EPISODES; }catch(e){}
+  try{ window.__playlists = SEASON_PLAYLISTS; window.__premiumEpisodes = PREMIUM_EPISODES; var _pb=document.getElementById('promo-bar-msg'); if(_pb) _pb.innerHTML='Accède à <strong>'+PREMIUM_EPISODES.length+' épisodes exclusifs</strong> en t\'abonnant sur Spotify'; }catch(e){}
 
   const DEFAULT_ARTICLES = [
     {
