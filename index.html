@@ -85,7 +85,7 @@ Aide Google à comprendre le contenu du site
 .ac-eyebrow{display:inline-flex;align-items:center;gap:1rem;font-family:var(--font-m);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:2rem}
 .ac-eyebrow::before,.ac-eyebrow::after{content:'';width:2rem;height:1px;background:var(--amber)}
 .ac-title{font-size:clamp(3rem,7vw,6.5rem);letter-spacing:.04em;margin-bottom:1.75rem;line-height:.95}
-.ac-title .ag{color:var(--green)}
+.ac-title .ag{color:var(--amber)}
 .ac-sub{font-size:1.05rem;font-weight:300;color:var(--text-2);line-height:1.85;max-width:58ch;margin:0 auto 3rem}
 .ac-services{display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap;margin-bottom:4rem}
 .svc-btn{display:inline-flex;align-items:center;gap:.65rem;font-family:var(--font-m);font-size:.65rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:1rem 2rem;border-radius:var(--radius-sm);cursor:pointer;text-decoration:none;transition:transform .2s var(--ease),box-shadow .2s,background .2s;border:1px solid}
@@ -571,11 +571,11 @@ Aide Google à comprendre le contenu du site
         </p>
 
         <div class="hero-actions">
-          <a href="#sec-episodes" onclick="event.preventDefault(); showSection('episodes', null)" class="btn btn-p">
+          <a href="#sec-episodes" id="hero-cta" onclick="event.preventDefault(); showSection('episodes', null)" class="btn btn-p">
             <svg width="11" height="13" viewBox="0 0 11 13" aria-hidden="true" focusable="false">
               <path d="M1 1.5L9.5 6.5L1 11.5V1.5Z" fill="currentColor"/>
             </svg>
-            Écouter maintenant
+            <span id="hero-cta-txt">Écouter maintenant</span>
           </a>
           <a href="#sec-about" onclick="event.preventDefault(); showSection('about', null)" class="btn btn-g">
             Notre histoire
@@ -1558,12 +1558,17 @@ Aide Google à comprendre le contenu du site
       <p class="panel-date" id="p-date"></p>
       <p class="panel-desc" id="p-desc"></p>
 
-      <!-- Lecteur audio -->
-      <div class="audio-wrap">
+      <!-- Lecteur audio (épisodes gratuits) -->
+      <div class="audio-wrap" id="p-audio-wrap">
         <p class="audio-lbl">Écouter l'épisode</p>
         <audio id="p-audio" controls preload="none">
           Votre navigateur ne supporte pas l'élément audio.
         </audio>
+      </div>
+      <!-- Lecteur Spotify (épisodes exclusifs) -->
+      <div class="audio-wrap" id="p-sp-wrap" hidden>
+        <p class="audio-lbl">Écouter sur le site (aperçu)</p>
+        <div id="p-sp-embed"></div>
       </div>
 
       <!-- Liens externes -->
@@ -1726,7 +1731,7 @@ document.documentElement.classList.replace('no-js', 'js');
     '4': { id: '6JdqN6rJ3DpmKSYkMipuCG', cover: 'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da843f7b8a57b773773407ba3570', label: 'Saison 4 — Lotus RnB',     name: 'LOTUS',   genre: 'RnB',    tracks: 100, cardClass: 'pl-card--rnb',    desc: 'La sélection de la Saison 4 — la soul et le RnB, des fondations de Ray Charles aux voix qui les prolongent aujourd\'hui.' },
   };
   /* exposés pour le module de recherche US (index auto-mis à jour) */
-  try{ window.__playlists = SEASON_PLAYLISTS; window.__premiumEpisodes = PREMIUM_EPISODES; var _pb=document.getElementById('promo-bar-msg'); if(_pb) _pb.innerHTML='Accède à <strong>'+PREMIUM_EPISODES.length+' épisodes exclusifs</strong> en t\'abonnant sur Spotify'; }catch(e){}
+  try{ window.__playlists = SEASON_PLAYLISTS; window.__premiumEpisodes = PREMIUM_EPISODES; window.__seasonLabels = SEASON_LABELS; var _pb=document.getElementById('promo-bar-msg'); if(_pb) _pb.innerHTML='Accède à <strong>'+PREMIUM_EPISODES.length+' épisodes exclusifs</strong> en t\'abonnant sur Spotify'; }catch(e){}
 
   const DEFAULT_ARTICLES = [
     {
@@ -2000,10 +2005,10 @@ document.documentElement.classList.replace('no-js', 'js');
 
     /* Contenu du hero partagé selon la page (différenciation visuelle) */
     const HERO_HEADERS = {
-      episodes:  { acc:'amber',  eyebrow:'Music · Urban Culture · Podcast', title:'<span class="ac">MUSIC</span> MEETS <span class="ac">CULTURE</span>', sub:'Chaque épisode, un artiste. Chaque artiste, une playlist. Plongez dans l\'univers sonore et culturel des scènes qui comptent.' },
-      playlists: { acc:'violet', eyebrow:'Spotify · Curation · Saisons',      title:'LE SON DE <span class="ac">CHAQUE SAISON</span>', sub:'Une playlist officielle par saison — Rap, Pop, Reggae. Des sélections curées qui prolongent chaque épisode et font vibrer la culture.' },
-      about:     { acc:'blue',   eyebrow:'Notre histoire · Notre mission',     title:'LA CULTURE MUSICALE, <span class="ac">NOTRE OBSESSION</span>', sub:'Universal Stations décrypte les artistes, les sons et les mouvements qui définissent notre époque. Un pont entre les scènes du monde entier.' },
-      blog:      { acc:'rose',   eyebrow:'Articles · Analyses · Décryptages',  title:'LECTURES &amp; <span class="ac">DÉCRYPTAGES</span>', sub:'Des articles de fond sur les artistes, les genres et les coulisses de l\'industrie. La culture musicale racontée en profondeur.' },
+      episodes:  { acc:'amber',  cta:{label:'Écouter le podcast', target:'eps-grid'}, eyebrow:'Music · Urban Culture · Podcast', title:'<span class="ac">MUSIC</span> MEETS <span class="ac">CULTURE</span>', sub:'Chaque épisode, un artiste. Chaque artiste, une playlist. Plongez dans l\'univers sonore et culturel des scènes qui comptent.' },
+      playlists: { acc:'violet', cta:{label:'Voir les playlists', target:'pl-grid-main'}, eyebrow:'Spotify · Curation · Saisons',      title:'LE SON DE <span class="ac">CHAQUE SAISON</span>', sub:'Une playlist officielle par saison — Rap, Pop, Reggae. Des sélections curées qui prolongent chaque épisode et font vibrer la culture.' },
+      about:     { acc:'blue',   cta:{label:'Écouter le podcast', section:'episodes'}, eyebrow:'Notre histoire · Notre mission',     title:'LA CULTURE MUSICALE, <span class="ac">NOTRE OBSESSION</span>', sub:'Universal Stations décrypte les artistes, les sons et les mouvements qui définissent notre époque. Un pont entre les scènes du monde entier.' },
+      blog:      { acc:'violet', cta:{label:'Lire les articles', target:'blog-grid'}, eyebrow:'Articles · Analyses · Décryptages',  title:'LECTURES &amp; <span class="ac">DÉCRYPTAGES</span>', sub:'Des articles de fond sur les artistes, les genres et les coulisses de l\'industrie. La culture musicale racontée en profondeur.' },
     };
 
     const showSection = (name, linkEl = null) => {
@@ -2026,6 +2031,16 @@ document.documentElement.classList.replace('no-js', 'js');
           // stats + plateformes : seulement sur Podcast
           const st = heroEl.querySelector('.hero-stats'); if (st) st.style.display = name==='episodes' ? '' : 'none';
           const pf = heroEl.querySelector('.hero-streaming'); if (pf) pf.style.display = name==='episodes' ? '' : 'none';
+          // CTA contextuel du héro
+          const ctaEl = $('hero-cta'), ctaTxt = $('hero-cta-txt');
+          if (ctaEl && h.cta) {
+            if (ctaTxt) ctaTxt.textContent = h.cta.label;
+            ctaEl.onclick = (e) => {
+              e.preventDefault();
+              if (h.cta.section) { showSection(h.cta.section); }
+              else if (h.cta.target) { const t = document.getElementById(h.cta.target); if (t) t.scrollIntoView({ behavior:'smooth', block:'start' }); }
+            };
+          }
         }
       }
 
@@ -2256,10 +2271,11 @@ document.documentElement.classList.replace('no-js', 'js');
       </div>`;
     };
 
-    const premiumCardHTML = (ep) => `
+    const premiumCardHTML = (ep, i) => `
       <div class="ep-card ep-premium" role="listitem" tabindex="0"
            aria-label="${ep.title} — Épisode exclusif Spotify"
-           onclick="window.open('${ep.link}','_blank','noopener,noreferrer')">
+           onclick="openPremiumPanel(${i})"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPremiumPanel(${i});}">
         <div class="ep-card-img" style="position:relative">
           <picture>
             <source srcset="${ep.img.replace(/\.\w+$/, '.avif')}" type="image/avif">
@@ -2579,6 +2595,12 @@ document.documentElement.classList.replace('no-js', 'js');
       // Audio
       const audio = $('p-audio');
       if (audio) audio.src = ep.audio;
+      // Épisode gratuit : lecteur RSS visible, lecteur Spotify masqué
+      const _aw = $('p-audio-wrap'), _sw = $('p-sp-wrap'), _se = $('p-sp-embed'), _pls = panel?.querySelector('.pl-section');
+      if (_aw) _aw.hidden = false;
+      if (_sw) _sw.hidden = true;
+      if (_se) _se.innerHTML = '';
+      if (_pls) _pls.style.display = '';
 
       // Liens
       const linksEl = $('p-ep-links');
@@ -2622,6 +2644,7 @@ document.documentElement.classList.replace('no-js', 'js');
       panel?.classList.remove('open');
       panel?.setAttribute('aria-hidden', 'true');
       $('p-audio')?.pause();
+      const _se = $('p-sp-embed'); if (_se) _se.innerHTML = '';
       document.body.style.overflow = '';
       PlaylistManager.update();
     };
@@ -3386,6 +3409,36 @@ document.documentElement.classList.replace('no-js', 'js');
 
 })();
 
+/* ── PANNEAU pour un épisode EXCLUSIF (lecteur Spotify) ── */
+function openPremiumPanel(i){
+  var EP = (window.__premiumEpisodes || [])[i];
+  if(!EP) return;
+  var $=function(id){return document.getElementById(id);};
+  var set=function(id,t){var el=$(id); if(el) el.textContent=t;};
+  set('p-ep-label','Épisode exclusif');
+  set('p-title', EP.title);
+  set('p-date','');
+  set('p-desc', EP.desc || '');
+  var badge=$('p-s-badge'); var SL=window.__seasonLabels||{};
+  if(badge){ var lab=SL[EP.season]; if(lab){badge.textContent=lab;badge.hidden=false;} else {badge.hidden=true;} }
+  var au=$('p-audio'); if(au){ try{au.pause();}catch(e){} au.removeAttribute('src'); }
+  var aw=$('p-audio-wrap'), sw=$('p-sp-wrap'), se=$('p-sp-embed');
+  if(aw) aw.hidden=true;
+  var m=(EP.link||'').match(/episode\/([A-Za-z0-9]+)/);
+  if(sw && se && m){
+    sw.hidden=false;
+    se.innerHTML='<iframe src="https://open.spotify.com/embed/episode/'+m[1]+'?utm_source=generator" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>';
+  } else if(sw){ sw.hidden=true; }
+  var links=$('p-ep-links');
+  if(links){ links.innerHTML = EP.link ? '<a href="'+EP.link+'" target="_blank" rel="noopener noreferrer" class="ep-link-btn spotify" aria-label="Ouvrir sur Spotify"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Ouvrir / s\'abonner sur Spotify</a>' : ''; }
+  var pls=document.querySelector('#ep-panel .pl-section'); if(pls) pls.style.display='none';
+  var nav=$('p-nav'); if(nav) nav.innerHTML='';
+  var ov=$('p-overlay'), pn=$('ep-panel');
+  if(ov){ov.classList.add('open');ov.setAttribute('aria-hidden','false');}
+  if(pn){pn.classList.add('open');pn.setAttribute('aria-hidden','false');}
+  document.body.style.overflow='hidden';
+  if(pn){var c=pn.querySelector('.panel-close'); if(c) c.focus();}
+}
 /* ── FAÇADE SPOTIFY : charge le lecteur au clic (perf) ── */
 function loadSpotifyEmbed(btn){
   const id = btn.getAttribute('data-pl');
