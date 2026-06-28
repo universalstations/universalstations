@@ -892,6 +892,8 @@ Aide Google à comprendre le contenu du site
                   aria-pressed="false">Saison 2 — Pop</button>
           <button class="s-tab" onclick="filterSeason('3', this)"
                   aria-pressed="false">Saison 3 — Reggae</button>
+          <button class="s-tab" onclick="filterSeason('4', this)"
+                  aria-pressed="false">Saison 4 — RnB</button>
         </div>
 
         <!-- Playlist de saison -->
@@ -1646,6 +1648,27 @@ document.documentElement.classList.replace('no-js', 'js');
   /* ── Épisodes exclusifs Spotify — ajouter un bloc pour chaque nouvel épisode ── */
   const PREMIUM_EPISODES = [
     {
+      title: 'Jason Derulo, l\'Alchimiste des Hits et de la Révolution Digitale',
+      desc: 'Il a appris l\'opéra, il a conquis TikTok. Jason Derulo a toujours eu une longueur d\'avance — un caméléon qui ne rentre dans aucune case.',
+      link: 'https://open.spotify.com/episode/5lStToQB6qcDAB5nPzoyIS',
+      season: '4',
+      img: 'https://i.scdn.co/image/ab6765630000ba8abc7baef4ea65095bfc94c725',
+    },
+    {
+      title: 'Leon Thomas, l\'Alchimiste du Rythme',
+      desc: 'Il a produit pour SZA, Ariana Grande, Drake — son nom rarement en premier. L\'architecte de l\'ombre qui sort enfin de la lumière des autres.',
+      link: 'https://open.spotify.com/episode/7x2KUSbJxtcrTzVeRfyczA',
+      season: '4',
+      img: 'https://i.scdn.co/image/ab6765630000ba8a37318a84b29a58f1c1806d87',
+    },
+    {
+      title: 'Coco Jones, la Puissance Vocale',
+      desc: 'Aretha dans les enceintes, Whitney dans la voiture. Coco Jones a hérité des plus grandes voix — et ça s\'entend à chaque note.',
+      link: 'https://open.spotify.com/episode/7tPLBQQREOAyukUQLEkDb0',
+      season: '4',
+      img: 'https://i.scdn.co/image/ab6765630000ba8acd988481dfdf0a829b559b9f',
+    },
+    {
       title: 'Chris Brown (L\'Hybride R&B-Performance)',
       desc: 'De la Dance-Pop à l\'Afrobeats, du chant au graffiti — Chris Brown a transformé le R&B en terrain d\'expérimentation sans limites.',
       link: 'https://open.spotify.com/episode/3mEb4VY3PyR07LgAEKU093',
@@ -2025,6 +2048,7 @@ document.documentElement.classList.replace('no-js', 'js');
         if (h) {
           heroEl.classList.remove('acc-amber','acc-violet','acc-blue','acc-rose');
           heroEl.classList.add('acc-' + h.acc);
+          window.__globeMode = name;
           const ey = heroEl.querySelector('.eyebrow'); if (ey) ey.textContent = h.eyebrow;
           const ti = heroEl.querySelector('#hero-title'); if (ti) ti.innerHTML = h.title;
           const su = heroEl.querySelector('.hero-sub'); if (su) su.innerHTML = h.sub;
@@ -2274,8 +2298,8 @@ document.documentElement.classList.replace('no-js', 'js');
     const premiumCardHTML = (ep, i) => `
       <div class="ep-card ep-premium" role="listitem" tabindex="0"
            aria-label="${ep.title} — Épisode exclusif Spotify"
-           onclick="openPremiumPanel(${i})"
-           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPremiumPanel(${i});}">
+           onclick="window.open('${ep.link}','_blank','noopener,noreferrer')"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.open('${ep.link}','_blank','noopener,noreferrer');}">
         <div class="ep-card-img" style="position:relative">
           <picture>
             <source srcset="${ep.img.replace(/\.\w+$/, '.avif')}" type="image/avif">
@@ -3618,6 +3642,7 @@ function dismissPromoBar() {
     /* ── Une instance de globe par canvas ── */
     function makeGlobe(canvas){
       const ctx = canvas.getContext('2d');
+      const isHero = !!(canvas.closest && canvas.closest('.hero'));
       let SIZE = 0, cx, cy, R;
       function resize(){
         const box = canvas.parentElement;
@@ -3646,7 +3671,8 @@ function dismissPromoBar() {
         if(canvas.offsetParent===null || !SIZE){ requestAnimationFrame(draw); return; }
 
         ctx.clearRect(0,0,SIZE,SIZE);
-        const tiltX=tilt, rotOff=rot;
+        const mode = isHero ? (window.__globeMode || 'episodes') : 'full';
+        const tiltX = tilt, rotOff=rot;
 
         /* disque océan très subtil (se fond dans le fond du site) */
         ctx.beginPath(); ctx.arc(cx,cy,R,0,Math.PI*2);
@@ -3692,7 +3718,7 @@ function dismissPromoBar() {
         drawCoreLabel(labelBot, false);
 
         const tt=performance.now()/1000;
-        for(const arc of arcs){
+        if(mode==='full') for(const arc of arcs){
           const proj=arc.pts.map(p=>{let q=rotateY(p,rotOff);return rotateX(q,tiltX);});
           for(let s=0;s<proj.length-1;s++){
             const a=proj[s],b=proj[s+1];
@@ -3707,7 +3733,7 @@ function dismissPromoBar() {
         }
 
         const t=performance.now()/1000;
-        for(const m of markers){
+        if(mode!=='about'&&mode!=='blog') for(const m of markers){
           let q=rotateY(m,rotOff); q=rotateX(q,tiltX);
           if(q.z<0) continue;
           const depth=(q.z+1)/2;
@@ -3718,6 +3744,34 @@ function dismissPromoBar() {
           ctx.beginPath(); ctx.arc(px,py,1.4+depth*0.8,0,Math.PI*2); ctx.fillStyle=`rgba(255,250,235,${0.85+depth*0.15})`; ctx.fill();
         }
 
+        /* PLAYLISTS : satellites en orbite (ambre) */
+        if(mode==='playlists'){
+          const ts=performance.now()/1000, orbR=R*1.16, ky=0.40, tl=-0.35;
+          const ca=Math.cos(tl), sa=Math.sin(tl), N=8;
+          for(let s=0;s<N;s++){
+            const ang=ts*0.5 + s*(Math.PI*2/N);
+            let ex=Math.cos(ang)*orbR, ey=Math.sin(ang)*orbR*ky;
+            const rx=ex*ca-ey*sa, ry=ex*sa+ey*ca;
+            const front=Math.sin(ang)>=0, a=front?0.95:0.32, rad=front?2.4:1.5;
+            const sx=cx+rx, sy=cy-ry;
+            ctx.beginPath(); ctx.arc(sx,sy,rad+3,0,Math.PI*2); ctx.fillStyle=`rgba(245,158,11,${a*0.22})`; ctx.fill();
+            ctx.beginPath(); ctx.arc(sx,sy,rad,0,Math.PI*2); ctx.fillStyle=`rgba(255,250,235,${a})`; ctx.fill();
+          }
+        }
+        /* BLOG : réseau de connexions entre les villes (ambre, façon constellation) */
+        if(mode==='blog'){
+          const vis=[];
+          for(const m of markers){ let q=rotateY(m,rotOff); q=rotateX(q,tiltX); if(q.z>=-0.05) vis.push(q); }
+          for(let a2=0;a2<vis.length;a2++){
+            for(let b2=a2+1;b2<vis.length;b2++){
+              const dx=vis[a2].x-vis[b2].x, dy=vis[a2].y-vis[b2].y, dd=Math.hypot(dx,dy);
+              if(dd<1.45){ const dep=((vis[a2].z+vis[b2].z)/2+1)/2;
+                ctx.beginPath(); ctx.moveTo(cx+vis[a2].x*R,cy-vis[a2].y*R); ctx.lineTo(cx+vis[b2].x*R,cy-vis[b2].y*R);
+                ctx.strokeStyle=`rgba(245,158,11,${0.05+dep*0.13})`; ctx.lineWidth=0.6; ctx.stroke(); }
+            }
+          }
+          for(const q of vis){ const dep=(q.z+1)/2; ctx.beginPath(); ctx.arc(cx+q.x*R,cy-q.y*R,1.5+dep*1.2,0,Math.PI*2); ctx.fillStyle=`rgba(255,250,235,${0.6+dep*0.35})`; ctx.fill(); }
+        }
         if(!reduced) rot-=0.0022;
         requestAnimationFrame(draw);
       }
