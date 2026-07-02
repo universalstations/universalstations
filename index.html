@@ -2131,6 +2131,9 @@ document.documentElement.classList.replace('no-js', 'js');
 
     /** Stratégies de fetch par ordre de priorité. */
     const strategies = [
+      /* 1. Notre propre proxy (Netlify Function) — rapide, fiable, privé */
+      () => globalThis.fetch('/api/rss'),
+      /* 2+ Anciens proxies tiers, gardés en secours */
       url => globalThis.fetch(url, { mode: 'cors' }),
       url => globalThis.fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`),
       url => globalThis.fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`),

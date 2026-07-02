@@ -7,6 +7,9 @@
 # (remplace les anciennes redirections JavaScript de /podcast/, /blog/...).
 # ══════════════════════════════════════════════════════════
 
+# API interne : proxy RSS (Netlify Function)
+/api/rss     /.netlify/functions/rss   200
+
 /podcast     /index.html   200!
 /playlists   /index.html   200!
 /about       /index.html   200!
