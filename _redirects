@@ -1,0 +1,13 @@
+# ══════════════════════════════════════════════════════════
+# Universal Stations — Règles Netlify
+# Réécritures 200 : l'URL reste dans la barre d'adresse,
+# index.html est servi et le JS affiche la bonne section
+# (géré par urlToSection dans index.html).
+# Le "!" force la règle même si un fichier existe au même chemin
+# (remplace les anciennes redirections JavaScript de /podcast/, /blog/...).
+# ══════════════════════════════════════════════════════════
+
+/podcast     /index.html   200!
+/playlists   /index.html   200!
+/about       /index.html   200!
+/blog        /index.html   200!
