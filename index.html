@@ -1217,34 +1217,6 @@ Aide Google à comprendre le contenu du site
         </div>
 
         <!-- Gestionnaire de playlists -->
-        <section id="pl-manager" class="playlist-manager" aria-labelledby="mgr-title" hidden>
-          <h3 id="mgr-title" class="sr-only">Gestionnaire de playlists</h3>
-
-          <dl class="mgr-stats">
-            <div class="mgr-stat">
-              <dd id="mgr-total">0</dd>
-              <dt>épisodes</dt>
-            </div>
-            <div class="mgr-stat">
-              <dd id="mgr-linked">0</dd>
-              <dt>playlists liées</dt>
-            </div>
-            <div class="mgr-stat">
-              <dd id="mgr-missing">0</dd>
-              <dt>sans playlist</dt>
-            </div>
-          </dl>
-
-          <div class="mgr-actions">
-            <button onclick="exportConfig()" class="btn btn-g">↓ Exporter JSON</button>
-            <label class="btn btn-g" for="import-file">↑ Importer JSON
-              <input type="file" id="import-file" accept=".json"
-                     onchange="importConfig(event)" hidden>
-            </label>
-          </div>
-
-          <div id="mgr-table" role="list" aria-label="Épisodes et playlists associées"></div>
-        </section>
 
       </div>
     </section>
