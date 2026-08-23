@@ -2,11 +2,9 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="theme-color" content="#faf6f0" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#15130f" media="(prefers-color-scheme: dark)">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Playlists · Universal Stations</title>
-<meta name="description" content="Une playlist officielle par saison : Nuance (rap), Caviar (pop), Caramel (reggae), Lotus (RnB). 400 titres curés sur Spotify.">
+<title>Billie Eilish · L&#x27;Avant-Garde · Universal Stations</title>
+<meta name="description" content="Celle qui a prouvé qu&#x27;un murmure peut être plus puissant qu&#x27;un cri : l&#x27;ascension de Billie Eilish et de son frère Finneas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,500;0,700;0,800;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -16,16 +14,16 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="manifest" href="../manifest.json">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Universal Stations">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="Playlists · Universal Stations">
-<meta property="og:description" content="Une playlist officielle par saison : Nuance (rap), Caviar (pop), Caramel (reggae), Lotus (RnB). 400 titres curés sur Spotify.">
-<meta property="og:url" content="https://www.universalstations.com/playlists/">
-<meta property="og:image" content="https://www.universalstations.com/og-image.jpg">
+<meta property="og:title" content="Billie Eilish · L&#x27;Avant-Garde · Universal Stations">
+<meta property="og:description" content="Celle qui a prouvé qu&#x27;un murmure peut être plus puissant qu&#x27;un cri : l&#x27;ascension de Billie Eilish et de son frère Finneas.">
+<meta property="og:url" content="https://www.universalstations.com/magazine/saison-2-14-billie-eilish-lavant-garde.html">
+<meta property="og:image" content="https://i.scdn.co/image/ab6765630000ba8a830f6369d9846cb96eae2247">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<link rel="canonical" href="https://www.universalstations.com/playlists/">
+<link rel="canonical" href="https://www.universalstations.com/magazine/saison-2-14-billie-eilish-lavant-garde.html">
 </head>
 <body>
 
@@ -35,61 +33,42 @@
   <a class="logo" href="../index.html">Universal <em>Stations</em></a>
   <div class="links">
     <a href="../episodes/index.html">Épisodes</a>
-    <a href="index.html" style="color:var(--ink)">Playlists</a>
+    <a href="../playlists/index.html">Playlists</a>
     <a href="../livres/index.html">Livres</a>
-    <a href="../magazine/index.html">Magazine</a>
+    <a href="index.html" style="color:var(--ink)">Magazine</a>
     <a href="../a-propos/index.html">À propos</a>
   </div>
   <a class="nav-cta" href="https://open.spotify.com/show/4Drtr3vcLpNsiYZVmGoprn">Écouter</a>
 </nav>
 
 <main id="main">
-
-<header class="page-hero">
-  <p class="kicker">Curation Spotify</p>
-  <h1><strong>Le son de</strong> <em>chaque saison</em>.</h1>
-  <p class="hero-sub">Une playlist officielle par saison, 100 titres chacune. Des sélections curées qui prolongent chaque épisode et font vibrer la culture.</p>
-</header>
-
-<div class="jam" id="jam" hidden></div>
-
-<script>
-fetch('../jam.json',{cache:'no-store'}).then(r=>r.json()).then(j=>{
-  if(j.status!=='on'||!j.url) return;
-  const el=document.getElementById('jam');
-  el.hidden=false;
-  el.innerHTML=`<div class="jam-card">
-    <span class="jam-dot" aria-hidden="true"></span>
-    <h3>Jam en cours · ${(j.label||'Écoute collective').replace(/</g,'&lt;')}</h3>
-    <a class="jam-join" href="${j.url.replace(/"/g,'')}" target="_blank" rel="noopener">Rejoindre le Jam ↗</a>
-    <p>Écoute la même musique, en même temps que tout le monde, sur Spotify.</p>
-  </div>`;
-}).catch(()=>{});
-</script>
-
-<div class="plists">
-  <div class="plist">
-    <div class="head"><h3>Nuance</h3><span class="g">Saison 1 · Rap</span></div>
-    <p>La sélection complète des artistes de la Saison 1 : les sons qui définissent le rap francophone contemporain.</p>
-    <iframe src="https://open.spotify.com/embed/playlist/3OmEq4Shr3SvNgWq9m8wgV?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Playlist Nuance"></iframe>
-  </div>
-  <div class="plist">
-    <div class="head"><h3>Caviar</h3><span class="g">Saison 2 · Pop</span></div>
-    <p>La sélection complète des artistes de la Saison 2 : la pop mondiale, des fondations aux avant-gardes.</p>
-    <iframe src="https://open.spotify.com/embed/playlist/1nJf1uFnETKvIbK2f0i5V3?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Playlist Caviar"></iframe>
-  </div>
-  <div class="plist">
-    <div class="head"><h3>Caramel</h3><span class="g">Saison 3 · Reggae</span></div>
-    <p>La sélection complète des artistes de la Saison 3 : les sons qui définissent le reggae contemporain.</p>
-    <iframe src="https://open.spotify.com/embed/playlist/54is6RvS5F3thhUomIUPN0?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Playlist Caramel"></iframe>
-  </div>
-  <div class="plist">
-    <div class="head"><h3>Lotus</h3><span class="g">Saison 4 · RnB</span></div>
-    <p>La sélection de la Saison 4 : la soul et le RnB, des fondations de Ray Charles aux voix d'aujourd'hui.</p>
-    <iframe src="https://open.spotify.com/embed/playlist/6JdqN6rJ3DpmKSYkMipuCG?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Playlist Lotus"></iframe>
-  </div>
-</div>
-
+<article>
+  <p class="art-back"><a href="index.html">← Retour au Magazine</a></p>
+  <header class="art-hero">
+    <p class="kicker">Saison 2 · Pop alternative</p>
+    <h1>Billie Eilish · L&#x27;Avant-Garde</h1>
+    <p class="date">29 Avril 2026</p>
+  </header>
+  <div class="art-cover"><div class="imgw"><img src="https://i.scdn.co/image/ab6765630000ba8a830f6369d9846cb96eae2247" alt=""></div></div>
+  <div id="voice-mount"></div>
+  <div class="art-wrap"><div id="art-body">
+<p><em>Bienvenue dans Universal Stations. Vous écoutez le quatorzième épisode de la deuxième saison. Imaginez une chambre d'enfant à Los Angeles, un microphone, deux adolescents, et une chanson qui devient virale du jour au lendemain. Voici l'histoire de Billie Eilish.</em></p>
+<p>Au moment où tout le monde criait pour se faire entendre, une jeune fille a choisi de murmurer, et le monde entier s'est tu pour l'écouter. Billie Eilish a bouleversé toutes les règles de l'industrie musicale, depuis la chambre de son frère, et a prouvé qu'un chuchotement pouvait être plus puissant que le plus violent des cris.</p>
+<p>Elle naît au tout début des années deux mille, à Los Angeles, dans une famille d'artistes. Avec son frère, prénommé Finneas, elle compose et enregistre ses premières chansons à la maison, dans une chambre transformée en studio de fortune. L'une de ces chansons, mise en ligne sur internet, se répand comme une traînée de poudre. Sans grande maison de disques, sans recette toute faite, deux adolescents viennent de toucher le coeur du monde.</p>
+<h2>Une révolution depuis une chambre</h2>
+<p>Ce qui rend leur musique si particulière, c'est son intimité. Les sons sont feutrés, la voix est proche, comme une confidence soufflée à l'oreille. Cette approche, à contre-courant des productions tonitruantes de l'époque, séduit immédiatement. Leur premier album, conçu de la même manière artisanale, connaît un triomphe mondial et rafle les plus grandes récompenses de la musique, du jamais-vu pour des artistes aussi jeunes.</p>
+<p>La collaboration avec son frère reste le coeur de son art. Ensemble, ils continuent d'explorer, d'album en album, des univers différents, jusqu'à composer pour le cinéma des chansons qui leur vaudront les plus hautes récompenses, dont celles du grand cinéma américain. À chaque projet, Billie Eilish se métamorphose, change d'apparence et de son, sans jamais perdre son identité.</p>
+<h2>La voix d'une génération</h2>
+<p>Au-delà de la musique, Billie Eilish est devenue la porte-parole de toute une jeunesse. Elle parle avec une grande sincérité de la santé mentale, des difficultés de grandir sous le regard de tous, et de la défense de l'environnement. Pour des millions de jeunes, elle est bien plus qu'une chanteuse : une voix qui les comprend.</p>
+<h2>Pour conclure ce quatorzième épisode</h2>
+<p>L'histoire de Billie Eilish est celle d'une révolution silencieuse. En restant fidèle à sa vision, à sa sensibilité et à sa famille, elle a redéfini ce que pouvait être une star de la pop. Elle a prouvé qu'il n'était pas nécessaire de hurler pour marquer son époque, et qu'un murmure suffisait parfois à changer la musique.</p>
+<p><em>Vous venez d'écouter le quatorzième épisode de la deuxième saison d'Universal Stations. Pour prolonger ce voyage, écoutez la playlist de cette saison : recherchez simplement Caviar sur votre plateforme d'écoute préférée. Abonnez-vous à Universal Stations pour ne manquer aucun épisode. À très bientôt.</em></p>
+  </div></div>
+  <nav class="art-nav" aria-label="Articles voisins">
+    <a href="saison-2-13-tyla-lafro-pop-solaire.html">← Article précédent<b>Tyla · L&#x27;Afro-Pop Solaire</b></a>
+    <a href="saison-2-15-sabrina-carpenter-la-pop-petillante.html" style="text-align:right">Article suivant →<b>Sabrina Carpenter · La Pop Pétillante</b></a>
+  </nav>
+</article>
 </main>
 
 <footer>
@@ -127,6 +106,7 @@ fetch('../jam.json',{cache:'no-store'}).then(r=>r.json()).then(j=>{
 </footer>
 
 <script src="../assets/app.js" defer></script>
+<script src="../assets/voice.js" defer></script>
 <script src="../assets/rss.js" defer></script>
 <script src="../assets/search-data.js" defer></script>
 <script src="../assets/search.js" defer></script>

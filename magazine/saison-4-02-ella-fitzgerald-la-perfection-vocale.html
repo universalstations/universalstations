@@ -2,11 +2,9 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="theme-color" content="#faf6f0" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#15130f" media="(prefers-color-scheme: dark)">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Playlists · Universal Stations</title>
-<meta name="description" content="Une playlist officielle par saison : Nuance (rap), Caviar (pop), Caramel (reggae), Lotus (RnB). 400 titres curés sur Spotify.">
+<title>Ella Fitzgerald · La Perfection Vocale · Universal Stations</title>
+<meta name="description" content="Celle qui a fait de la perfection vocale un acte de résistance et de liberté : Ella Fitzgerald.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,500;0,700;0,800;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -16,16 +14,16 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="manifest" href="../manifest.json">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Universal Stations">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="Playlists · Universal Stations">
-<meta property="og:description" content="Une playlist officielle par saison : Nuance (rap), Caviar (pop), Caramel (reggae), Lotus (RnB). 400 titres curés sur Spotify.">
-<meta property="og:url" content="https://www.universalstations.com/playlists/">
-<meta property="og:image" content="https://www.universalstations.com/og-image.jpg">
+<meta property="og:title" content="Ella Fitzgerald · La Perfection Vocale · Universal Stations">
+<meta property="og:description" content="Celle qui a fait de la perfection vocale un acte de résistance et de liberté : Ella Fitzgerald.">
+<meta property="og:url" content="https://www.universalstations.com/magazine/saison-4-02-ella-fitzgerald-la-perfection-vocale.html">
+<meta property="og:image" content="https://i.scdn.co/image/ab6765630000ba8add7dfbced7e56e45deecf81a">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<link rel="canonical" href="https://www.universalstations.com/playlists/">
+<link rel="canonical" href="https://www.universalstations.com/magazine/saison-4-02-ella-fitzgerald-la-perfection-vocale.html">
 </head>
 <body>
 
@@ -35,61 +33,42 @@
   <a class="logo" href="../index.html">Universal <em>Stations</em></a>
   <div class="links">
     <a href="../episodes/index.html">Épisodes</a>
-    <a href="index.html" style="color:var(--ink)">Playlists</a>
+    <a href="../playlists/index.html">Playlists</a>
     <a href="../livres/index.html">Livres</a>
-    <a href="../magazine/index.html">Magazine</a>
+    <a href="index.html" style="color:var(--ink)">Magazine</a>
     <a href="../a-propos/index.html">À propos</a>
   </div>
   <a class="nav-cta" href="https://open.spotify.com/show/4Drtr3vcLpNsiYZVmGoprn">Écouter</a>
 </nav>
 
 <main id="main">
-
-<header class="page-hero">
-  <p class="kicker">Curation Spotify</p>
-  <h1><strong>Le son de</strong> <em>chaque saison</em>.</h1>
-  <p class="hero-sub">Une playlist officielle par saison, 100 titres chacune. Des sélections curées qui prolongent chaque épisode et font vibrer la culture.</p>
-</header>
-
-<div class="jam" id="jam" hidden></div>
-
-<script>
-fetch('../jam.json',{cache:'no-store'}).then(r=>r.json()).then(j=>{
-  if(j.status!=='on'||!j.url) return;
-  const el=document.getElementById('jam');
-  el.hidden=false;
-  el.innerHTML=`<div class="jam-card">
-    <span class="jam-dot" aria-hidden="true"></span>
-    <h3>Jam en cours · ${(j.label||'Écoute collective').replace(/</g,'&lt;')}</h3>
-    <a class="jam-join" href="${j.url.replace(/"/g,'')}" target="_blank" rel="noopener">Rejoindre le Jam ↗</a>
-    <p>Écoute la même musique, en même temps que tout le monde, sur Spotify.</p>
-  </div>`;
-}).catch(()=>{});
-</script>
-
-<div class="plists">
-  <div class="plist">
-    <div class="head"><h3>Nuance</h3><span class="g">Saison 1 · Rap</span></div>
-    <p>La sélection complète des artistes de la Saison 1 : les sons qui définissent le rap francophone contemporain.</p>
-    <iframe src="https://open.spotify.com/embed/playlist/3OmEq4Shr3SvNgWq9m8wgV?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Playlist Nuance"></iframe>
-  </div>
-  <div class="plist">
-    <div class="head"><h3>Caviar</h3><span class="g">Saison 2 · Pop</span></div>
-    <p>La sélection complète des artistes de la Saison 2 : la pop mondiale, des fondations aux avant-gardes.</p>
-    <iframe src="https://open.spotify.com/embed/playlist/1nJf1uFnETKvIbK2f0i5V3?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Playlist Caviar"></iframe>
-  </div>
-  <div class="plist">
-    <div class="head"><h3>Caramel</h3><span class="g">Saison 3 · Reggae</span></div>
-    <p>La sélection complète des artistes de la Saison 3 : les sons qui définissent le reggae contemporain.</p>
-    <iframe src="https://open.spotify.com/embed/playlist/54is6RvS5F3thhUomIUPN0?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Playlist Caramel"></iframe>
-  </div>
-  <div class="plist">
-    <div class="head"><h3>Lotus</h3><span class="g">Saison 4 · RnB</span></div>
-    <p>La sélection de la Saison 4 : la soul et le RnB, des fondations de Ray Charles aux voix d'aujourd'hui.</p>
-    <iframe src="https://open.spotify.com/embed/playlist/6JdqN6rJ3DpmKSYkMipuCG?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Playlist Lotus"></iframe>
-  </div>
-</div>
-
+<article>
+  <p class="art-back"><a href="index.html">← Retour au Magazine</a></p>
+  <header class="art-hero">
+    <p class="kicker">Saison 4 · Jazz</p>
+    <h1>Ella Fitzgerald · La Perfection Vocale</h1>
+    <p class="date">11 Juin 2026</p>
+  </header>
+  <div class="art-cover"><div class="imgw"><img src="https://i.scdn.co/image/ab6765630000ba8add7dfbced7e56e45deecf81a" alt=""></div></div>
+  <div id="voice-mount"></div>
+  <div class="art-wrap"><div id="art-body">
+<p><em>Bienvenue dans Universal Stations. Vous écoutez le deuxième épisode de la quatrième saison. Trois octaves, aucune fausse note. Voici l'histoire d'une voix qui n'interprétait pas les chansons, mais qui les possédait. Voici l'histoire d'Ella Fitzgerald.</em></p>
+<p>Après l'homme qui a inventé la soul, voici la femme qui a porté le jazz vocal à son sommet absolu. On la surnommait la première dame de la chanson, et ce titre n'avait rien d'exagéré. Ella Fitzgerald a redéfini ce qu'une voix humaine pouvait accomplir.</p>
+<p>Née à la fin des années mille neuf cent dix, elle grandit dans le quartier de Harlem, à New York. Adolescente, elle se présente sur la scène d'un célèbre théâtre et conquiert immédiatement le public, alors qu'elle n'a que dix-sept ans. Très vite, le monde entier découvre une voix d'une pureté et d'une souplesse stupéfiantes.</p>
+<h2>L'art du scat</h2>
+<p>Ce qui rend Ella Fitzgerald unique, c'est sa maîtrise du scat, cet art d'improviser en chantant des syllabes sans paroles, comme un instrument. Elle imite les cuivres et les cordes avec une précision qui laisse les plus grands musiciens bouche bée. Sa voix devient un orchestre à elle seule. Elle immortalise par ailleurs les plus grandes chansons du répertoire américain, avec une clarté cristalline que personne n'a jamais vraiment égalée.</p>
+<p>Tous les géants de son temps rêvent de chanter à ses côtés, des plus grandes trompettes aux plus grands chefs d'orchestre. Elle devient la référence absolue, celle que l'on cite en exemple et que l'on cherche à imiter, sans jamais y parvenir tout à fait.</p>
+<h2>La perfection comme résistance</h2>
+<p>Mais derrière cette apparente facilité se cache un combat. À une époque marquée par le racisme et le sexisme, le monde cherchait à effacer une femme comme elle. Ella Fitzgerald a répondu par l'excellence. Sa perfection vocale est devenue une forme de résistance, une manière silencieuse mais éclatante d'affirmer sa place et sa liberté. On ne pouvait tout simplement pas l'ignorer.</p>
+<h2>Pour conclure ce deuxième épisode</h2>
+<p>L'histoire d'Ella Fitzgerald est celle d'une artiste qui a transformé son talent en acte de liberté. En atteignant des sommets que personne n'avait touchés avant elle, elle a prouvé que l'excellence pouvait être une arme. Sa voix reste, aujourd'hui encore, l'étalon de la perfection.</p>
+<p><em>Vous venez d'écouter le deuxième épisode de la quatrième saison d'Universal Stations. Pour prolonger ce voyage, écoutez la playlist de cette saison : recherchez simplement Caramel sur votre plateforme d'écoute préférée. Abonnez-vous à Universal Stations pour ne manquer aucun épisode. À très bientôt.</em></p>
+  </div></div>
+  <nav class="art-nav" aria-label="Articles voisins">
+    <a href="saison-4-01-ray-charles-larchitecte-de-la-soul.html">← Article précédent<b>Ray Charles · L&#x27;Architecte de la Soul</b></a>
+    <a href="saison-4-03-prince-michael-jackson-les-rois-du-groove.html" style="text-align:right">Article suivant →<b>Prince et Michael Jackson · Les Rois du Groove</b></a>
+  </nav>
+</article>
 </main>
 
 <footer>
@@ -127,6 +106,7 @@ fetch('../jam.json',{cache:'no-store'}).then(r=>r.json()).then(j=>{
 </footer>
 
 <script src="../assets/app.js" defer></script>
+<script src="../assets/voice.js" defer></script>
 <script src="../assets/rss.js" defer></script>
 <script src="../assets/search-data.js" defer></script>
 <script src="../assets/search.js" defer></script>

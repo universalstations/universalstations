@@ -5,8 +5,8 @@
 <meta name="theme-color" content="#faf6f0" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#15130f" media="(prefers-color-scheme: dark)">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Playlists · Universal Stations</title>
-<meta name="description" content="Une playlist officielle par saison : Nuance (rap), Caviar (pop), Caramel (reggae), Lotus (RnB). 400 titres curés sur Spotify.">
+<title>Épisodes · Universal Stations</title>
+<meta name="description" content="Tous les épisodes du podcast Universal Stations. Un artiste par épisode : rap, pop, reggae, RnB.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,500;0,700;0,800;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -19,13 +19,13 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Universal Stations">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="Playlists · Universal Stations">
-<meta property="og:description" content="Une playlist officielle par saison : Nuance (rap), Caviar (pop), Caramel (reggae), Lotus (RnB). 400 titres curés sur Spotify.">
-<meta property="og:url" content="https://www.universalstations.com/playlists/">
+<meta property="og:title" content="Épisodes · Universal Stations">
+<meta property="og:description" content="Tous les épisodes du podcast Universal Stations. Un artiste par épisode : rap, pop, reggae, RnB.">
+<meta property="og:url" content="https://www.universalstations.com/episodes/">
 <meta property="og:image" content="https://www.universalstations.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<link rel="canonical" href="https://www.universalstations.com/playlists/">
+<link rel="canonical" href="https://www.universalstations.com/episodes/">
 </head>
 <body>
 
@@ -34,8 +34,8 @@
 <nav aria-label="Navigation principale">
   <a class="logo" href="../index.html">Universal <em>Stations</em></a>
   <div class="links">
-    <a href="../episodes/index.html">Épisodes</a>
-    <a href="index.html" style="color:var(--ink)">Playlists</a>
+    <a href="index.html" style="color:var(--ink)">Épisodes</a>
+    <a href="../playlists/index.html">Playlists</a>
     <a href="../livres/index.html">Livres</a>
     <a href="../magazine/index.html">Magazine</a>
     <a href="../a-propos/index.html">À propos</a>
@@ -46,48 +46,22 @@
 <main id="main">
 
 <header class="page-hero">
-  <p class="kicker">Curation Spotify</p>
-  <h1><strong>Le son de</strong> <em>chaque saison</em>.</h1>
-  <p class="hero-sub">Une playlist officielle par saison, 100 titres chacune. Des sélections curées qui prolongent chaque épisode et font vibrer la culture.</p>
+  <p class="kicker">Le podcast</p>
+  <h1><strong>Tous les</strong> <em>épisodes</em>.</h1>
+  <p class="hero-sub">Un artiste par épisode, une histoire par légende. Filtre par saison pour explorer chaque univers.</p>
 </header>
 
-<div class="jam" id="jam" hidden></div>
+<div class="filters" role="group" aria-label="Filtrer par saison">
+  <button class="f-btn on" data-s="all">Tous</button>
+  <button class="f-btn" data-s="1">Saison 1 · Rap</button>
+  <button class="f-btn" data-s="2">Saison 2 · Pop</button>
+  <button class="f-btn" data-s="3">Saison 3 · Reggae</button>
+  <button class="f-btn" data-s="4">Saison 4 · RnB</button>
+  <button class="f-btn" data-s="premium">★ Exclusifs Spotify</button>
+</div>
 
-<script>
-fetch('../jam.json',{cache:'no-store'}).then(r=>r.json()).then(j=>{
-  if(j.status!=='on'||!j.url) return;
-  const el=document.getElementById('jam');
-  el.hidden=false;
-  el.innerHTML=`<div class="jam-card">
-    <span class="jam-dot" aria-hidden="true"></span>
-    <h3>Jam en cours · ${(j.label||'Écoute collective').replace(/</g,'&lt;')}</h3>
-    <a class="jam-join" href="${j.url.replace(/"/g,'')}" target="_blank" rel="noopener">Rejoindre le Jam ↗</a>
-    <p>Écoute la même musique, en même temps que tout le monde, sur Spotify.</p>
-  </div>`;
-}).catch(()=>{});
-</script>
-
-<div class="plists">
-  <div class="plist">
-    <div class="head"><h3>Nuance</h3><span class="g">Saison 1 · Rap</span></div>
-    <p>La sélection complète des artistes de la Saison 1 : les sons qui définissent le rap francophone contemporain.</p>
-    <iframe src="https://open.spotify.com/embed/playlist/3OmEq4Shr3SvNgWq9m8wgV?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Playlist Nuance"></iframe>
-  </div>
-  <div class="plist">
-    <div class="head"><h3>Caviar</h3><span class="g">Saison 2 · Pop</span></div>
-    <p>La sélection complète des artistes de la Saison 2 : la pop mondiale, des fondations aux avant-gardes.</p>
-    <iframe src="https://open.spotify.com/embed/playlist/1nJf1uFnETKvIbK2f0i5V3?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Playlist Caviar"></iframe>
-  </div>
-  <div class="plist">
-    <div class="head"><h3>Caramel</h3><span class="g">Saison 3 · Reggae</span></div>
-    <p>La sélection complète des artistes de la Saison 3 : les sons qui définissent le reggae contemporain.</p>
-    <iframe src="https://open.spotify.com/embed/playlist/54is6RvS5F3thhUomIUPN0?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Playlist Caramel"></iframe>
-  </div>
-  <div class="plist">
-    <div class="head"><h3>Lotus</h3><span class="g">Saison 4 · RnB</span></div>
-    <p>La sélection de la Saison 4 : la soul et le RnB, des fondations de Ray Charles aux voix d'aujourd'hui.</p>
-    <iframe src="https://open.spotify.com/embed/playlist/6JdqN6rJ3DpmKSYkMipuCG?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Playlist Lotus"></iframe>
-  </div>
+<div id="grid" class="eps-full" aria-live="polite">
+  <div class="state" style="grid-column:1/-1"><div class="dotp"></div>Chargement des épisodes…</div>
 </div>
 
 </main>
@@ -126,8 +100,51 @@ fetch('../jam.json',{cache:'no-store'}).then(r=>r.json()).then(j=>{
   </div>
 </footer>
 
+<script src="../assets/rss.js"></script>
+<script>
+(async () => {
+  const grid = document.getElementById('grid');
+  const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  let items = null;
+  const render = f => {
+    if (f === 'premium') {
+      grid.innerHTML = USRSS.PREMIUM.map(it => `<a class="card" href="${esc(it.link)}" target="_blank" rel="noopener">
+        <div class="imgw"><img loading="lazy" src="${esc(it.img)}" alt=""><span class="badge-x">★ Exclusif</span></div>
+        <span class="tag">Saison ${it.season} · ${USRSS.SEASONS[it.season]}</span>
+        <h3>${esc(it.title)}</h3>
+        <p>${esc(it.desc.slice(0,110))}…</p>
+        <div class="meta"><b>Réservé aux abonnés Spotify</b></div>
+      </a>`).join('');
+      return;
+    }
+    if (!items) {
+      grid.innerHTML = '<div class="state" style="grid-column:1/-1">Impossible de charger les épisodes.<br>Vérifie ta connexion puis recharge la page. Les épisodes <b>★ Exclusifs Spotify</b> restent accessibles via le filtre ci-dessus.</div>';
+      return;
+    }
+    const list = f === 'all' ? items : items.filter(it => String(it.season) === f);
+    grid.innerHTML = list.map((it, i) => {
+      const idx = items.indexOf(it);
+      const d = USRSS.stripHTML(it.desc).slice(0, 110);
+      return `<a class="card" href="episode.html?i=${idx}">
+        <div class="imgw">${it.img ? `<img loading="lazy" src="${esc(it.img)}" alt="">` : ''}</div>
+        <span class="tag">${it.season ? `Saison ${it.season} · ${USRSS.SEASONS[it.season]}` : 'Épisode'}</span>
+        <h3>${esc(it.title)}</h3>
+        <p>${esc(d)}…</p>
+        <div class="meta">${it.ep ? `<b>EP. ${it.ep}</b> · ` : ''}${USRSS.fdate(it.date)}</div>
+      </a>`;
+    }).join('') || '<div class="state" style="grid-column:1/-1">Aucun épisode dans cette saison.</div>';
+  };
+  document.querySelectorAll('.f-btn').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.f-btn').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    render(b.dataset.s);
+  }));
+  items = await USRSS.load();
+  render('all');
+})();
+</script>
+
 <script src="../assets/app.js" defer></script>
-<script src="../assets/rss.js" defer></script>
 <script src="../assets/search-data.js" defer></script>
 <script src="../assets/search.js" defer></script>
 </body>

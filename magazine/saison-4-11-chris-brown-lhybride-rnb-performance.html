@@ -2,11 +2,9 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="theme-color" content="#faf6f0" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#15130f" media="(prefers-color-scheme: dark)">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Playlists · Universal Stations</title>
-<meta name="description" content="Une playlist officielle par saison : Nuance (rap), Caviar (pop), Caramel (reggae), Lotus (RnB). 400 titres curés sur Spotify.">
+<title>Chris Brown · L&#x27;Hybride R&amp;B-Performance · Universal Stations</title>
+<meta name="description" content="Celui qui a transformé le rythme and blues contemporain en terrain d&#x27;expérimentation sans limites : Chris Brown, entre virtuosité vocale, génie chorég">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,500;0,700;0,800;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -16,16 +14,16 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="manifest" href="../manifest.json">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Universal Stations">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="Playlists · Universal Stations">
-<meta property="og:description" content="Une playlist officielle par saison : Nuance (rap), Caviar (pop), Caramel (reggae), Lotus (RnB). 400 titres curés sur Spotify.">
-<meta property="og:url" content="https://www.universalstations.com/playlists/">
-<meta property="og:image" content="https://www.universalstations.com/og-image.jpg">
+<meta property="og:title" content="Chris Brown · L&#x27;Hybride R&amp;B-Performance · Universal Stations">
+<meta property="og:description" content="Celui qui a transformé le rythme and blues contemporain en terrain d&#x27;expérimentation sans limites : Chris Brown, entre virtuosité vocale, génie chorég">
+<meta property="og:url" content="https://www.universalstations.com/magazine/saison-4-11-chris-brown-lhybride-rnb-performance.html">
+<meta property="og:image" content="https://i.scdn.co/image/ab6765630000ba8acc355a1b63d9ee0d228923e1">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<link rel="canonical" href="https://www.universalstations.com/playlists/">
+<link rel="canonical" href="https://www.universalstations.com/magazine/saison-4-11-chris-brown-lhybride-rnb-performance.html">
 </head>
 <body>
 
@@ -35,61 +33,42 @@
   <a class="logo" href="../index.html">Universal <em>Stations</em></a>
   <div class="links">
     <a href="../episodes/index.html">Épisodes</a>
-    <a href="index.html" style="color:var(--ink)">Playlists</a>
+    <a href="../playlists/index.html">Playlists</a>
     <a href="../livres/index.html">Livres</a>
-    <a href="../magazine/index.html">Magazine</a>
+    <a href="index.html" style="color:var(--ink)">Magazine</a>
     <a href="../a-propos/index.html">À propos</a>
   </div>
   <a class="nav-cta" href="https://open.spotify.com/show/4Drtr3vcLpNsiYZVmGoprn">Écouter</a>
 </nav>
 
 <main id="main">
-
-<header class="page-hero">
-  <p class="kicker">Curation Spotify</p>
-  <h1><strong>Le son de</strong> <em>chaque saison</em>.</h1>
-  <p class="hero-sub">Une playlist officielle par saison, 100 titres chacune. Des sélections curées qui prolongent chaque épisode et font vibrer la culture.</p>
-</header>
-
-<div class="jam" id="jam" hidden></div>
-
-<script>
-fetch('../jam.json',{cache:'no-store'}).then(r=>r.json()).then(j=>{
-  if(j.status!=='on'||!j.url) return;
-  const el=document.getElementById('jam');
-  el.hidden=false;
-  el.innerHTML=`<div class="jam-card">
-    <span class="jam-dot" aria-hidden="true"></span>
-    <h3>Jam en cours · ${(j.label||'Écoute collective').replace(/</g,'&lt;')}</h3>
-    <a class="jam-join" href="${j.url.replace(/"/g,'')}" target="_blank" rel="noopener">Rejoindre le Jam ↗</a>
-    <p>Écoute la même musique, en même temps que tout le monde, sur Spotify.</p>
-  </div>`;
-}).catch(()=>{});
-</script>
-
-<div class="plists">
-  <div class="plist">
-    <div class="head"><h3>Nuance</h3><span class="g">Saison 1 · Rap</span></div>
-    <p>La sélection complète des artistes de la Saison 1 : les sons qui définissent le rap francophone contemporain.</p>
-    <iframe src="https://open.spotify.com/embed/playlist/3OmEq4Shr3SvNgWq9m8wgV?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Playlist Nuance"></iframe>
-  </div>
-  <div class="plist">
-    <div class="head"><h3>Caviar</h3><span class="g">Saison 2 · Pop</span></div>
-    <p>La sélection complète des artistes de la Saison 2 : la pop mondiale, des fondations aux avant-gardes.</p>
-    <iframe src="https://open.spotify.com/embed/playlist/1nJf1uFnETKvIbK2f0i5V3?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Playlist Caviar"></iframe>
-  </div>
-  <div class="plist">
-    <div class="head"><h3>Caramel</h3><span class="g">Saison 3 · Reggae</span></div>
-    <p>La sélection complète des artistes de la Saison 3 : les sons qui définissent le reggae contemporain.</p>
-    <iframe src="https://open.spotify.com/embed/playlist/54is6RvS5F3thhUomIUPN0?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Playlist Caramel"></iframe>
-  </div>
-  <div class="plist">
-    <div class="head"><h3>Lotus</h3><span class="g">Saison 4 · RnB</span></div>
-    <p>La sélection de la Saison 4 : la soul et le RnB, des fondations de Ray Charles aux voix d'aujourd'hui.</p>
-    <iframe src="https://open.spotify.com/embed/playlist/6JdqN6rJ3DpmKSYkMipuCG?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Playlist Lotus"></iframe>
-  </div>
-</div>
-
+<article>
+  <p class="art-back"><a href="index.html">← Retour au Magazine</a></p>
+  <header class="art-hero">
+    <p class="kicker">Saison 4 · RnB</p>
+    <h1>Chris Brown · L&#x27;Hybride R&amp;B-Performance</h1>
+    <p class="date">22 Juin 2026</p>
+  </header>
+  <div class="art-cover"><div class="imgw"><img src="https://i.scdn.co/image/ab6765630000ba8acc355a1b63d9ee0d228923e1" alt=""></div></div>
+  <div id="voice-mount"></div>
+  <div class="art-wrap"><div id="art-body">
+<p><em>Bienvenue dans Universal Stations. Vous écoutez le onzième épisode de la quatrième saison. Chanteur, danseur, artiste visuel. Voici le portrait d'un artiste qui a fait de la performance un art total. Voici l'histoire de Chris Brown.</em></p>
+<p>Certains artistes se définissent par une seule chose qu'ils font à la perfection. Chris Brown, lui, refuse de choisir. Pilier du rythme and blues contemporain, il en a fait un terrain d'expérimentation sans limites, capable de passer d'un style à l'autre avec une agilité déconcertante.</p>
+<p>Né à la fin des années mille neuf cent quatre-vingt, dans l'État de Virginie, il se révèle très jeune comme un prodige. Dès ses débuts, on remarque autant sa voix que son aisance sur scène. En l'espace de deux décennies, il bâtit un catalogue d'une densité rare et devient l'un des artistes les plus écoutés de l'ère numérique.</p>
+<h2>Une versatilité exceptionnelle</h2>
+<p>Ce qui frappe chez lui, c'est sa capacité à s'approprier chaque sonorité. Il jongle avec les codes, passant de la puissance du hip-hop à l'efficacité de la pop dansante, jusqu'à ses explorations plus récentes et solaires du côté des musiques africaines. Chaque fois, il transforme le son qu'il aborde en succès planétaire.</p>
+<p>Mais Chris Brown n'est pas qu'un interprète. C'est aussi un chorégraphe visionnaire, dont chaque mouvement redéfinit la performance scénique. Et son art ne s'arrête pas à la musique : passionné d'arts visuels et de graffiti, il nourrit son esthétique de couleurs et d'images. Il bâtit ainsi un héritage que l'on pourrait dire multisensoriel.</p>
+<h2>Un pont entre les styles</h2>
+<p>Véritable pivot de la musique mondiale, il agit comme un pont entre les époques et les genres. Des collaborations avec les plus grandes légendes du rap aux duos avec les stars internationales, il est devenu un partenaire recherché, capable de sublimer un projet par sa simple présence. Sa carrière, faut-il le rappeler, a aussi été traversée de controverses, mais son influence sur la musique de son temps reste indéniable.</p>
+<h2>Pour conclure ce onzième épisode</h2>
+<p>L'histoire de Chris Brown est celle d'un artiste qui ose toutes les couleurs. En refusant les frontières entre le chant, la danse et l'image, il a prouvé que la performance pouvait devenir un art complet, à la croisée du rythme, du corps et de la créativité visuelle.</p>
+<p><em>Vous venez d'écouter le onzième épisode de la quatrième saison d'Universal Stations. Pour prolonger ce voyage, écoutez la playlist de cette saison : recherchez simplement Lotus sur votre plateforme d'écoute préférée. Abonnez-vous à Universal Stations pour ne manquer aucun épisode. À très bientôt.</em></p>
+  </div></div>
+  <nav class="art-nav" aria-label="Articles voisins">
+    <a href="saison-4-10-daniel-caesar-la-purete-gospel.html">← Article précédent<b>Daniel Caesar · La Pureté Gospel</b></a>
+    <a href="saison-4-12-giveon-le-baryton-envoutant.html" style="text-align:right">Article suivant →<b>Giveon · Le Baryton Envoûtant</b></a>
+  </nav>
+</article>
 </main>
 
 <footer>
@@ -127,6 +106,7 @@ fetch('../jam.json',{cache:'no-store'}).then(r=>r.json()).then(j=>{
 </footer>
 
 <script src="../assets/app.js" defer></script>
+<script src="../assets/voice.js" defer></script>
 <script src="../assets/rss.js" defer></script>
 <script src="../assets/search-data.js" defer></script>
 <script src="../assets/search.js" defer></script>

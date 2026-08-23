@@ -1,16 +1,88 @@
-# ══════════════════════════════════════════════════════════
-# Universal Stations — Règles Netlify
-# Réécritures 200 : l'URL reste dans la barre d'adresse,
-# index.html est servi et le JS affiche la bonne section
-# (géré par urlToSection dans index.html).
-# Le "!" force la règle même si un fichier existe au même chemin
-# (remplace les anciennes redirections JavaScript de /podcast/, /blog/...).
-# ══════════════════════════════════════════════════════════
-
-# API interne : proxy RSS (Netlify Function)
+# API interne : proxy RSS (Netlify Function du repo)
 /api/rss     /.netlify/functions/rss   200
 
-/podcast     /index.html   200!
-/playlists   /index.html   200!
-/about       /index.html   200!
-/blog        /index.html   200!
+# URL propres pages légales
+/mentions-legales   /mentions-legales.html   200
+/privacy-policy     /privacy-policy.html     200
+
+# Redirections 301 : anciennes URLs de la V1 vers la nouvelle structure V2
+# Pages principales
+/podcast   /episodes/   301
+/blog      /magazine/   301
+/about     /a-propos/   301
+
+# Articles (V1 /articles/xxx -> V2 /magazine/xxx.html)
+/articles/saison-1-01-zaho-de-lalgerie-a-celine-dion   /magazine/saison-1-01-zaho-de-lalgerie-a-celine-dion.html   301
+/articles/saison-1-02-disiz-la-longevite-piratee   /magazine/saison-1-02-disiz-la-longevite-piratee.html   301
+/articles/saison-1-03-theodora-la-judokate-qui-bouscule-lindustrie   /magazine/saison-1-03-theodora-la-judokate-qui-bouscule-lindustrie.html   301
+/articles/saison-1-04-mc-solaar-du-trou-noir-au-triomphe   /magazine/saison-1-04-mc-solaar-du-trou-noir-au-triomphe.html   301
+/articles/saison-1-05-booba-lempire-du-duc   /magazine/saison-1-05-booba-lempire-du-duc.html   301
+/articles/saison-1-06-diams-la-paix-plutot-que-la-gloire   /magazine/saison-1-06-diams-la-paix-plutot-que-la-gloire.html   301
+/articles/saison-1-07-pit-baccardi-du-micro-au-business-africain   /magazine/saison-1-07-pit-baccardi-du-micro-au-business-africain.html   301
+/articles/saison-1-08-oxmo-puccino-entre-bitume-et-litterature   /magazine/saison-1-08-oxmo-puccino-entre-bitume-et-litterature.html   301
+/articles/saison-1-09-carre-das-les-legendes-reprennent-les-cles   /magazine/saison-1-09-carre-das-les-legendes-reprennent-les-cles.html   301
+/articles/saison-1-10-plk-larchitecte-du-rap-premium   /magazine/saison-1-10-plk-larchitecte-du-rap-premium.html   301
+/articles/saison-1-11-ye-tout-bruler-pour-recommencer   /magazine/saison-1-11-ye-tout-bruler-pour-recommencer.html   301
+/articles/saison-1-12-bully-lexil-tokyoite-de-ye   /magazine/saison-1-12-bully-lexil-tokyoite-de-ye.html   301
+/articles/saison-1-13-j-cole-lingenierie-du-silence   /magazine/saison-1-13-j-cole-lingenierie-du-silence.html   301
+/articles/saison-1-14-saison-1-tout-lunivers   /magazine/saison-1-14-saison-1-tout-lunivers.html   301
+/articles/saison-2-01-michael-jackson-le-roi-fondations   /magazine/saison-2-01-michael-jackson-le-roi-fondations.html   301
+/articles/saison-2-02-madonna-la-reine-evolution   /magazine/saison-2-02-madonna-la-reine-evolution.html   301
+/articles/saison-2-03-bruno-mars-le-groove-luxe   /magazine/saison-2-03-bruno-mars-le-groove-luxe.html   301
+/articles/saison-2-04-lana-del-rey-licone-melancolie-chic   /magazine/saison-2-04-lana-del-rey-licone-melancolie-chic.html   301
+/articles/saison-2-05-the-weeknd-la-pop-nocturne   /magazine/saison-2-05-the-weeknd-la-pop-nocturne.html   301
+/articles/saison-2-06-bad-bunny-la-pop-mondiale   /magazine/saison-2-06-bad-bunny-la-pop-mondiale.html   301
+/articles/saison-2-07-david-guetta-lenergie-club   /magazine/saison-2-07-david-guetta-lenergie-club.html   301
+/articles/saison-2-08-kehlani-le-rnb-sensuel   /magazine/saison-2-08-kehlani-le-rnb-sensuel.html   301
+/articles/saison-2-09-olivia-dean-la-soul-elegante   /magazine/saison-2-09-olivia-dean-la-soul-elegante.html   301
+/articles/saison-2-10-dua-lipa-le-disco-moderne   /magazine/saison-2-10-dua-lipa-le-disco-moderne.html   301
+/articles/saison-2-11-raye-la-puissance-vocale   /magazine/saison-2-11-raye-la-puissance-vocale.html   301
+/articles/saison-2-12-harry-styles-le-charisme-pop   /magazine/saison-2-12-harry-styles-le-charisme-pop.html   301
+/articles/saison-2-13-tyla-lafro-pop-solaire   /magazine/saison-2-13-tyla-lafro-pop-solaire.html   301
+/articles/saison-2-14-billie-eilish-lavant-garde   /magazine/saison-2-14-billie-eilish-lavant-garde.html   301
+/articles/saison-2-15-sabrina-carpenter-la-pop-petillante   /magazine/saison-2-15-sabrina-carpenter-la-pop-petillante.html   301
+/articles/saison-2-16-tate-mcrae-la-performance-dance   /magazine/saison-2-16-tate-mcrae-la-performance-dance.html   301
+/articles/saison-2-17-tems-de-youtube-au-sommet-mondial   /magazine/saison-2-17-tems-de-youtube-au-sommet-mondial.html   301
+/articles/saison-3-01-bob-marley-licone-universelle   /magazine/saison-3-01-bob-marley-licone-universelle.html   301
+/articles/saison-3-02-damian-marley-la-fusion-hip-hop   /magazine/saison-3-02-damian-marley-la-fusion-hip-hop.html   301
+/articles/saison-3-03-ziggy-marley-lheritage-pop   /magazine/saison-3-03-ziggy-marley-lheritage-pop.html   301
+/articles/pop-mondiale   /magazine/pop-mondiale.html   301
+/articles/rap-hip-hop-mondial   /magazine/rap-hip-hop-mondial.html   301
+/articles/reggae-mondial   /magazine/reggae-mondial.html   301
+/articles/saison-3-04-buju-banton-le-geant-du-dancehall-roots   /magazine/saison-3-04-buju-banton-le-geant-du-dancehall-roots.html   301
+/articles/saison-3-05-sean-paul-la-puissance-mondiale   /magazine/saison-3-05-sean-paul-la-puissance-mondiale.html   301
+/articles/saison-3-06-chronixx-le-renouveau-conscient   /magazine/saison-3-06-chronixx-le-renouveau-conscient.html   301
+/articles/saison-3-07-koffee-la-prodige-moderne   /magazine/saison-3-07-koffee-la-prodige-moderne.html   301
+/articles/saison-3-08-protoje-larchitecte-du-son   /magazine/saison-3-08-protoje-larchitecte-du-son.html   301
+/articles/saison-3-09-lila-ike-la-soul-reggae   /magazine/saison-3-09-lila-ike-la-soul-reggae.html   301
+/articles/saison-3-10-kabaka-pyramid-le-lyriste-engage   /magazine/saison-3-10-kabaka-pyramid-le-lyriste-engage.html   301
+/articles/saison-3-11-alpha-blondy-le-prophete-dafrique   /magazine/saison-3-11-alpha-blondy-le-prophete-dafrique.html   301
+/articles/saison-3-12-tiken-jah-fakoly-leveilleur-de-conscience   /magazine/saison-3-12-tiken-jah-fakoly-leveilleur-de-conscience.html   301
+/articles/saison-3-13-alborosie-le-maestro-analogique   /magazine/saison-3-13-alborosie-le-maestro-analogique.html   301
+/articles/saison-3-14-patoranking-lafro-reggae-solaire   /magazine/saison-3-14-patoranking-lafro-reggae-solaire.html   301
+/articles/saison-3-15-yg-marley-le-phenomene-viral   /magazine/saison-3-15-yg-marley-le-phenomene-viral.html   301
+/articles/saison-3-16-jimmy-cliff-lambassadeur-planetaire   /magazine/saison-3-16-jimmy-cliff-lambassadeur-planetaire.html   301
+/articles/saison-3-17-stephen-marley-lalchimiste-de-lheritage   /magazine/saison-3-17-stephen-marley-lalchimiste-de-lheritage.html   301
+/articles/saison-3-18-shenseea-la-princesse-dancehall-pop   /magazine/saison-3-18-shenseea-la-princesse-dancehall-pop.html   301
+/articles/saison-3-19-pixl-le-succes-mondial-du-creole-reunionnais   /magazine/saison-3-19-pixl-le-succes-mondial-du-creole-reunionnais.html   301
+/articles/saison-4-01-ray-charles-larchitecte-de-la-soul   /magazine/saison-4-01-ray-charles-larchitecte-de-la-soul.html   301
+/articles/saison-4-02-ella-fitzgerald-la-perfection-vocale   /magazine/saison-4-02-ella-fitzgerald-la-perfection-vocale.html   301
+/articles/saison-4-03-prince-michael-jackson-les-rois-du-groove   /magazine/saison-4-03-prince-michael-jackson-les-rois-du-groove.html   301
+/articles/saison-4-04-brent-faiyaz-le-crooner-sinueux   /magazine/saison-4-04-brent-faiyaz-le-crooner-sinueux.html   301
+/articles/saison-4-05-partynextdoor-la-melancolie-nocturne   /magazine/saison-4-05-partynextdoor-la-melancolie-nocturne.html   301
+/articles/saison-4-06-bryson-tiller-le-pionnier-du-trap-soul   /magazine/saison-4-06-bryson-tiller-le-pionnier-du-trap-soul.html   301
+/articles/saison-4-07-mariah-the-scientist-la-plume-blessee   /magazine/saison-4-07-mariah-the-scientist-la-plume-blessee.html   301
+/articles/saison-4-08-sza-lavant-garde-confessionnelle   /magazine/saison-4-08-sza-lavant-garde-confessionnelle.html   301
+/articles/saison-4-09-her-la-virtuose-musicienne   /magazine/saison-4-09-her-la-virtuose-musicienne.html   301
+/articles/saison-4-10-daniel-caesar-la-purete-gospel   /magazine/saison-4-10-daniel-caesar-la-purete-gospel.html   301
+/articles/saison-4-11-chris-brown-lhybride-rnb-performance   /magazine/saison-4-11-chris-brown-lhybride-rnb-performance.html   301
+/articles/saison-4-12-giveon-le-baryton-envoutant   /magazine/saison-4-12-giveon-le-baryton-envoutant.html   301
+/articles/saison-4-13-lucky-daye-le-prince-du-funk-soul   /magazine/saison-4-13-lucky-daye-le-prince-du-funk-soul.html   301
+/articles/saison-4-14-jason-derulo-lalchimiste-des-hits   /magazine/saison-4-14-jason-derulo-lalchimiste-des-hits.html   301
+/articles/saison-4-15-leon-thomas-lalchimiste-du-rythme   /magazine/saison-4-15-leon-thomas-lalchimiste-du-rythme.html   301
+/articles/saison-4-16-coco-jones-la-puissance-vocale   /magazine/saison-4-16-coco-jones-la-puissance-vocale.html   301
+/articles/saison-4-17-jhene-aiko-la-soul-therapeutique   /magazine/saison-4-17-jhene-aiko-la-soul-therapeutique.html   301
+/articles/saison-2-18-briefing-la-pop-mondiale   /magazine/saison-2-18-briefing-la-pop-mondiale.html   301
+/articles/saison-3-20-briefing-la-saga-reggae   /magazine/saison-3-20-briefing-la-saga-reggae.html   301
+/articles/saison-4-18-beyonce-limperialisme-culturel   /magazine/saison-4-18-beyonce-limperialisme-culturel.html   301
+/articles/saison-4-19-briefing-la-soul-et-le-rnb   /magazine/saison-4-19-briefing-la-soul-et-le-rnb.html   301
