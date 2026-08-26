@@ -45,13 +45,52 @@
   }), { threshold: 0.6 });
   document.querySelectorAll('.hs b').forEach(el => ioC.observe(el));
 
-  /* ── 3. Lecteur (démo UI, présent sur l'accueil) ── */
+  /* ── 3. Lecteur (accueil) — lit le dernier épisode via le flux RSS ── */
   const pl = document.querySelector('.player');
   if (pl) {
     const bt = pl.querySelector('.pp');
-    bt?.addEventListener('click', () => {
-      pl.classList.toggle('paused');
-      bt.textContent = pl.classList.contains('paused') ? '▶' : '❚❚';
+    const cover = pl.querySelector('.cover');
+    const titleEl = pl.querySelector('.pt');
+    const timeEl = pl.querySelector('.time');
+    const audio = document.createElement('audio');
+    audio.preload = 'metadata';
+    pl.appendChild(audio);
+
+    const fmt = s => {
+      if (!isFinite(s) || s < 0) return '';
+      const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+      return m + ':' + String(sec).padStart(2, '0');
+    };
+
+    audio.addEventListener('loadedmetadata', () => { timeEl.textContent = fmt(audio.duration); });
+    audio.addEventListener('timeupdate', () => { timeEl.textContent = fmt(audio.duration - audio.currentTime); });
+    audio.addEventListener('ended', () => {
+      pl.classList.add('paused'); bt.textContent = '▶';
+      timeEl.textContent = fmt(audio.duration);
+    });
+
+    bt.addEventListener('click', () => {
+      if (!audio.src) return;
+      if (pl.classList.contains('paused')) {
+        audio.play().catch(() => {});
+        pl.classList.remove('paused'); bt.textContent = '❚❚';
+      } else {
+        audio.pause();
+        pl.classList.add('paused'); bt.textContent = '▶';
+      }
+    });
+
+    /* rss.js est chargé en defer juste après ce script : on attend la fin
+       du parsing pour être sûr que USRSS existe. */
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof USRSS === 'undefined') return;
+      USRSS.load().then(items => {
+        const ep = items?.[0];
+        if (!ep) return;
+        if (ep.audio) audio.src = ep.audio;
+        if (ep.img) cover.src = ep.img;
+        if (ep.title) titleEl.textContent = ep.title;
+      }).catch(() => {});
     });
   }
 })();
