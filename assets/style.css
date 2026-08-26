@@ -30,7 +30,6 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1.3rem
 /* ── HERO ── */
 .hero{max-width:1440px;margin:0 auto;padding:6vh 4vw 6vh;display:grid;grid-template-columns:1.1fr 1fr;gap:2vw;align-items:center;overflow:visible}
 .kicker{display:flex;align-items:center;gap:.9rem;font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:2.2rem;opacity:0;animation:rise .8s .1s forwards}
-.kicker::after{content:'';height:1px;width:64px;background:var(--accent)}
 h1{font-family:var(--serif);font-weight:300;font-size:clamp(2.9rem,6.2vw,5.6rem);line-height:1.02;letter-spacing:-.03em;opacity:0;animation:rise .8s .25s forwards}
 h1 strong{font-weight:800}
 h1 em{font-style:normal;font-weight:500;color:var(--accent)}
