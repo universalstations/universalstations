@@ -117,7 +117,19 @@
     </header>
     ${it.audio ? `<div class="ep-audio">
       <p class="kicker" style="margin-bottom:1rem">Écouter ici</p>
-      <audio controls preload="none" src="${esc(it.audio)}"></audio>
+      <div class="epp" id="epp">
+        <button class="epp-play" aria-label="Lecture / pause">▶</button>
+        <div class="epp-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="epp-mid">
+          <div class="epp-top">
+            <span class="epp-title">${esc(it.title)}</span>
+            <span class="epp-time"><span class="epp-cur">0:00</span> / <span class="epp-dur">--:--</span></span>
+          </div>
+          <div class="epp-bar"><div class="epp-fill"></div><div class="epp-knob"></div></div>
+        </div>
+        <button class="epp-speed" aria-label="Vitesse de lecture">1×</button>
+        <audio preload="none" src="${esc(it.audio)}"></audio>
+      </div>
     </div>` : ''}
     ${pl ? `<div class="pl-embed">
       <p class="kicker" style="margin-bottom:1rem">La playlist de la saison · ${pl.name}</p>
@@ -129,6 +141,59 @@
       ${next ? `<a href="episode.html?i=${i-1}" style="text-align:right">Épisode suivant →<b>${esc(next.title)}</b></a>` : '<span></span>'}
     </nav>
   </article>`;
+
+  const epp = box.querySelector('.epp');
+  if (epp) {
+    const player = epp.querySelector('audio');
+    const playBtn = epp.querySelector('.epp-play');
+    const curEl = epp.querySelector('.epp-cur');
+    const durEl = epp.querySelector('.epp-dur');
+    const barEl = epp.querySelector('.epp-bar');
+    const fillEl = epp.querySelector('.epp-fill');
+    const knobEl = epp.querySelector('.epp-knob');
+    const speedBtn = epp.querySelector('.epp-speed');
+    const SPEEDS = [1, 1.25, 1.5, 1.75, 2, 0.75];
+    let speedIdx = 0;
+
+    const fmt = s => {
+      if (!isFinite(s) || s < 0) return '--:--';
+      const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+      return m + ':' + String(sec).padStart(2, '0');
+    };
+    const setProgress = pct => { fillEl.style.width = pct + '%'; knobEl.style.left = pct + '%'; };
+
+    player.addEventListener('loadedmetadata', () => { durEl.textContent = fmt(player.duration); });
+    player.addEventListener('timeupdate', () => {
+      curEl.textContent = fmt(player.currentTime);
+      setProgress(player.duration ? (player.currentTime / player.duration * 100) : 0);
+    });
+    player.addEventListener('ended', () => { epp.classList.remove('playing'); playBtn.textContent = '▶'; });
+
+    playBtn.addEventListener('click', () => {
+      if (player.paused) {
+        player.play().catch(() => {});
+        epp.classList.add('playing'); playBtn.textContent = '❚❚';
+      } else {
+        player.pause();
+        epp.classList.remove('playing'); playBtn.textContent = '▶';
+      }
+    });
+
+    const seekTo = clientX => {
+      if (!player.duration) return;
+      const r = barEl.getBoundingClientRect();
+      const pct = Math.min(1, Math.max(0, (clientX - r.left) / r.width));
+      player.currentTime = pct * player.duration;
+      setProgress(pct * 100);
+    };
+    barEl.addEventListener('click', e => seekTo(e.clientX));
+
+    speedBtn.addEventListener('click', () => {
+      speedIdx = (speedIdx + 1) % SPEEDS.length;
+      player.playbackRate = SPEEDS[speedIdx];
+      speedBtn.textContent = SPEEDS[speedIdx] + '×';
+    });
+  }
 })();
 </script>
 
