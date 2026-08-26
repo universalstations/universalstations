@@ -52,6 +52,7 @@ const USRSS = (() => {
       ...it,
       title: it.title.replace(/\s*\u2014\s*/g, ' \u00b7 '),
       desc: it.desc.replace(/\s*\u2014\s*/g, ', '),
+      img: it.img ? `https://wsrv.nl/?url=${encodeURIComponent(it.img)}&w=700&h=700&fit=cover&q=80&output=webp` : it.img,
     }));
   };
 
