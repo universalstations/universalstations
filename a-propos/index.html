@@ -76,6 +76,20 @@
   <p>Presse, partenariats, suggestions : <a href="mailto:contact@universalstations.com" style="color:var(--accent)">contact@universalstations.com</a></p>
 </div>
 
+<section class="news" aria-labelledby="t-news">
+  <h2 id="t-news" class="rv">Ne manquez aucune histoire.</h2>
+  <div class="rv" style="transition-delay:.12s">
+    <form name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="newsletter">
+      <p class="sr-only" aria-hidden="true"><label>Ne pas remplir si vous êtes humain : <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <label class="sr-only" for="nl-mail">Votre adresse email</label>
+      <input id="nl-mail" type="email" name="email" placeholder="Votre adresse email" required>
+      <button type="submit">Recevoir la newsletter</button>
+    </form>
+    <p class="note">Un email par épisode. Pas de spam, désinscription en un clic.</p>
+  </div>
+</section>
+
 </main>
 
 <footer>
