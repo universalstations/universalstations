@@ -96,6 +96,44 @@
 })();
 
 
+/* ── Bascule thème clair / sombre (mémorisée, prioritaire sur le système) ── */
+(() => {
+  const KEY = 'us-theme';
+  const root = document.documentElement;
+  const stored = localStorage.getItem(KEY);
+  if (stored === 'light' || stored === 'dark') root.setAttribute('data-theme', stored);
+
+  const isDarkNow = () => {
+    const t = root.getAttribute('data-theme');
+    if (t === 'light') return false;
+    if (t === 'dark') return true;
+    return matchMedia('(prefers-color-scheme: dark)').matches;
+  };
+
+  const nav = document.querySelector('nav');
+  if (!nav) return;
+  const SUN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.4M12 19.6V22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2 12h2.4M19.6 12H22M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></svg>';
+  const MOON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 14.6A8.2 8.2 0 0 1 9.4 3.8a8.2 8.2 0 1 0 10.8 10.8z"/></svg>';
+
+  const btn = document.createElement('button');
+  btn.className = 'theme-toggle';
+  const paint = () => {
+    const dark = isDarkNow();
+    btn.innerHTML = dark ? SUN : MOON;
+    btn.setAttribute('aria-label', dark ? 'Passer au thème clair' : 'Passer au thème sombre');
+  };
+  paint();
+  nav.appendChild(btn);
+
+  btn.addEventListener('click', () => {
+    const next = isDarkNow() ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem(KEY, next); } catch {}
+    paint();
+  });
+})();
+
+
 /* ── Menu mobile (construit automatiquement depuis la nav) ── */
 (() => {
   const nav = document.querySelector('nav');
