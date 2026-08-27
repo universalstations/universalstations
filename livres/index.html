@@ -98,12 +98,26 @@
   .pf-l i{width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none}
   .lv .note{margin-top:18px;font-size:13px;color:var(--ink-3)}
 
+  .fils4{grid-template-columns:repeat(4,1fr)}
+  .szn-badge{display:inline-block;font:700 9.5px var(--sans);letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:99px;margin-top:10px}
+  .szn-badge.open{background:var(--accent);color:#fff}
+  .szn-badge.soon{background:var(--paper-2);color:var(--ink-3);border:1px solid var(--line)}
+
+  .pc-form{display:flex;flex-wrap:wrap;gap:12px;align-items:center;max-width:640px}
+  .pc-form select,.pc-form input[type="email"]{padding:.85rem 1.1rem;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:500 .88rem var(--sans)}
+  .pc-form select{flex:1;min-width:180px;cursor:pointer}
+  .pc-form input[type="email"]{flex:2;min-width:220px}
+  .pc-form button{flex:none;font:600 13.5px var(--sans);padding:13px 26px;border-radius:99px;background:var(--ink);color:var(--paper);border:0;cursor:pointer;transition:background .2s}
+  .pc-form button:hover{background:var(--accent)}
+
+  .pf-l{cursor:default}
+
   @media (max-width:860px){
     .lv-hero{grid-template-columns:1fr;gap:44px;text-align:center}
     .lv-hero .hero-sub{margin:0 auto}
-    .fils,.eds,.chaps{grid-template-columns:1fr 1fr}
+    .fils,.eds,.chaps,.fils4{grid-template-columns:1fr 1fr}
   }
-  @media (max-width:600px){.fils,.eds,.chaps{grid-template-columns:1fr}}
+  @media (max-width:600px){.fils,.eds,.chaps,.fils4{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -135,7 +149,7 @@
 <section class="lv-hero" style="border-top:0;padding-top:1.4rem">
   <div>
     <h2>Un livre, <em>pas une compilation</em>.</h2>
-    <p class="slead" style="margin-bottom:0">De Zaho à J. Cole, de Diam's à Ye, chaque artiste répond différemment à la même question. Ce n'est plus une suite d'analyses : c'est une histoire qui se lit d'une traite. En livre papier, en ebook, en audiobook partout dès maintenant, et bientôt en version premium narrée.</p>
+    <p class="slead" style="margin-bottom:0">De Zaho à J. Cole, de Diam's à Ye, chaque artiste répond différemment à la même question. Ce n'est plus une suite d'analyses : c'est une histoire qui se lit d'une traite. En précommande dès maintenant, en librairie en septembre 2026 : livre papier, ebook et audiobook.</p>
   </div>
   <div class="bookzone" aria-hidden="true">
     <div class="bk">
@@ -147,6 +161,41 @@
         <span class="bt">Ce que ça coûte de rester soi</span>
         <span class="arts">DOUZE HISTOIRES. UNE SAISON ENTIÈRE</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Quatre saisons, <em>quatre livres</em></h2>
+  <p class="slead">Le podcast est en pause jusqu'à l'année prochaine — le temps de publier chaque saison en livre, un volume par mois.</p>
+  <div class="fils fils4">
+    <div class="fil">
+      <span class="n">1</span>
+      <h3>Nuance</h3>
+      <p class="st">Rap</p>
+      <p>Septembre 2026</p>
+      <span class="szn-badge open">Précommande ouverte</span>
+    </div>
+    <div class="fil">
+      <span class="n">2</span>
+      <h3>Caviar</h3>
+      <p class="st">Pop</p>
+      <p>Octobre 2026</p>
+      <span class="szn-badge soon">Bientôt</span>
+    </div>
+    <div class="fil">
+      <span class="n">3</span>
+      <h3>Caramel</h3>
+      <p class="st">Reggae</p>
+      <p>Novembre 2026</p>
+      <span class="szn-badge soon">Bientôt</span>
+    </div>
+    <div class="fil">
+      <span class="n">4</span>
+      <h3>Lotus</h3>
+      <p class="st">RnB</p>
+      <p>Décembre 2026</p>
+      <span class="szn-badge soon">Bientôt</span>
     </div>
   </div>
 </section>
@@ -205,7 +254,7 @@
         <li>Impression à la demande, jamais de rupture de stock</li>
         <li>Livré partout via Amazon et les librairies en ligne</li>
       </ul>
-      <a class="cta" href="#">Commander le livre</a>
+      <a class="cta" href="#precommande" data-format="Broché">Précommander le livre</a>
     </div>
     <div class="ed">
       <h3>Ebook</h3>
@@ -216,7 +265,7 @@
         <li>Typographie adaptable, mode sombre, marque-page</li>
         <li>Le prix le plus accessible de la collection</li>
       </ul>
-      <a class="cta" href="#">Lire l'ebook</a>
+      <a class="cta" href="#precommande" data-format="Ebook / Kindle">Précommander l'ebook</a>
     </div>
     <div class="ed gold">
       <h3>Pack Collector</h3>
@@ -227,7 +276,7 @@
         <li>Bonus exclusif : un contenu introuvable ailleurs</li>
         <li>Vendu uniquement ici, sans intermédiaire</li>
       </ul>
-      <a class="cta" href="#">Réserver le pack</a>
+      <a class="cta" href="#precommande" data-format="Pack Collector">Réserver le pack</a>
     </div>
   </div>
 </section>
@@ -246,7 +295,7 @@
         <li>Sur Audible, Apple, Google Play, Kobo, Scribd, Storytel, OverDrive et une quarantaine d'autres</li>
         <li class="no">Sans les contenus enrichis</li>
       </ul>
-      <a class="cta" href="#">Écouter la Version 1</a>
+      <a class="cta" href="#precommande" data-format="Audiobook Version 1">Précommander la Version 1</a>
     </div>
     <div class="ed hot">
       <h3>Version 2 · Premium</h3>
@@ -258,7 +307,7 @@
         <li>Sur Audible, Amazon et Apple iTunes</li>
         <li>À venir : production en cours</li>
       </ul>
-      <a class="cta" href="#">Être prévenu de la sortie</a>
+      <a class="cta" href="#precommande" data-format="Audiobook Version 2 (Premium)">Être prévenu·e de la sortie</a>
     </div>
     <div class="ed gold">
       <h3>Pack Audio Intégral</h3>
@@ -269,7 +318,7 @@
         <li>Les contenus exclusifs de la Saison 1 inclus</li>
         <li>Réservé au site : le seul endroit où tout est réuni</li>
       </ul>
-      <a class="cta" href="#">Prendre le Pack Audio</a>
+      <a class="cta" href="#precommande" data-format="Pack Audio Intégral">Précommander le Pack Audio</a>
     </div>
   </div>
 </section>
@@ -278,17 +327,39 @@
   <h2>Deux circuits, <em>une stratégie</em></h2>
   <p class="slead">La Version 1 occupe tout le terrain, partout, tout de suite. La Version 2 arrive ensuite comme l'édition de référence sur le circuit Amazon. Les deux coexistent sans se cannibaliser.</p>
   <div class="pfs">
-    <a class="pf-l" href="#"><i></i>Audible</a>
-    <a class="pf-l" href="#"><i></i>Spotify</a>
-    <a class="pf-l" href="#"><i></i>Apple</a>
-    <a class="pf-l" href="#"><i></i>Google Play</a>
-    <a class="pf-l" href="#"><i></i>Kobo</a>
-    <a class="pf-l" href="#"><i></i>Scribd</a>
-    <a class="pf-l" href="#"><i></i>Storytel</a>
-    <a class="pf-l" href="#"><i></i>OverDrive</a>
-    <a class="pf-l" href="#"><i></i>+ 40 autres</a>
+    <span class="pf-l"><i></i>Audible</span>
+    <span class="pf-l"><i></i>Spotify</span>
+    <span class="pf-l"><i></i>Apple</span>
+    <span class="pf-l"><i></i>Google Play</span>
+    <span class="pf-l"><i></i>Kobo</span>
+    <span class="pf-l"><i></i>Scribd</span>
+    <span class="pf-l"><i></i>Storytel</span>
+    <span class="pf-l"><i></i>OverDrive</span>
+    <span class="pf-l"><i></i>+ 40 autres</span>
   </div>
-  <p class="note">Les liens seront branchés à la publication. Chaque saison suivante deviendra un volume : Caviar (pop), Caramel (reggae), Lotus (RnB).</p>
+  <p class="note">Les liens seront activés à l'ouverture de chaque plateforme. Chaque saison suivante devient un volume : Caviar (pop, octobre), Caramel (reggae, novembre), Lotus (RnB, décembre).</p>
+</section>
+
+<section id="precommande">
+  <h2>Précommandez <em>la Saison 1</em></h2>
+  <p class="slead">Le livre sort en septembre 2026. Laissez votre email pour être prévenu·e dès l'ouverture des précommandes du format qui vous intéresse.</p>
+  <form class="pc-form" name="book-precommande" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="book-precommande">
+    <p class="sr-only" aria-hidden="true"><label>Ne pas remplir si vous êtes humain : <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+    <label class="sr-only" for="pc-format">Format souhaité</label>
+    <select id="pc-format" name="format">
+      <option>Broché</option>
+      <option>Ebook / Kindle</option>
+      <option>Audiobook Version 1</option>
+      <option>Audiobook Version 2 (Premium)</option>
+      <option>Pack Collector</option>
+      <option>Pack Audio Intégral</option>
+    </select>
+    <label class="sr-only" for="pc-mail">Votre adresse email</label>
+    <input id="pc-mail" type="email" name="email" placeholder="Votre adresse email" required>
+    <button type="submit">Me prévenir</button>
+  </form>
+  <p class="note">Un seul email, à l'ouverture des précommandes de ce format. Rien d'autre, désinscription en un clic.</p>
 </section>
 
 </div>
@@ -347,5 +418,13 @@
 <script src="../assets/rss.js" defer></script>
 <script src="../assets/search-data.js" defer></script>
 <script src="../assets/search.js" defer></script>
+<script>
+document.querySelectorAll('.eds .cta[data-format]').forEach(a => {
+  a.addEventListener('click', () => {
+    const sel = document.getElementById('pc-format');
+    if (sel) sel.value = a.dataset.format;
+  });
+});
+</script>
 </body>
 </html>
