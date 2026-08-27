@@ -134,6 +134,51 @@
 })();
 
 
+/* ── Bouton "Écouter" → menu des plateformes (pas que Spotify) ──
+   Se déclenche après le chargement complet pour ne pas entrer en
+   conflit avec l'insertion du bouton de recherche par search.js. */
+addEventListener('load', () => {
+  const cta = document.querySelector('.nav-cta');
+  if (!cta) return;
+
+  const PLATFORMS = [
+    { name: 'Spotify', url: 'https://open.spotify.com/show/4Drtr3vcLpNsiYZVmGoprn' },
+    { name: 'Apple Podcasts', url: 'https://podcasts.apple.com/fr/podcast/universal-stations/id1880446318' },
+    { name: 'Deezer', url: 'https://link.deezer.com/s/33bSPrRevXk4BwAjqvfks' },
+    { name: 'Amazon Music', url: 'https://music.amazon.fr/podcasts/ae46a138-d2ee-4730-9da2-9173c016283f/universal-stations' },
+    { name: 'YouTube Music', url: 'https://music.youtube.com/playlist?list=PLDiBOGBrbxCa_8cgQym8wxR8ZCbUovhGR' },
+    { name: 'TuneIn', url: 'http://tun.in/px9yV' },
+  ];
+
+  const wrap = document.createElement('div');
+  wrap.className = 'listen-wrap';
+  cta.parentNode.insertBefore(wrap, cta);
+  wrap.appendChild(cta);
+
+  const menu = document.createElement('div');
+  menu.className = 'listen-menu';
+  menu.setAttribute('role', 'menu');
+  menu.innerHTML = PLATFORMS.map(p =>
+    `<a href="${p.url}" target="_blank" rel="noopener" role="menuitem">${p.name}</a>`
+  ).join('');
+  wrap.appendChild(menu);
+
+  cta.setAttribute('aria-haspopup', 'true');
+  cta.setAttribute('aria-expanded', 'false');
+  cta.addEventListener('click', e => {
+    e.preventDefault();
+    const open = menu.classList.toggle('open');
+    cta.setAttribute('aria-expanded', String(open));
+  });
+  document.addEventListener('click', e => {
+    if (!wrap.contains(e.target)) { menu.classList.remove('open'); cta.setAttribute('aria-expanded', 'false'); }
+  });
+  addEventListener('keydown', e => {
+    if (e.key === 'Escape') { menu.classList.remove('open'); cta.setAttribute('aria-expanded', 'false'); }
+  });
+});
+
+
 /* ── Menu mobile (construit automatiquement depuis la nav) ── */
 (() => {
   const nav = document.querySelector('nav');
