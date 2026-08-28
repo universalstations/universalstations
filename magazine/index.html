@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#faf6f0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15130f" media="(prefers-color-scheme: dark)">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magazine · Universal Stations</title>
+<meta name="description" content="Le magazine Universal Stations : portraits d'artistes, dossiers et analyses. Rap, pop, reggae, RnB.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,500;0,700;0,800;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="manifest" href="../manifest.json">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Universal Stations">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Magazine · Universal Stations">
+<meta property="og:description" content="Le magazine Universal Stations : portraits d'artistes, dossiers et analyses. Rap, pop, reggae, RnB.">
+<meta property="og:url" content="https://www.universalstations.com/magazine/">
+<meta property="og:image" content="https://www.universalstations.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="canonical" href="https://www.universalstations.com/magazine/">
+<style>
+  /* ── Bandeau flipbook · les 4 saisons ── */
+  .fb-promo{ max-width:1440px; margin:0 auto 0; padding:0 4vw; }
+  .fb-promo .fb-head{ display:flex; align-items:baseline; justify-content:space-between; gap:1rem; margin-bottom:1.2rem; }
+  .fb-promo .fb-head h2{ font:800 1.15rem/1 var(--serif); color:var(--ink); }
+  .fb-promo .fb-head span{ font-size:.78rem; color:var(--ink-2); }
+  .fb-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+  .fb-card{
+    display:flex; flex-direction:column; gap:.9rem; text-decoration:none;
+    background:var(--ink); color:var(--paper); border-radius:14px;
+    padding:1.5rem 1.5rem 1.4rem; overflow:hidden; position:relative;
+  }
+  .fb-card::before{
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(ellipse 80% 60% at 90% 0%, rgba(232,66,12,.26), transparent 70%);
+    pointer-events:none;
+  }
+  .fb-card .kick{ position:relative; z-index:1; font:700 .64rem/1 var(--sans); letter-spacing:.16em; text-transform:uppercase; color:var(--accent); }
+  .fb-card h3{ position:relative; z-index:1; font:800 1.35rem/1 var(--serif); color:var(--paper); margin:0; }
+  .fb-card p{ position:relative; z-index:1; font-size:.78rem; color:var(--paper); opacity:.68; margin:0; flex:1; }
+  .fb-card .go{ position:relative; z-index:1; align-self:flex-start; font:600 .74rem/1 var(--sans); color:var(--paper); background:rgba(255,255,255,.1); padding:.6rem 1.1rem; border-radius:99px; transition:background .2s,transform .2s; }
+  .fb-card:hover .go{ background:var(--accent); transform:translateX(3px); }
+  @media (max-width:900px){ .fb-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:520px){ .fb-grid{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Aller au contenu principal</a>
+
+<nav aria-label="Navigation principale">
+  <a class="logo" href="../index.html">Universal <em>Stations</em></a>
+  <div class="links">
+    <a href="../episodes/index.html">Épisodes</a>
+    <a href="../playlists/index.html">Playlists</a>
+    <a href="../livres/index.html">Livres</a>
+    <a href="index.html" style="color:var(--ink)">Magazine</a>
+    <a href="../a-propos/index.html">À propos</a>
+  </div>
+  <a class="nav-cta" href="https://open.spotify.com/show/4Drtr3vcLpNsiYZVmGoprn">Écouter</a>
+</nav>
+
+<main id="main">
+
+<header class="page-hero">
+  <p class="kicker">Le Magazine · 74 articles</p>
+  <h1><strong>Lire la</strong> <em>musique</em>.</h1>
+  <p class="hero-sub">Portraits d'artistes, dossiers thématiques et analyses de fond. Chaque épisode du podcast a son article.</p>
+</header>
+
+<div class="filters" role="group" aria-label="Filtrer les articles">
+  <button class="f-btn on" data-f="all" aria-pressed="true">Tout</button>
+  <button class="f-btn" data-f="d" aria-pressed="false">Dossiers</button>
+  <button class="f-btn" data-f="1" aria-pressed="false">Saison 1 · Rap</button>
+  <button class="f-btn" data-f="2" aria-pressed="false">Saison 2 · Pop</button>
+  <button class="f-btn" data-f="3" aria-pressed="false">Saison 3 · Reggae</button>
+  <button class="f-btn" data-f="4" aria-pressed="false">Saison 4 · RnB</button>
+</div>
+
+<div class="fb-promo">
+  <div class="fb-head">
+    <h2>Le Magazine en flipbook</h2>
+    <span>Un best-of de 5 portraits par saison, à lire ou à écouter</span>
+  </div>
+  <div class="fb-grid">
+    <a class="fb-card" href="saison-1-nuance-flipbook.html">
+      <span class="kick">Saison 1 · Rap</span>
+      <h3>Nuance</h3>
+      <p>Zaho, Booba, Diam's, PLK, J. Cole.</p>
+      <span class="go">Feuilleter →</span>
+    </a>
+    <a class="fb-card" href="saison-2-caviar-flipbook.html">
+      <span class="kick">Saison 2 · Pop</span>
+      <h3>Caviar</h3>
+      <p>M. Jackson, Bad Bunny, Dua Lipa, Harry Styles, Billie Eilish.</p>
+      <span class="go">Feuilleter →</span>
+    </a>
+    <a class="fb-card" href="saison-3-caramel-flipbook.html">
+      <span class="kick">Saison 3 · Reggae</span>
+      <h3>Caramel</h3>
+      <p>Bob Marley, Sean Paul, Koffee, Jimmy Cliff, Shenseea.</p>
+      <span class="go">Feuilleter →</span>
+    </a>
+    <a class="fb-card" href="saison-4-lotus-flipbook.html">
+      <span class="kick">Saison 4 · RnB</span>
+      <h3>Lotus</h3>
+      <p>Ray Charles, SZA, H.E.R., Chris Brown, Beyoncé.</p>
+      <span class="go">Feuilleter →</span>
+    </a>
+  </div>
+</div>
+
+<div class="mag-grid">
+    <a data-f="4" class="card large" href="saison-4-19-briefing-la-soul-et-le-rnb.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a09ca4effcc89b84f156b0c2c" alt=""></div>
+      <span class="tag">Saison 4 · Bilan</span>
+      <h3>La Soul et le Rythme and Blues · Bilan de la Saison 4</h3>
+      <p>Le briefing qui referme la Saison 4 : là où la soul rencontre l&#x27;âme, des classiques éternels aux pépites d&#x27;aujourd&#x27;hui.…</p>
+      <div class="meta">30 Juin 2026</div>
+    </a>
+    <a data-f="4" class="card" href="saison-4-18-beyonce-limperialisme-culturel.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8abc235a6a14772fcc16e906e5" alt=""></div>
+      <span class="tag">Saison 4 · RnB</span>
+      <h3>Beyoncé · L&#x27;Impérialisme Culturel</h3>
+      
+      <div class="meta">30 Juin 2026</div>
+    </a>
+    <a data-f="3" class="card" href="saison-3-20-briefing-la-saga-reggae.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a1cb3578d0b188e7efdc0030b" alt=""></div>
+      <span class="tag">Saison 3 · Bilan</span>
+      <h3>La Saga Reggae · Bilan de la Saison 3</h3>
+      
+      <div class="meta">30 Juin 2026</div>
+    </a>
+    <a data-f="2" class="card" href="saison-2-18-briefing-la-pop-mondiale.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a7776157ba08ecc312edefdfb" alt=""></div>
+      <span class="tag">Saison 2 · Bilan</span>
+      <h3>La Pop Mondiale · Bilan de la Saison 2</h3>
+      
+      <div class="meta">30 Juin 2026</div>
+    </a>
+    <a data-f="4" class="card" href="saison-4-17-jhene-aiko-la-soul-therapeutique.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a9b8885a3e11d0b31d3589ab4" alt=""></div>
+      <span class="tag">Saison 4 · RnB</span>
+      <h3>Jhené Aiko · La Soul Thérapeutique</h3>
+      
+      <div class="meta">29 Juin 2026</div>
+    </a>
+    <a data-f="4" class="card" href="saison-4-16-coco-jones-la-puissance-vocale.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8acd988481dfdf0a829b559b9f" alt=""></div>
+      <span class="tag">Saison 4 · RnB</span>
+      <h3>Coco Jones · La Puissance Vocale</h3>
+      
+      <div class="meta">27 Juin 2026</div>
+    </a>
+    <a data-f="4" class="card" href="saison-4-15-leon-thomas-lalchimiste-du-rythme.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a37318a84b29a58f1c1806d87" alt=""></div>
+      <span class="tag">Saison 4 · RnB</span>
+      <h3>Leon Thomas · L&#x27;Alchimiste du Rythme</h3>
+      
+      <div class="meta">26 Juin 2026</div>
+    </a>
+    <a data-f="4" class="card" href="saison-4-14-jason-derulo-lalchimiste-des-hits.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8abc7baef4ea65095bfc94c725" alt=""></div>
+      <span class="tag">Saison 4 · Pop</span>
+      <h3>Jason Derulo · L&#x27;Alchimiste des Hits</h3>
+      
+      <div class="meta">25 Juin 2026</div>
+    </a>
+    <a data-f="4" class="card" href="saison-4-13-lucky-daye-le-prince-du-funk-soul.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a2fa4327c7c18f96a227f8cfd" alt=""></div>
+      <span class="tag">Saison 4 · Funk-soul</span>
+      <h3>Lucky Daye · Le Prince du Funk-Soul</h3>
+      
+      <div class="meta">24 Juin 2026</div>
+    </a>
+    <a data-f="4" class="card" href="saison-4-12-giveon-le-baryton-envoutant.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8ae16789194b1a61175f1c18e2" alt=""></div>
+      <span class="tag">Saison 4 · RnB</span>
+      <h3>Giveon · Le Baryton Envoûtant</h3>
+      
+      <div class="meta">23 Juin 2026</div>
+    </a>
+    <a data-f="4" class="card" href="saison-4-11-chris-brown-lhybride-rnb-performance.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8acc355a1b63d9ee0d228923e1" alt=""></div>
+      <span class="tag">Saison 4 · RnB</span>
+      <h3>Chris Brown · L&#x27;Hybride R&amp;B-Performance</h3>
+      
+      <div class="meta">22 Juin 2026</div>
+    </a>
+    <a data-f="4" class="card" href="saison-4-10-daniel-caesar-la-purete-gospel.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a69990fc67d33a76b69d2d2a7" alt=""></div>
+      <span class="tag">Saison 4 · Soul</span>
+      <h3>Daniel Caesar · La Pureté Gospel</h3>
+      
+      <div class="meta">20 Juin 2026</div>
+    </a>
+    <a data-f="4" class="card" href="saison-4-09-her-la-virtuose-musicienne.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a11d4628a02e1fdc7da37bf90" alt=""></div>
+      <span class="tag">Saison 4 · RnB</span>
+      <h3>H.E.R. · La Virtuose Musicienne</h3>
+      
+      <div class="meta">19 Juin 2026</div>
+    </a>
+    <a data-f="4" class="card" href="saison-4-08-sza-lavant-garde-confessionnelle.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8acbe5056af42234f51cfef00e" alt=""></div>
+      <span class="tag">Saison 4 · RnB</span>
+      <h3>SZA · L&#x27;Avant-Garde Confessionnelle</h3>
+      
+      <div class="meta">18 Juin 2026</div>
+    </a>
+    <a data-f="4" class="card" href="saison-4-07-mariah-the-scientist-la-plume-blessee.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8afea284b3c5a4f07ed4c57920" alt=""></div>
+      <span class="tag">Saison 4 · RnB</span>
+      <h3>Mariah the Scientist · La Plume Blessée</h3>
+      
+      <div class="meta">17 Juin 2026</div>
+    </a>
+    <a data-f="4" class="card" href="saison-4-06-bryson-tiller-le-pionnier-du-trap-soul.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8aa84843bb20a0fb3c15d3e8d3" alt=""></div>
+      <span class="tag">Saison 4 · RnB</span>
+      <h3>Bryson Tiller · Le Pionnier du Trap-Soul</h3>
+      
+      <div class="meta">16 Juin 2026</div>
+    </a>
+    <a data-f="4" class="card" href="saison-4-05-partynextdoor-la-melancolie-nocturne.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a751d9722230661d9c9d5391f" alt=""></div>
+      <span class="tag">Saison 4 · RnB</span>
+      <h3>PARTYNEXTDOOR · La Mélancolie Nocturne</h3>
+      
+      <div class="meta">15 Juin 2026</div>
+    </a>
+    <a data-f="4" class="card" href="saison-4-04-brent-faiyaz-le-crooner-sinueux.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a119314c82be9bd29e92d29c3" alt=""></div>
+      <span class="tag">Saison 4 · RnB</span>
+      <h3>Brent Faiyaz · Le Crooner Sinueux</h3>
+      
+      <div class="meta">13 Juin 2026</div>
+    </a>
+    <a data-f="4" class="card" href="saison-4-03-prince-michael-jackson-les-rois-du-groove.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a441e61f6009561e89d88eed2" alt=""></div>
+      <span class="tag">Saison 4 · Funk</span>
+      <h3>Prince et Michael Jackson · Les Rois du Groove</h3>
+      
+      <div class="meta">12 Juin 2026</div>
+    </a>
+    <a data-f="4" class="card" href="saison-4-02-ella-fitzgerald-la-perfection-vocale.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8add7dfbced7e56e45deecf81a" alt=""></div>
+      <span class="tag">Saison 4 · Jazz</span>
+      <h3>Ella Fitzgerald · La Perfection Vocale</h3>
+      
+      <div class="meta">11 Juin 2026</div>
+    </a>
+    <a data-f="4" class="card" href="saison-4-01-ray-charles-larchitecte-de-la-soul.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a375f14969edeee22d8c9f514" alt=""></div>
+      <span class="tag">Saison 4 · Soul</span>
+      <h3>Ray Charles · L&#x27;Architecte de la Soul</h3>
+      
+      <div class="meta">10 Juin 2026</div>
+    </a>
+    <a data-f="3" class="card" href="saison-3-19-pixl-le-succes-mondial-du-creole-reunionnais.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a0c2ede95e43ad496af173b40" alt=""></div>
+      <span class="tag">Saison 3 · Reggae</span>
+      <h3>Pix&#x27;L · Le Succès Mondial du Créole Réunionnais</h3>
+      
+      <div class="meta">30 Mai 2026</div>
+    </a>
+    <a data-f="3" class="card" href="saison-3-18-shenseea-la-princesse-dancehall-pop.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a7cba413448cfa7c9f158775a" alt=""></div>
+      <span class="tag">Saison 3 · Dancehall</span>
+      <h3>Shenseea · La Princesse Dancehall-Pop</h3>
+      
+      <div class="meta">30 Mai 2026</div>
+    </a>
+    <a data-f="3" class="card" href="saison-3-17-stephen-marley-lalchimiste-de-lheritage.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a6fb574af3c294fb554464e78" alt=""></div>
+      <span class="tag">Saison 3 · Reggae</span>
+      <h3>Stephen Marley · L&#x27;Alchimiste de l&#x27;Héritage</h3>
+      
+      <div class="meta">29 Mai 2026</div>
+    </a>
+    <a data-f="3" class="card" href="saison-3-16-jimmy-cliff-lambassadeur-planetaire.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a17247770a16d7eadb4929bac" alt=""></div>
+      <span class="tag">Saison 3 · Reggae</span>
+      <h3>Jimmy Cliff · L&#x27;Ambassadeur Planétaire</h3>
+      
+      <div class="meta">28 Mai 2026</div>
+    </a>
+    <a data-f="3" class="card" href="saison-3-15-yg-marley-le-phenomene-viral.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8abbc131d3230c5c19c95cc70c" alt=""></div>
+      <span class="tag">Saison 3 · Reggae</span>
+      <h3>YG Marley · Le Phénomène Viral</h3>
+      
+      <div class="meta">27 Mai 2026</div>
+    </a>
+    <a data-f="3" class="card" href="saison-3-14-patoranking-lafro-reggae-solaire.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a27487c1905d1de1215cdc437" alt=""></div>
+      <span class="tag">Saison 3 · Afro-dancehall</span>
+      <h3>Patoranking · L&#x27;Afro-Reggae Solaire</h3>
+      
+      <div class="meta">26 Mai 2026</div>
+    </a>
+    <a data-f="3" class="card" href="saison-3-13-alborosie-le-maestro-analogique.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a50ed84ae4164a14742b35c23" alt=""></div>
+      <span class="tag">Saison 3 · Reggae</span>
+      <h3>Alborosie · Le Maestro Analogique</h3>
+      
+      <div class="meta">25 Mai 2026</div>
+    </a>
+    <a data-f="3" class="card" href="saison-3-12-tiken-jah-fakoly-leveilleur-de-conscience.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8afbd954972aaf464992807f6f" alt=""></div>
+      <span class="tag">Saison 3 · Reggae</span>
+      <h3>Tiken Jah Fakoly · L&#x27;Éveilleur de Conscience</h3>
+      
+      <div class="meta">23 Mai 2026</div>
+    </a>
+    <a data-f="3" class="card" href="saison-3-11-alpha-blondy-le-prophete-dafrique.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8ac533a9ce67b4c1138a5512cb" alt=""></div>
+      <span class="tag">Saison 3 · Reggae</span>
+      <h3>Alpha Blondy · Le Prophète d&#x27;Afrique</h3>
+      
+      <div class="meta">22 Mai 2026</div>
+    </a>
+    <a data-f="3" class="card" href="saison-3-10-kabaka-pyramid-le-lyriste-engage.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8aa893c6f13a94ce950c0aef50" alt=""></div>
+      <span class="tag">Saison 3 · Reggae</span>
+      <h3>Kabaka Pyramid · Le Lyriste Engagé</h3>
+      
+      <div class="meta">21 Mai 2026</div>
+    </a>
+    <a data-f="3" class="card" href="saison-3-09-lila-ike-la-soul-reggae.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8ae2856f657cfc2d7549c7461a" alt=""></div>
+      <span class="tag">Saison 3 · Reggae</span>
+      <h3>Lila Iké · La Soul Reggae</h3>
+      
+      <div class="meta">20 Mai 2026</div>
+    </a>
+    <a data-f="3" class="card" href="saison-3-08-protoje-larchitecte-du-son.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a78039ec2a9568ea12ba6a408" alt=""></div>
+      <span class="tag">Saison 3 · Reggae</span>
+      <h3>Protoje · L&#x27;Architecte du Son</h3>
+      
+      <div class="meta">19 Mai 2026</div>
+    </a>
+    <a data-f="3" class="card" href="saison-3-07-koffee-la-prodige-moderne.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8afdd162ae5a56a0297fb63910" alt=""></div>
+      <span class="tag">Saison 3 · Reggae</span>
+      <h3>Koffee · La Prodige Moderne</h3>
+      
+      <div class="meta">18 Mai 2026</div>
+    </a>
+    <a data-f="3" class="card" href="saison-3-06-chronixx-le-renouveau-conscient.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a9ce4c61385b031176d03e214" alt=""></div>
+      <span class="tag">Saison 3 · Reggae</span>
+      <h3>Chronixx · Le Renouveau Conscient</h3>
+      
+      <div class="meta">16 Mai 2026</div>
+    </a>
+    <a data-f="3" class="card" href="saison-3-05-sean-paul-la-puissance-mondiale.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a57d9b0bc9eb5eabbf040b2ac" alt=""></div>
+      <span class="tag">Saison 3 · Dancehall</span>
+      <h3>Sean Paul · La Puissance Mondiale</h3>
+      
+      <div class="meta">15 Mai 2026</div>
+    </a>
+    <a data-f="3" class="card" href="saison-3-04-buju-banton-le-geant-du-dancehall-roots.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a469336064360f26cc5bee3d0" alt=""></div>
+      <span class="tag">Saison 3 · Dancehall</span>
+      <h3>Buju Banton · Le Géant du Dancehall-Roots</h3>
+      
+      <div class="meta">14 Mai 2026</div>
+    </a>
+    <a data-f="d" class="card" href="reggae-mondial.html">
+      <div class="imgw"><img loading="lazy" src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1200&q=80" alt=""></div>
+      <span class="tag">Dossier · Reggae</span>
+      <h3>Reggae Mondial 2026 : Les Racines qui Font Trembler la Planète</h3>
+      
+      <div class="meta">14 Mai 2026</div>
+    </a>
+    <a data-f="d" class="card" href="rap-hip-hop-mondial.html">
+      <div class="imgw"><img loading="lazy" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&q=80" alt=""></div>
+      <span class="tag">Dossier · Hip-Hop</span>
+      <h3>Hip-Hop Mondial 2026 : Le Tour du Globe d&#x27;une Culture Planétaire</h3>
+      
+      <div class="meta">14 Mai 2026</div>
+    </a>
+    <a data-f="d" class="card" href="pop-mondiale.html">
+      <div class="imgw"><img loading="lazy" src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=1200&q=80" alt=""></div>
+      <span class="tag">Dossier · Pop</span>
+      <h3>Pop Mondiale 2026 : Quand la Chanson Réinvente le Monde</h3>
+      
+      <div class="meta">14 Mai 2026</div>
+    </a>
+    <a data-f="3" class="card" href="saison-3-03-ziggy-marley-lheritage-pop.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a8cb5d694c068a642cbc25597" alt=""></div>
+      <span class="tag">Saison 3 · Reggae</span>
+      <h3>Ziggy Marley · L&#x27;Héritage Pop</h3>
+      
+      <div class="meta">13 Mai 2026</div>
+    </a>
+    <a data-f="3" class="card" href="saison-3-02-damian-marley-la-fusion-hip-hop.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8aab9b1131a7bac68a56d666c3" alt=""></div>
+      <span class="tag">Saison 3 · Reggae</span>
+      <h3>Damian Marley · La Fusion Hip-Hop</h3>
+      
+      <div class="meta">12 Mai 2026</div>
+    </a>
+    <a data-f="3" class="card" href="saison-3-01-bob-marley-licone-universelle.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8ab5fc86f99f299078d718d9f9" alt=""></div>
+      <span class="tag">Saison 3 · Reggae</span>
+      <h3>Bob Marley · L&#x27;Icône Universelle</h3>
+      
+      <div class="meta">11 Mai 2026</div>
+    </a>
+    <a data-f="2" class="card" href="saison-2-17-tems-de-youtube-au-sommet-mondial.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a22099b57137f18de5fd9f4e8" alt=""></div>
+      <span class="tag">Saison 2 · Afrobeats</span>
+      <h3>Tems · De l&#x27;Autoproduction au Sommet Mondial</h3>
+      
+      <div class="meta">1 Mai 2026</div>
+    </a>
+    <a data-f="2" class="card" href="saison-2-16-tate-mcrae-la-performance-dance.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8ab36b8dd89779a9c26ecbf4c5" alt=""></div>
+      <span class="tag">Saison 2 · Pop</span>
+      <h3>Tate McRae · La Performance Dance</h3>
+      
+      <div class="meta">30 Avril 2026</div>
+    </a>
+    <a data-f="2" class="card" href="saison-2-15-sabrina-carpenter-la-pop-petillante.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a0746b0427f845c358fa08eda" alt=""></div>
+      <span class="tag">Saison 2 · Pop</span>
+      <h3>Sabrina Carpenter · La Pop Pétillante</h3>
+      
+      <div class="meta">29 Avril 2026</div>
+    </a>
+    <a data-f="2" class="card" href="saison-2-14-billie-eilish-lavant-garde.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a830f6369d9846cb96eae2247" alt=""></div>
+      <span class="tag">Saison 2 · Pop alternative</span>
+      <h3>Billie Eilish · L&#x27;Avant-Garde</h3>
+      
+      <div class="meta">29 Avril 2026</div>
+    </a>
+    <a data-f="2" class="card" href="saison-2-13-tyla-lafro-pop-solaire.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8af746ebadbc91d5e31cc5f72c" alt=""></div>
+      <span class="tag">Saison 2 · Afro-pop</span>
+      <h3>Tyla · L&#x27;Afro-Pop Solaire</h3>
+      
+      <div class="meta">28 Avril 2026</div>
+    </a>
+    <a data-f="2" class="card" href="saison-2-12-harry-styles-le-charisme-pop.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8ae5c808d5d3bafd40a759ea00" alt=""></div>
+      <span class="tag">Saison 2 · Pop</span>
+      <h3>Harry Styles · Le Charisme Pop</h3>
+      
+      <div class="meta">27 Avril 2026</div>
+    </a>
+    <a data-f="2" class="card" href="saison-2-11-raye-la-puissance-vocale.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a4f52d3fee778cf25c711c753" alt=""></div>
+      <span class="tag">Saison 2 · RnB</span>
+      <h3>Raye · La Puissance Vocale</h3>
+      
+      <div class="meta">25 Avril 2026</div>
+    </a>
+    <a data-f="2" class="card" href="saison-2-10-dua-lipa-le-disco-moderne.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8af705b9c423c3144ce293117e" alt=""></div>
+      <span class="tag">Saison 2 · Pop</span>
+      <h3>Dua Lipa · Le Disco Moderne</h3>
+      
+      <div class="meta">24 Avril 2026</div>
+    </a>
+    <a data-f="2" class="card" href="saison-2-09-olivia-dean-la-soul-elegante.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a09e2927f1864f0628b781f11" alt=""></div>
+      <span class="tag">Saison 2 · Soul</span>
+      <h3>Olivia Dean · La Soul Élégante</h3>
+      
+      <div class="meta">23 Avril 2026</div>
+    </a>
+    <a data-f="2" class="card" href="saison-2-08-kehlani-le-rnb-sensuel.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a63620914930103e62da9ca96" alt=""></div>
+      <span class="tag">Saison 2 · RnB</span>
+      <h3>Kehlani · Le Rythme and Blues Sensuel</h3>
+      
+      <div class="meta">22 Avril 2026</div>
+    </a>
+    <a data-f="2" class="card" href="saison-2-07-david-guetta-lenergie-club.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a1c68bb0b5ca2c7306e11ea12" alt=""></div>
+      <span class="tag">Saison 2 · Électro</span>
+      <h3>David Guetta · L&#x27;Énergie Club</h3>
+      
+      <div class="meta">21 Avril 2026</div>
+    </a>
+    <a data-f="2" class="card" href="saison-2-06-bad-bunny-la-pop-mondiale.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8af556b9df06bf7b02caf16db7" alt=""></div>
+      <span class="tag">Saison 2 · Reggaeton</span>
+      <h3>Bad Bunny · La Pop Mondiale</h3>
+      
+      <div class="meta">20 Avril 2026</div>
+    </a>
+    <a data-f="2" class="card" href="saison-2-05-the-weeknd-la-pop-nocturne.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a2880bfc6a94ad34757275718" alt=""></div>
+      <span class="tag">Saison 2 · RnB</span>
+      <h3>The Weeknd · La Pop Nocturne</h3>
+      
+      <div class="meta">18 Avril 2026</div>
+    </a>
+    <a data-f="2" class="card" href="saison-2-04-lana-del-rey-licone-melancolie-chic.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a0d32bc850d12a287566a119c" alt=""></div>
+      <span class="tag">Saison 2 · Pop</span>
+      <h3>Lana Del Rey · L&#x27;Icône : Mélancolie Chic</h3>
+      
+      <div class="meta">17 Avril 2026</div>
+    </a>
+    <a data-f="2" class="card" href="saison-2-03-bruno-mars-le-groove-luxe.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a436fa5765357f78ba2f351d8" alt=""></div>
+      <span class="tag">Saison 2 · Pop</span>
+      <h3>Bruno Mars · Le Groove : Luxe</h3>
+      
+      <div class="meta">16 Avril 2026</div>
+    </a>
+    <a data-f="2" class="card" href="saison-2-02-madonna-la-reine-evolution.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a48e9172d594765530384db94" alt=""></div>
+      <span class="tag">Saison 2 · Pop</span>
+      <h3>Madonna · La Reine : Évolution</h3>
+      
+      <div class="meta">15 Avril 2026</div>
+    </a>
+    <a data-f="2" class="card" href="saison-2-01-michael-jackson-le-roi-fondations.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8ab9ee61955380216935e36e02" alt=""></div>
+      <span class="tag">Saison 2 · Pop</span>
+      <h3>Michael Jackson · Le Roi : Fondations</h3>
+      
+      <div class="meta">14 Avril 2026</div>
+    </a>
+    <a data-f="1" class="card" href="saison-1-14-saison-1-tout-lunivers.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8aecd6b7b20a1a2469b9522269" alt=""></div>
+      <span class="tag">Saison 1 · Dossier</span>
+      <h3>Saison 1 · Tout l&#x27;Univers</h3>
+      
+      <div class="meta">6 Avril 2026</div>
+    </a>
+    <a data-f="1" class="card" href="saison-1-13-j-cole-lingenierie-du-silence.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8ada6084ebae62bb79b4e8db28" alt=""></div>
+      <span class="tag">Saison 1 · Rap mondial</span>
+      <h3>J. Cole · L&#x27;Ingénierie du Silence</h3>
+      
+      <div class="meta">3 Avril 2026</div>
+    </a>
+    <a data-f="1" class="card" href="saison-1-12-bully-lexil-tokyoite-de-ye.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a1251f5ee67ee5fba7775b01d" alt=""></div>
+      <span class="tag">Saison 1 · Dossier</span>
+      <h3>Bully · L&#x27;Exil Tokyoïte de Ye</h3>
+      
+      <div class="meta">2 Avril 2026</div>
+    </a>
+    <a data-f="1" class="card" href="saison-1-11-ye-tout-bruler-pour-recommencer.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8ad13acfafc486f5bbe5fd91f3" alt=""></div>
+      <span class="tag">Saison 1 · Rap mondial</span>
+      <h3>Ye · Tout Brûler pour Recommencer</h3>
+      
+      <div class="meta">1 Avril 2026</div>
+    </a>
+    <a data-f="1" class="card" href="saison-1-10-plk-larchitecte-du-rap-premium.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a600fa120e2144315db3dd26f" alt=""></div>
+      <span class="tag">Saison 1 · Rap français</span>
+      <h3>PLK · L&#x27;Architecte du Rap Premium</h3>
+      
+      <div class="meta">31 Mars 2026</div>
+    </a>
+    <a data-f="1" class="card" href="saison-1-09-carre-das-les-legendes-reprennent-les-cles.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a460a66ff3e5788a83c699b6e" alt=""></div>
+      <span class="tag">Saison 1 · Dossier</span>
+      <h3>Carré d&#x27;As · Quand les Légendes Reprennent les Clés</h3>
+      
+      <div class="meta">30 Mars 2026</div>
+    </a>
+    <a data-f="1" class="card" href="saison-1-08-oxmo-puccino-entre-bitume-et-litterature.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8ad44a111710b18dae85563023" alt=""></div>
+      <span class="tag">Saison 1 · Rap français</span>
+      <h3>Oxmo Puccino · Entre Bitume et Littérature</h3>
+      
+      <div class="meta">27 Mars 2026</div>
+    </a>
+    <a data-f="1" class="card" href="saison-1-07-pit-baccardi-du-micro-au-business-africain.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8ae71749a6d8de5adc862771ed" alt=""></div>
+      <span class="tag">Saison 1 · Rap francophone</span>
+      <h3>Pit Baccardi · Du Micro au Business Africain</h3>
+      
+      <div class="meta">26 Mars 2026</div>
+    </a>
+    <a data-f="1" class="card" href="saison-1-06-diams-la-paix-plutot-que-la-gloire.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8ab69d28fd7291ef6cf4766d5f" alt=""></div>
+      <span class="tag">Saison 1 · Rap français</span>
+      <h3>Diam&#x27;s · La Paix plutôt que la Gloire</h3>
+      
+      <div class="meta">25 Mars 2026</div>
+    </a>
+    <a data-f="1" class="card" href="saison-1-05-booba-lempire-du-duc.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a84139862251f962bcf4b4896" alt=""></div>
+      <span class="tag">Saison 1 · Rap français</span>
+      <h3>Booba · L&#x27;Empire du Duc</h3>
+      
+      <div class="meta">24 Mars 2026</div>
+    </a>
+    <a data-f="1" class="card" href="saison-1-04-mc-solaar-du-trou-noir-au-triomphe.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a02b65e97399443f5d9cdc2ff" alt=""></div>
+      <span class="tag">Saison 1 · Rap français</span>
+      <h3>MC Solaar · Du Trou Noir au Triomphe</h3>
+      
+      <div class="meta">23 Mars 2026</div>
+    </a>
+    <a data-f="1" class="card" href="saison-1-03-theodora-la-judokate-qui-bouscule-lindustrie.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a5ad3fa5a5596d98e36b815b5" alt=""></div>
+      <span class="tag">Saison 1 · Rap français</span>
+      <h3>Théodora · La Judokate qui Bouscule l&#x27;Industrie</h3>
+      
+      <div class="meta">20 Mars 2026</div>
+    </a>
+    <a data-f="1" class="card" href="saison-1-02-disiz-la-longevite-piratee.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a2b455399dacca40c93d55a23" alt=""></div>
+      <span class="tag">Saison 1 · Rap français</span>
+      <h3>Disiz · La Longévité Piratée</h3>
+      
+      <div class="meta">19 Mars 2026</div>
+    </a>
+    <a data-f="1" class="card" href="saison-1-01-zaho-de-lalgerie-a-celine-dion.html">
+      <div class="imgw"><img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a2a2464ef23c7f741ad79483e" alt=""></div>
+      <span class="tag">Saison 1 · Pop urbaine</span>
+      <h3>Zaho · De l&#x27;Algérie à Céline Dion</h3>
+      
+      <div class="meta">18 Mars 2026</div>
+    </a>
+</div>
+
+<section class="news" aria-labelledby="t-news">
+  <h2 id="t-news" class="rv">Ne manquez aucune histoire.</h2>
+  <div class="rv" style="transition-delay:.12s">
+    <form name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="newsletter">
+      <p class="sr-only" aria-hidden="true"><label>Ne pas remplir si vous êtes humain : <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <label class="sr-only" for="nl-mail">Votre adresse email</label>
+      <input id="nl-mail" type="email" name="email" placeholder="Votre adresse email" required>
+      <button type="submit">Recevoir la newsletter</button>
+    </form>
+    <p class="note">Un email par épisode. Pas de spam, désinscription en un clic.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot">
+    <div>
+      <a class="logo" href="../index.html">Universal <em>Stations</em></a>
+      <p>Le magazine sonore de la culture musicale. Chaque épisode, un artiste. Chaque artiste, une histoire.</p>
+      <div class="soc">
+        <a href="https://instagram.com/universalstations" target="_blank" rel="noopener" aria-label="Universal Stations sur Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23a3.7 3.7 0 0 1-.9 1.38c-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.9 5.9 0 0 0-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.8.72 1.47 1.38 2.13a5.9 5.9 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.38 5.9 5.9 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.15A4 4 0 1 1 16 12a4 4 0 0 1-4 3.99zm7.85-10.4a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg></a>
+        <a href="https://www.facebook.com/UniversalStations1/" target="_blank" rel="noopener" aria-label="Universal Stations sur Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.1 24 12.07z"/></svg></a>
+      </div>
+    </div>
+    <div><h4>Explorer</h4><ul>
+      <li><a href="../episodes/index.html">Épisodes</a></li><li><a href="../playlists/index.html">Playlists</a></li>
+      <li><a href="../livres/index.html">Livres</a></li><li><a href="../magazine/index.html">Magazine</a></li>
+      <li><a href="../a-propos/index.html">À propos</a></li>
+    </ul></div>
+    <div><h4>Écouter sur</h4><ul>
+      <li><a href="https://open.spotify.com/show/4Drtr3vcLpNsiYZVmGoprn">Spotify</a></li>
+      <li><a href="https://podcasts.apple.com/fr/podcast/universal-stations/id1880446318">Apple Podcasts</a></li>
+      <li><a href="https://link.deezer.com/s/33bSPrRevXk4BwAjqvfks">Deezer</a></li>
+      <li><a href="https://music.amazon.fr/podcasts/ae46a138-d2ee-4730-9da2-9173c016283f/universal-stations">Amazon Music</a></li>
+      <li><a href="https://music.youtube.com/playlist?list=PLDiBOGBrbxCa_8cgQym8wxR8ZCbUovhGR">YouTube Music</a></li>
+    </ul></div>
+    <div><h4>Infos</h4><ul>
+      <li><a href="mailto:contact@universalstations.com">Contact</a></li>
+      <li><a href="../mentions-legales.html">Mentions légales</a></li>
+      <li><a href="../privacy-policy.html">Confidentialité</a></li>
+    </ul></div>
+  </div>
+  <div class="legal">
+    <span>© 2026 Universal Stations · universalstations.com</span>
+    <span>Le magazine sonore de la culture musicale</span>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+<script src="../assets/rss.js" defer></script>
+<script src="../assets/search-data.js" defer></script>
+<script src="../assets/search.js" defer></script>
+<script>
+(() => {
+  const btns = document.querySelectorAll('.f-btn');
+  const cards = document.querySelectorAll('.mag-grid .card');
+  btns.forEach(b => b.addEventListener('click', () => {
+    btns.forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b); });
+    cards.forEach(c => { c.hidden = b.dataset.f !== 'all' && c.dataset.f !== b.dataset.f; });
+  }));
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#faf6f0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15130f" media="(prefers-color-scheme: dark)">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caviar, Saison 2 · Le flipbook · Universal Stations</title>
+<meta name="description" content="La Saison 2 du magazine Universal Stations en flipbook : un best-of de 5 portraits : Michael Jackson, Bad Bunny, Dua Lipa, Harry Styles, Billie Eilish, à lire ou à écouter.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,500;0,700;0,800;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="manifest" href="../manifest.json">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Universal Stations">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Caviar, Saison 2 · Le flipbook · Universal Stations">
+<meta property="og:description" content="La Saison 2 du magazine Universal Stations en flipbook : un best-of de 5 portraits : Michael Jackson, Bad Bunny, Dua Lipa, Harry Styles, Billie Eilish, à lire ou à écouter.">
+<meta property="og:url" content="https://www.universalstations.com/magazine/saison-2-caviar-flipbook.html">
+<meta property="og:image" content="https://www.universalstations.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="canonical" href="https://www.universalstations.com/magazine/saison-2-caviar-flipbook.html">
+<style>
+  /* -- Flipbook Caviar · propre à cette page -- */
+  :root{
+    --stage:#0b0a08; --stage-2:#17140f; --stage-line:#2a251d;
+    --fb-paper:#faf6f0; --fb-ink:#141210; --fb-ink-2:#5c564e; --fb-ink-3:#83796a;
+    --fb-accent:#e0338a; --fb-accent-ink:#b81f6c; --fb-gold:#c7c2d8; --fb-gold-dim:#9490a8;
+    --fb-line:#ddd2ba;
+  }
+  .fb-hero{ background:var(--stage); color:var(--fb-paper); padding:5vh 4vw 2vh; }
+  .fb-hero .back{ font:600 .78rem/1 var(--sans); color:var(--fb-gold); text-decoration:none; opacity:.9; }
+  .fb-hero .back:hover{ text-decoration:underline; }
+  .fb-hero h1{ font-family:var(--serif); font-weight:800; font-size:clamp(1.9rem,4vw,2.7rem); margin:1rem 0 .5rem; letter-spacing:-.01em; }
+  .fb-hero h1 em{ font-style:italic; font-weight:500; color:var(--fb-gold); }
+  .fb-hero p{ color:var(--fb-paper); opacity:.68; max-width:56ch; font-size:.95rem; }
+
+  .fb-stage-section{ background:var(--stage); padding:2vh 4vw 7vh; display:flex; flex-direction:column; align-items:center; gap:clamp(18px,3vh,32px);
+    background-image:
+      radial-gradient(ellipse 70% 55% at 50% 30%, rgba(224,51,138,.10), transparent 60%),
+      repeating-linear-gradient(115deg, rgba(255,255,255,.014) 0 2px, transparent 2px 5px);
+  }
+  ::selection{background:var(--fb-accent);color:#fff}
+
+  .stage-wrap{width:min(940px,94vw)}
+  .stage-frame{ position:relative; width:100%; aspect-ratio:940/636; perspective:2600px; perspective-origin:50% 46%; }
+  .book-shadow{ position:absolute; left:6%; right:6%; bottom:-2.4%; height:10%; background:radial-gradient(ellipse at 50% 0%, rgba(0,0,0,.55), transparent 72%); filter:blur(2px); pointer-events:none; }
+  .book{ position:absolute; inset:0; transform-style:preserve-3d; -webkit-transform-style:preserve-3d; }
+  .spine-shadow{ position:absolute; top:1%; bottom:1%; left:50%; width:64px; margin-left:-32px; background:linear-gradient(to right, transparent, rgba(0,0,0,.32) 46%, rgba(0,0,0,.32) 54%, transparent); pointer-events:none; z-index:60; }
+  .leaf{ position:absolute; top:0; left:50%; width:50%; height:100%; transform-style:preserve-3d; -webkit-transform-style:preserve-3d; transform-origin:0% 50%; transition:transform .85s cubic-bezier(.62,.06,.28,1); cursor:pointer; }
+  .leaf.flipped{ transform:rotateY(-180deg); }
+  .face{ position:absolute; inset:0; background:var(--fb-paper); backface-visibility:hidden; -webkit-backface-visibility:hidden; box-shadow:0 4px 30px rgba(0,0,0,.35); display:flex; flex-direction:column; }
+  .face.back{ transform:rotateY(180deg); }
+  .leaf.flipped .face.front{ opacity:0; visibility:hidden; }
+  .leaf:not(.flipped) .face.back{ opacity:0; visibility:hidden; }
+  .face.pg-r::before{ content:'';position:absolute;inset:0 auto 0 0;width:14%; background:linear-gradient(to right, rgba(0,0,0,.14), transparent);pointer-events:none;z-index:5; }
+  .face.pg-l::before{ content:'';position:absolute;inset:0 0 0 auto;width:14%; background:linear-gradient(to left, rgba(0,0,0,.14), transparent);pointer-events:none;z-index:5; }
+  .corner-hint{ position:absolute; width:34px; height:34px; z-index:7; pointer-events:none; opacity:0; transition:opacity .25s; }
+  .face.pg-r .corner-hint{ right:0; bottom:0; background:linear-gradient(135deg,transparent 50%, rgba(0,0,0,.10) 50%); }
+  .face.pg-l .corner-hint{ left:0; bottom:0; background:linear-gradient(225deg,transparent 50%, rgba(0,0,0,.10) 50%); }
+  .leaf:hover .corner-hint{ opacity:1; }
+
+  .pg{ position:relative; flex:1; display:flex; flex-direction:column; padding:9% 10% 8%; font-family:var(--sans); overflow:hidden; border-radius:inherit; }
+  .pg .running{ display:flex; justify-content:space-between; align-items:center; font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--fb-ink-3); margin-bottom:auto; padding-bottom:6%; }
+  .pg .running b{ color:var(--fb-gold-dim); font-weight:700; }
+  .pg .foot{ display:flex; justify-content:space-between; align-items:center; font-size:.64rem; color:var(--fb-ink-3); padding-top:6%; font-variant-numeric:tabular-nums; }
+
+  .fbcover{ background:
+      radial-gradient(ellipse 90% 60% at 50% 8%, rgba(224,51,138,.22), transparent 60%),
+      repeating-radial-gradient(circle at 22% 20%, rgba(255,255,255,.05) 0 1px, transparent 1px 7px),
+      linear-gradient(160deg,#1a0f18,#0c0710 70%);
+      color:var(--fb-paper); justify-content:space-between;
+  }
+  .fbcover .mast{ font:600 .68rem/1 var(--sans); letter-spacing:.32em; color:var(--fb-paper); opacity:.85; }
+  .fbcover .mast em{ color:var(--fb-gold); font-style:normal; }
+  .fbcover .num{ position:absolute; right:-4%; top:6%; font:800 11rem/1 var(--serif); font-style:italic; color:rgba(255,255,255,.05); z-index:0; }
+  .fbcover .titlewrap{ position:relative; z-index:1; margin-top:8%; }
+  .fbcover .kick{ font:700 .66rem/1 var(--sans); letter-spacing:.28em; text-transform:uppercase; color:var(--fb-accent); margin-bottom:1em; }
+  .fbcover h2{ font:800 clamp(2.2rem,4.6vw,3.9rem)/.9 var(--serif); letter-spacing:-.02em; margin:0; white-space:nowrap; color:var(--fb-paper); }
+  .fbcover h2 i{ font-style:italic; font-weight:500; color:var(--fb-gold); }
+  .fbcover .baseline{ font:400 .82rem/1.5 var(--serif); font-style:italic; color:var(--fb-paper); opacity:.72; margin-top:1.1em; max-width:22ch; }
+  .fbcover .lines{ position:relative; z-index:1; display:flex; flex-direction:column; gap:.6em; margin-top:8%; border-top:1px solid rgba(255,255,255,.16); padding-top:1em; }
+  .fbcover .lines a{ display:flex; justify-content:space-between; gap:1em; font:500 .78rem/1.4 var(--sans); color:var(--fb-paper); text-decoration:none; opacity:.92; }
+  .fbcover .lines a b{ color:var(--fb-gold); font-weight:600; }
+  .fbcover .lines a::after{ content:attr(data-pg); color:var(--fb-ink-3); font-variant-numeric:tabular-nums; flex:none; }
+  .fbcover .issue{ position:relative; z-index:1; display:flex; justify-content:space-between; font:600 .62rem/1 var(--sans); letter-spacing:.16em; text-transform:uppercase; color:var(--fb-ink-3); margin-top:8%; }
+
+  .som h2{ font:800 1.6rem/1.05 var(--serif); color:var(--fb-ink); letter-spacing:-.01em; margin:0 0 .2em; }
+  .som .sub{ font:italic 400 .78rem/1.4 var(--serif); color:var(--fb-ink-2); margin-bottom:1.3em; }
+  .som ol{ list-style:none; margin:0; padding:0; column-count:2; column-gap:1.4em; }
+  .som li{ display:flex; align-items:baseline; gap:.5em; padding:.4em 0; border-bottom:1px dotted var(--fb-line); font-size:.68rem; break-inside:avoid; }
+  .som li b{ font-family:var(--serif); font-weight:700; font-size:.86rem; flex:none; width:1.6em; color:var(--fb-gold-dim); }
+  .som li .nm{ color:var(--fb-ink); font-weight:600; flex:none; }
+  .som li .hk{ color:var(--fb-ink-2); flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .som li .pgno{ color:var(--fb-ink-3); font-variant-numeric:tabular-nums; flex:none; }
+  .som li.hi .nm, .som li.hi b{ color:var(--fb-accent-ink); }
+
+  .edito h2{ font:800 1.5rem/1 var(--serif); color:var(--fb-ink); margin:0 0 1em; }
+  .edito .lede{ font:italic 500 1.15rem/1.5 var(--serif); color:var(--fb-ink); margin-bottom:1.1em; }
+  .edito .lede::first-letter{ font-size:2.6em; float:left; line-height:.8; padding:.05em .08em 0 0; color:var(--fb-accent); font-weight:800; font-style:normal; }
+  .edito p{ font-size:.78rem; line-height:1.75; color:var(--fb-ink-2); margin:0 0 1em; }
+  .edito .sig{ margin-top:auto; font:italic 400 .76rem/1.4 var(--serif); color:var(--fb-ink-3); border-top:1px solid var(--fb-line); padding-top:1em; }
+
+  .atitle{ justify-content:center; }
+  .atitle .kick{ font:700 .62rem/1 var(--sans); letter-spacing:.24em; text-transform:uppercase; color:var(--fb-accent-ink); margin-bottom:1em; }
+  .atitle h2{ font:800 2.5rem/.96 var(--serif); color:var(--fb-ink); letter-spacing:-.02em; margin:0 0 .5rem; }
+  .atitle h2 i{ display:block; font-style:italic; font-weight:500; color:var(--fb-accent); font-size:.62em; margin-top:.35em; }
+  .atitle .dek{ font:400 .82rem/1.6 var(--sans); color:var(--fb-ink-2); margin-top:1.4em; max-width:26ch; }
+  .atitle .ep{ margin-top:auto; display:flex; align-items:center; gap:.4em; font:600 .62rem/1 var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--fb-ink); text-decoration:none; border-top:1px solid var(--fb-line); padding-top:1.2em; transition:color .2s; }
+  .atitle .ep:hover{ color:var(--fb-accent-ink); }
+  .atitle .ep .ic{ color:var(--fb-accent); font-size:1em; }
+  .atitle .halo{ position:absolute; inset:0; z-index:0; background:radial-gradient(ellipse 60% 46% at 88% 88%, rgba(224,51,138,.10), transparent 70%); }
+
+  .abody .colhead{ font:700 .6rem/1 var(--sans); letter-spacing:.2em; text-transform:uppercase; color:var(--fb-ink-3); margin-bottom:.8em; }
+  .abody .txt{ column-count:2; column-gap:1.6em; font-size:.665rem; line-height:1.72; color:var(--fb-ink-2); }
+  .abody .txt p{ margin:0 0 .85em; }
+  .abody .txt p:first-of-type::first-letter{ font-size:2.5em; float:left; line-height:.78; padding:.04em .07em 0 0; color:var(--fb-accent); font-weight:800; font-family:var(--serif); }
+  .abody .txt em{ color:var(--fb-ink); font-style:italic; }
+  .abody .txt h3{ font:700 .82rem/1.2 var(--serif); color:var(--fb-ink); margin:1em 0 .4em; break-after:avoid; }
+  .abody .txt .pull{ font:italic 500 .92rem/1.36 var(--serif); color:var(--fb-accent-ink); break-inside:avoid; margin:.2em 0 .8em; padding-left:.7em; border-left:2px solid var(--fb-accent); }
+  /* pilule voix, redimensionnée pour la demi-page du flipbook */
+  .abody .voice{ padding:.4rem .5rem; gap:.55rem; margin-bottom:.9em; border-radius:99px; }
+  .abody .v-play{ width:30px; height:30px; font-size:.62rem; }
+  .abody .v-label{ font-size:.62rem; gap:.4rem; }
+  .abody .v-bar{ margin-top:.3rem; }
+  .abody .v-time{ font-size:.56rem; min-width:4ch; }
+  .abody .v-speed{ font-size:.56rem; padding:.3rem .55rem; }
+  .abody .txt .said{ background:linear-gradient(transparent 62%, rgba(224,51,138,.22) 62%); border-radius:2px; }
+
+  .fbback{ background:linear-gradient(170deg,#1a0f18,#0c0710 75%); color:var(--fb-paper); justify-content:space-between; align-items:flex-start; }
+  .fbback .nx{ font:600 .62rem/1 var(--sans); letter-spacing:.24em; text-transform:uppercase; color:var(--fb-ink-3); }
+  .fbback h2{ font:800 3rem/.92 var(--serif); margin:.5em 0 0; color:var(--fb-paper); }
+  .fbback h2 i{ font-style:italic; font-weight:500; color:var(--fb-gold); }
+  .fbback p{ font:400 .8rem/1.6 var(--sans); color:var(--fb-paper); opacity:.7; max-width:22ch; margin-top:1em; }
+  .fbback .site{ margin-top:auto; font:600 .68rem/1 var(--sans); letter-spacing:.1em; color:var(--fb-paper); opacity:.85; border-top:1px solid rgba(255,255,255,.16); padding-top:1.2em; align-self:stretch; }
+  .fbback .site b{ color:var(--fb-gold); }
+
+  .invite{ position:absolute; top:50%; left:0; width:50%; transform:translateY(-50%); text-align:center; font:italic 400 .78rem/1.4 var(--serif); color:var(--fb-ink-3); opacity:0; pointer-events:none; transition:opacity .4s .3s; z-index:1; }
+  .stage-frame.at-cover .invite{ opacity:.8; color:var(--fb-paper); }
+  .invite .arw{ display:block; font-size:1.6rem; color:var(--fb-gold); margin-bottom:.3em; font-family:var(--serif); font-style:normal; }
+
+  .fb-controls{ display:flex; align-items:center; gap:clamp(10px,2vw,22px); }
+  .navbtn{ width:38px;height:38px;border-radius:50%;border:1px solid var(--stage-line); background:var(--stage-2);color:var(--fb-paper);display:flex;align-items:center;justify-content:center; cursor:pointer;transition:border-color .2s,transform .15s,color .2s;flex:none; }
+  .navbtn:hover:not(:disabled){ border-color:var(--fb-gold); color:var(--fb-gold); transform:translateY(-1px); }
+  .navbtn:disabled{ opacity:.28; cursor:default; }
+  .navbtn:focus-visible{ outline:2px solid var(--fb-accent); outline-offset:2px; }
+  .navbtn svg{ width:14px;height:14px; }
+  .fb-tabs{ display:flex; gap:2px; background:var(--stage-2); border:1px solid var(--stage-line); border-radius:999px; padding:3px; }
+  .fb-tab{ appearance:none;border:0;background:transparent;color:var(--fb-ink-3); font:600 .66rem/1 var(--sans); letter-spacing:.04em; padding:.6em 1.05em; border-radius:999px; cursor:pointer; transition:background .2s,color .2s; white-space:nowrap; }
+  .fb-tab:hover{ color:var(--fb-paper); }
+  .fb-tab.on{ background:var(--fb-accent); color:#fff; }
+  .fb-tab:focus-visible{ outline:2px solid var(--fb-gold); outline-offset:1px; }
+  .readout{ font:500 .66rem/1 var(--sans); color:var(--fb-ink-3); font-variant-numeric:tabular-nums; letter-spacing:.04em; min-width:3.6em; text-align:center; }
+
+  @media (max-width:760px){
+    .fb-tabs{ display:none; }
+    .fbcover .lines{ display:none; }
+    .abody .txt{ column-count:1; }
+    .atitle h2{ font-size:1.9rem; }
+  }
+  @media (prefers-reduced-motion: reduce){ .leaf{ transition:transform .01s linear; } }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Aller au contenu principal</a>
+
+<nav aria-label="Navigation principale">
+  <a class="logo" href="../index.html">Universal <em>Stations</em></a>
+  <div class="links">
+    <a href="../episodes/index.html">Épisodes</a>
+    <a href="../playlists/index.html">Playlists</a>
+    <a href="../livres/index.html">Livres</a>
+    <a href="index.html" style="color:var(--ink)">Magazine</a>
+    <a href="../a-propos/index.html">À propos</a>
+  </div>
+  <a class="nav-cta" href="https://open.spotify.com/show/4Drtr3vcLpNsiYZVmGoprn">Écouter</a>
+</nav>
+
+<main id="main">
+
+<section class="fb-hero">
+  <a class="back" href="index.html">← Retour au Magazine</a>
+  <h1>Caviar, Saison 2 <em>en flipbook</em></h1>
+  <p>La Saison 2 (pop mondiale) prend la forme d'un vrai magazine à feuilleter : un best-of de 5 portraits, à lire ou à écouter, dans la continuité du même format que la Saison 1.</p>
+</section>
+
+<section class="fb-stage-section">
+  <div class="stage-wrap">
+    <div class="stage-frame" id="frame">
+      <div class="book-shadow"></div>
+      <div class="book" id="book">
+        <div class="spine-shadow"></div>
+      </div>
+      <div class="invite"><span class="arw">→</span>Cliquez sur la couverture<br>pour l'ouvrir</div>
+    </div>
+  </div>
+
+  <div class="fb-controls">
+    <button class="navbtn" id="prev" aria-label="Page précédente">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <div class="fb-tabs" role="tablist" aria-label="Aller à">
+      <button class="fb-tab" data-s="-1">Couverture</button>
+      <button class="fb-tab" data-s="0">Sommaire</button>
+      <button class="fb-tab" data-s="1">M. Jackson</button>
+      <button class="fb-tab" data-s="2">Bad Bunny</button>
+      <button class="fb-tab" data-s="3">Dua Lipa</button>
+      <button class="fb-tab" data-s="4">Harry Styles</button>
+      <button class="fb-tab" data-s="5">Billie Eilish</button>
+      <button class="fb-tab" data-s="6">Dos</button>
+    </div>
+    <span class="readout" id="readout">Couverture</span>
+    <button class="navbtn" id="next" aria-label="Page suivante">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+</section>
+
+<section class="news" aria-labelledby="t-news">
+  <h2 id="t-news" class="rv">Ne manquez aucune histoire.</h2>
+  <div class="rv" style="transition-delay:.12s">
+    <form name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="newsletter">
+      <p class="sr-only" aria-hidden="true"><label>Ne pas remplir si vous êtes humain : <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <label class="sr-only" for="nl-mail">Votre adresse email</label>
+      <input id="nl-mail" type="email" name="email" placeholder="Votre adresse email" required>
+      <button type="submit">Recevoir la newsletter</button>
+    </form>
+    <p class="note">Un email par épisode. Pas de spam, désinscription en un clic.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot">
+    <div>
+      <a class="logo" href="../index.html">Universal <em>Stations</em></a>
+      <p>Le magazine sonore de la culture musicale. Chaque épisode, un artiste. Chaque artiste, une histoire.</p>
+      <div class="soc">
+        <a href="https://instagram.com/universalstations" target="_blank" rel="noopener" aria-label="Universal Stations sur Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23a3.7 3.7 0 0 1-.9 1.38c-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.9 5.9 0 0 0-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.8.72 1.47 1.38 2.13a5.9 5.9 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.38 5.9 5.9 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.15A4 4 0 1 1 16 12a4 4 0 0 1-4 3.99zm7.85-10.4a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg></a>
+        <a href="https://www.facebook.com/UniversalStations1/" target="_blank" rel="noopener" aria-label="Universal Stations sur Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.1 24 12.07z"/></svg></a>
+      </div>
+    </div>
+    <div><h4>Explorer</h4><ul>
+      <li><a href="../episodes/index.html">Épisodes</a></li><li><a href="../playlists/index.html">Playlists</a></li>
+      <li><a href="../livres/index.html">Livres</a></li><li><a href="../magazine/index.html">Magazine</a></li>
+      <li><a href="../a-propos/index.html">À propos</a></li>
+    </ul></div>
+    <div><h4>Écouter sur</h4><ul>
+      <li><a href="https://open.spotify.com/show/4Drtr3vcLpNsiYZVmGoprn">Spotify</a></li>
+      <li><a href="https://podcasts.apple.com/fr/podcast/universal-stations/id1880446318">Apple Podcasts</a></li>
+      <li><a href="https://link.deezer.com/s/33bSPrRevXk4BwAjqvfks">Deezer</a></li>
+      <li><a href="https://music.amazon.fr/podcasts/ae46a138-d2ee-4730-9da2-9173c016283f/universal-stations">Amazon Music</a></li>
+      <li><a href="https://music.youtube.com/playlist?list=PLDiBOGBrbxCa_8cgQym8wxR8ZCbUovhGR">YouTube Music</a></li>
+    </ul></div>
+    <div><h4>Infos</h4><ul>
+      <li><a href="mailto:contact@universalstations.com">Contact</a></li>
+      <li><a href="../mentions-legales.html">Mentions légales</a></li>
+      <li><a href="../privacy-policy.html">Confidentialité</a></li>
+    </ul></div>
+  </div>
+  <div class="legal">
+    <span>© 2026 Universal Stations · universalstations.com</span>
+    <span>Le magazine sonore de la culture musicale</span>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+<script src="../assets/rss.js" defer></script>
+<script src="../assets/voice.js" defer></script>
+<script src="../assets/search-data.js" defer></script>
+<script src="../assets/search.js" defer></script>
+<script>
+(() => {
+  const PAGES = [
+    /* 0 — COVER */
+    `<div class="pg fbcover">
+      <div class="num">02</div>
+      <div class="mast">UNIVERSAL <em>STATIONS</em></div>
+      <div class="titlewrap">
+        <div class="kick">Saison 2 · Le magazine</div>
+        <h2>CAVIAR<i>.</i></h2>
+        <p class="baseline">La pop mondiale, des fondations aux avant-gardes.</p>
+      </div>
+      <div class="lines">
+        <a data-pg="01"><b>Michael Jackson</b> Le Roi, Fondations</a>
+        <a data-pg="06"><b>Bad Bunny</b> La Pop Mondiale</a>
+        <a data-pg="10"><b>Dua Lipa</b> Le Disco Moderne</a>
+        <a data-pg="12"><b>Harry Styles</b> Le Charisme Pop</a>
+        <a data-pg="14"><b>Billie Eilish</b> L'Avant-Garde</a>
+      </div>
+      <div class="issue"><span>N°2 · Été 2026</span><span>18 épisodes</span></div>
+    </div>`,
+    /* 1 — SOMMAIRE */
+    `<div class="pg som">
+      <div class="running"><span>Caviar</span><span>Sommaire</span></div>
+      <h2>Sommaire</h2>
+      <p class="sub">Dix-sept artistes, une même saison.</p>
+      <ol>
+        <li class="hi"><b>01</b><span class="nm">M. Jackson</span><span class="hk">Le Roi, Fondations</span><span class="pgno">01</span></li>
+        <li><b>02</b><span class="nm">Madonna</span><span class="hk">La Reine, Évolution</span><span class="pgno">·</span></li>
+        <li><b>03</b><span class="nm">Bruno Mars</span><span class="hk">Le Groove, Luxe</span><span class="pgno">·</span></li>
+        <li><b>04</b><span class="nm">Lana Del Rey</span><span class="hk">Mélancolie Chic</span><span class="pgno">·</span></li>
+        <li><b>05</b><span class="nm">The Weeknd</span><span class="hk">La Pop Nocturne</span><span class="pgno">·</span></li>
+        <li class="hi"><b>06</b><span class="nm">Bad Bunny</span><span class="hk">La Pop Mondiale</span><span class="pgno">06</span></li>
+        <li><b>07</b><span class="nm">David Guetta</span><span class="hk">L'Énergie Club</span><span class="pgno">·</span></li>
+        <li><b>08</b><span class="nm">Kehlani</span><span class="hk">Le RnB Sensuel</span><span class="pgno">·</span></li>
+        <li><b>09</b><span class="nm">Olivia Dean</span><span class="hk">La Soul Élégante</span><span class="pgno">·</span></li>
+        <li class="hi"><b>10</b><span class="nm">Dua Lipa</span><span class="hk">Le Disco Moderne</span><span class="pgno">10</span></li>
+        <li><b>11</b><span class="nm">Raye</span><span class="hk">La Puissance Vocale</span><span class="pgno">·</span></li>
+        <li class="hi"><b>12</b><span class="nm">Harry Styles</span><span class="hk">Le Charisme Pop</span><span class="pgno">12</span></li>
+        <li><b>13</b><span class="nm">Tyla</span><span class="hk">L'Afro-Pop Solaire</span><span class="pgno">·</span></li>
+        <li class="hi"><b>14</b><span class="nm">Billie Eilish</span><span class="hk">L'Avant-Garde</span><span class="pgno">14</span></li>
+        <li><b>15</b><span class="nm">S. Carpenter</span><span class="hk">La Pop Pétillante</span><span class="pgno">·</span></li>
+        <li><b>16</b><span class="nm">Tate McRae</span><span class="hk">La Performance Dance</span><span class="pgno">·</span></li>
+        <li><b>17</b><span class="nm">Tems</span><span class="hk">Au Sommet Mondial</span><span class="pgno">·</span></li>
+        <li><b>18</b><span class="nm">Saison 2</span><span class="hk">La Pop Mondiale, le bilan</span><span class="pgno">·</span></li>
+      </ol>
+    </div>`,
+    /* 2 — EDITO */
+    `<div class="pg edito">
+      <div class="running"><span>Caviar</span><span>Édito</span></div>
+      <h2>L'édito</h2>
+      <p class="lede">Des fondations du Roi de la pop aux avant-gardes d'aujourd'hui.</p>
+      <p>Dix-sept artistes, une même industrie mondiale, dix-sept manières de la traverser sans s'y perdre. Cette deuxième saison élargit le terrain : la pop n'a plus de frontières, ni de langue, ni de genre unique.</p>
+      <p>Ici, la musique rencontre l'histoire, et chaque chanson devient un récit.</p>
+      <p class="sig">Le manifeste Universal Stations</p>
+    </div>`,
+    /* 3 — MICHAEL JACKSON TITLE */
+    `<div class="pg atitle"><div class="halo"></div>
+      <div class="kick">Saison 2 · Ép. 01</div>
+      <h2>Michael Jackson<i>Le Roi, Fondations</i></h2>
+      <p class="dek">Des Jackson Five à Thriller, l'épopée de celui qui a redéfini ce qu'une icône pouvait être.</p>
+      <a class="ep" href="https://open.spotify.com/show/4Drtr3vcLpNsiYZVmGoprn" target="_blank" rel="noopener" data-season="2" data-ep="1"><span class="ic">▶</span> Écouter l'épisode ↗</a>
+    </div>`,
+    /* 4 — MICHAEL JACKSON BODY */
+    `<div class="pg abody">
+      <div class="colhead">Portrait</div>
+      <div class="voice-slot" data-voice="mj"></div>
+      <div class="txt" data-art="mj">
+        <p><em>Nous ouvrons les portes d'une légende.</em> Non pas celles d'un simple artiste, mais celles d'une civilisation musicale à elle seule.</p>
+        <p>On ne dit pas « le chanteur Michael Jackson », on dit simplement Michael, et le monde entier sait de qui l'on parle. Né en 1958 à Gary, dans l'Indiana, septième enfant d'une famille modeste, la musique lui sert d'évasion autant que de discipline.</p>
+        <p>Enfant, il chante déjà avec une assurance qui déconcerte les adultes, au sein des Jackson Five, le visage du groupe, mais une enfance sacrifiée derrière les paillettes.</p>
+        <h3>Thriller, le sommet du monde</h3>
+        <p>En 1982 paraît Thriller, encore aujourd'hui l'album le plus vendu de tous les temps, avec plus de soixante-dix millions d'exemplaires écoulés à travers la planète.</p>
+        <p class="pull">« Il a fait du clip une forme d'art, de la danse un langage universel. »</p>
+        <p>Le clip qui l'accompagne dure près de quatorze minutes et fait voler en éclats une barrière invisible : celle des artistes noirs écartés des écrans musicaux.</p>
+        <h3>En clôture</h3>
+        <p>Plus de quinze ans après sa mort, son héritage connaît une nouvelle jeunesse : il a prouvé qu'un artiste pouvait, à lui seul, rassembler des continents entiers autour d'un même rythme.</p>
+      </div>
+      <div class="foot"><span>Universal Stations</span><span>01</span></div>
+    </div>`,
+    /* 5 — BAD BUNNY TITLE */
+    `<div class="pg atitle"><div class="halo"></div>
+      <div class="kick">Saison 2 · Ép. 06</div>
+      <h2>Bad Bunny<i>La Pop Mondiale</i></h2>
+      <p class="dek">Celui qui a prouvé qu'on n'a pas besoin de chanter en anglais pour conquérir le monde.</p>
+      <a class="ep" href="https://open.spotify.com/show/4Drtr3vcLpNsiYZVmGoprn" target="_blank" rel="noopener" data-season="2" data-ep="6"><span class="ic">▶</span> Écouter l'épisode ↗</a>
+    </div>`,
+    /* 6 — BAD BUNNY BODY */
+    `<div class="pg abody">
+      <div class="colhead">Portrait</div>
+      <div class="voice-slot" data-voice="badbunny"></div>
+      <div class="txt" data-art="badbunny">
+        <p><em>Imaginez un artiste qui chante uniquement en espagnol</em>, et qui reste pourtant numéro un dans le monde entier pendant des années.</p>
+        <p>Benito Antonio Martínez Ocasio, que le monde connaît sous le nom de Bad Bunny, a hissé sa langue, sa culture et son île, Porto Rico, au sommet des classements mondiaux, sans jamais renier d'où il venait.</p>
+        <p>Il publie d'abord ses chansons sur internet tout en travaillant pour gagner sa vie. Sa voix grave et nonchalante attire vite l'attention.</p>
+        <h3>La langue comme étendard</h3>
+        <p>Là où d'autres auraient cédé à la tentation de chanter en anglais, lui reste fidèle à l'espagnol, au point d'assurer le spectacle de la mi-temps de la grande finale sportive américaine, en hommage à la culture portoricaine.</p>
+        <p class="pull">« Une musique peut voyager partout, à condition d'être sincère et puissante. »</p>
+        <p>Il dénonce aussi la gentrification qui chasse les habitants de Porto Rico, faisant de sa musique un moyen de défendre les siens.</p>
+        <h3>En clôture</h3>
+        <p>Il a montré qu'un artiste pouvait rester pleinement lui-même, fidèle à sa langue, tout en parlant au monde entier.</p>
+      </div>
+      <div class="foot"><span>Universal Stations</span><span>06</span></div>
+    </div>`,
+    /* 7 — DUA LIPA TITLE */
+    `<div class="pg atitle"><div class="halo"></div>
+      <div class="kick">Saison 2 · Ép. 10</div>
+      <h2>Dua Lipa<i>Le Disco Moderne</i></h2>
+      <p class="dek">Celle qui a fait de la nostalgie une vision d'avenir.</p>
+      <a class="ep" href="https://open.spotify.com/show/4Drtr3vcLpNsiYZVmGoprn" target="_blank" rel="noopener" data-season="2" data-ep="10"><span class="ic">▶</span> Écouter l'épisode ↗</a>
+    </div>`,
+    /* 8 — DUA LIPA BODY */
+    `<div class="pg abody">
+      <div class="colhead">Portrait</div>
+      <div class="voice-slot" data-voice="dualipa"></div>
+      <div class="txt" data-art="dualipa">
+        <p><em>Un héritage venu des Balkans</em>, une enfance partagée entre deux pays, et une voix grave qui transforme la piste de danse en machine à remonter le temps.</p>
+        <p>Née à Londres dans une famille originaire du Kosovo, cette double appartenance ne l'a jamais quittée : elle en a fait une force et une fierté plutôt qu'une différence à gommer.</p>
+        <h3>Future Nostalgia</h3>
+        <p>Son deuxième album, paru en 2020, arrive au moment où le monde est confiné et a désespérément besoin de danser. Inspiré du disco et du funk, il devient la bande-son d'une époque étrange.</p>
+        <p class="pull">« Rendre la nostalgie joyeuse et tournée vers l'avenir. »</p>
+        <p>Elle prête ensuite sa voix au cinéma, explore des sonorités plus psychédéliques, et s'installe durablement comme une icône incontournable.</p>
+        <h3>En clôture</h3>
+        <p>Elle a prouvé que l'on pouvait honorer le passé sans jamais s'y enfermer, et faire de la nostalgie une véritable vision d'avenir.</p>
+      </div>
+      <div class="foot"><span>Universal Stations</span><span>10</span></div>
+    </div>`,
+    /* 9 — HARRY STYLES TITLE */
+    `<div class="pg atitle"><div class="halo"></div>
+      <div class="kick">Saison 2 · Ép. 12</div>
+      <h2>Harry Styles<i>Le Charisme Pop</i></h2>
+      <p class="dek">Celui qui a quitté le boy band le plus célèbre du monde pour devenir lui-même.</p>
+      <a class="ep" href="https://open.spotify.com/show/4Drtr3vcLpNsiYZVmGoprn" target="_blank" rel="noopener" data-season="2" data-ep="12"><span class="ic">▶</span> Écouter l'épisode ↗</a>
+    </div>`,
+    /* 10 — HARRY STYLES BODY */
+    `<div class="pg abody">
+      <div class="colhead">Portrait</div>
+      <div class="voice-slot" data-voice="harry"></div>
+      <div class="txt" data-art="harry">
+        <p><em>Un adolescent d'un petit village anglais</em>, propulsé dans le groupe le plus célèbre de la planète. Puis, un jour, il choisit de tout quitter pour devenir lui-même.</p>
+        <p>Membre d'un télé-crochet devenu phénomène mondial, il connaît la gloire, mais aussi les contraintes d'une machine qui décide de presque tout à sa place.</p>
+        <h3>Devenir soi-même</h3>
+        <p>En solo, il révèle un univers personnel, inspiré du rock des années soixante-dix, et bouscule les codes de la masculinité, sur scène comme dans les magazines.</p>
+        <p class="pull">« Il faut traiter les autres avec bienveillance. »</p>
+        <p>Fidèle à lui-même, il continue d'explorer, de surprendre et de rassembler, disque après disque.</p>
+        <h3>En clôture</h3>
+        <p>Il a prouvé qu'il n'y a pas de plus belle réussite que de devenir pleinement soi-même, et d'inviter les autres à en faire autant.</p>
+      </div>
+      <div class="foot"><span>Universal Stations</span><span>12</span></div>
+    </div>`,
+    /* 11 — BILLIE EILISH TITLE */
+    `<div class="pg atitle"><div class="halo"></div>
+      <div class="kick">Saison 2 · Ép. 14</div>
+      <h2>Billie Eilish<i>L'Avant-Garde</i></h2>
+      <p class="dek">Celle qui a prouvé qu'un murmure peut être plus puissant qu'un cri.</p>
+      <a class="ep" href="https://open.spotify.com/show/4Drtr3vcLpNsiYZVmGoprn" target="_blank" rel="noopener" data-season="2" data-ep="14"><span class="ic">▶</span> Écouter l'épisode ↗</a>
+    </div>`,
+    /* 12 — BILLIE EILISH BODY */
+    `<div class="pg abody">
+      <div class="colhead">Portrait</div>
+      <div class="voice-slot" data-voice="billie"></div>
+      <div class="txt" data-art="billie">
+        <p><em>Une chambre d'enfant à Los Angeles</em>, un microphone, deux adolescents, et une chanson qui devient virale du jour au lendemain.</p>
+        <p>Avec son frère Finneas, elle compose et enregistre ses premières chansons à la maison, sans grande maison de disques, sans recette toute faite.</p>
+        <h3>Une révolution depuis une chambre</h3>
+        <p>Les sons sont feutrés, la voix est proche, comme une confidence soufflée à l'oreille, à contre-courant des productions tonitruantes de l'époque.</p>
+        <p class="pull">« Un chuchotement peut être plus puissant que le plus violent des cris. »</p>
+        <p>Elle est devenue la porte-parole de toute une jeunesse, parlant avec sincérité de santé mentale et d'environnement.</p>
+        <h3>En clôture</h3>
+        <p>Elle a redéfini ce que pouvait être une star de la pop, sans jamais perdre son identité ni sa famille.</p>
+      </div>
+      <div class="foot"><span>Universal Stations</span><span>14</span></div>
+    </div>`,
+    /* 13 — BACK COVER */
+    `<div class="pg fbback">
+      <span class="nx">À suivre</span>
+      <h2>Caramel<i>.</i></h2>
+      <p>Saison 3 : le reggae, de Bob Marley aux voix qui portent Kingston aujourd'hui. Prochain numéro.</p>
+      <div class="site">universalstations.com <b>·</b> le magazine sonore de la culture musicale</div>
+    </div>`,
+  ];
+
+  const NUM_LEAVES = 7;
+  const book = document.getElementById('book');
+  const frame = document.getElementById('frame');
+  const readout = document.getElementById('readout');
+  const tabs = [...document.querySelectorAll('.fb-tab')];
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+  const LABELS = { '-1':'Couverture', '0':'Sommaire', '1':'M. Jackson', '2':'Bad Bunny', '3':'Dua Lipa', '4':'Harry Styles', '5':'Billie Eilish', '6':'Dos' };
+
+  for (let k = 0; k < NUM_LEAVES; k++) {
+    const leaf = document.createElement('div');
+    leaf.className = 'leaf';
+    const front = document.createElement('div');
+    front.className = 'face front ' + (k === 0 ? '' : 'pg-r');
+    front.innerHTML = PAGES[k * 2];
+    const back = document.createElement('div');
+    back.className = 'face back ' + (k === NUM_LEAVES - 1 ? '' : 'pg-l');
+    back.innerHTML = PAGES[k * 2 + 1];
+    [front, back].forEach(f => f.insertAdjacentHTML('beforeend', '<span class="corner-hint" aria-hidden="true"></span>'));
+    leaf.append(front, back);
+    leaf.addEventListener('click', (e) => {
+      if (e.target.closest('button, a, .voice')) return;
+      k < numFlipped() ? prev() : next();
+    });
+    book.appendChild(leaf);
+  }
+  const leaves = [...book.querySelectorAll('.leaf')];
+
+  let spread = -1;
+  const numFlipped = () => spread + 1;
+
+  function render(){
+    leaves.forEach((leaf, k) => {
+      const isFlipped = k < numFlipped();
+      leaf.classList.toggle('flipped', isFlipped);
+      leaf.style.zIndex = isFlipped ? 100 + k : 100 + (NUM_LEAVES - k);
+    });
+    frame.classList.toggle('at-cover', spread === -1);
+    readout.textContent = LABELS[spread] + '  ·  ' + (spread + 2) + ' / 8';
+    tabs.forEach(t => t.classList.toggle('on', Number(t.dataset.s) === spread));
+    prevBtn.disabled = spread === -1;
+    nextBtn.disabled = spread === 6;
+  }
+  function next(){ if (spread < 6) { spread++; render(); } }
+  function prev(){ if (spread > -1) { spread--; render(); } }
+
+  prevBtn.addEventListener('click', prev);
+  nextBtn.addEventListener('click', next);
+  tabs.forEach(t => t.addEventListener('click', () => { spread = Number(t.dataset.s); render(); }));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') next();
+    if (e.key === 'ArrowLeft') prev();
+  });
+  render();
+
+  /* voice.js / rss.js sont chargés en defer : on attend la fin du parsing
+     pour être sûr que window.UniversalVoice / window.USRSS existent. */
+  document.addEventListener('DOMContentLoaded', () => {
+    /* -- Audio : lecture vocale (TTS) — une instance indépendante par article -- */
+    const readers = [];
+    document.querySelectorAll('[data-art]').forEach(art => {
+      const key = art.dataset.art;
+      const mount = document.querySelector('[data-voice="' + key + '"]');
+      if (!window.UniversalVoice || !mount) return;
+      const r = UniversalVoice.attach(art, mount, {
+        beforePlay: () => readers.forEach(x => x && x !== r && x.stop()),
+      });
+      if (r) readers.push(r);
+    });
+
+    /* -- Audio : lien Spotify réel de l'épisode, résolu depuis le flux RSS -- */
+    if (typeof USRSS !== 'undefined') {
+      USRSS.load().then(items => {
+        if (!items) return;
+        document.querySelectorAll('a[data-season][data-ep]').forEach(a => {
+          const s = Number(a.dataset.season), ep = Number(a.dataset.ep);
+          const match = items.find(it => it.season === s && it.ep === ep);
+          if (match && match.link) a.href = match.link;
+        });
+      }).catch(() => {});
+    }
+  });
+})();
+</script>
+</body>
+</html>

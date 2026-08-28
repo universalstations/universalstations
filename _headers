@@ -1,13 +1,8 @@
-# ══════════════════════════════════════════════════════════
-# Universal Stations — En-têtes de sécurité HTTP (Netlify)
-# ══════════════════════════════════════════════════════════
-
 /*
-  # Interdit d'afficher le site dans une iframe (anti-clickjacking)
   X-Frame-Options: SAMEORIGIN
-  # Empêche le navigateur de deviner les types de fichiers (anti-sniffing)
   X-Content-Type-Options: nosniff
-  # Limite les infos envoyées aux sites externes lors des clics sortants
   Referrer-Policy: strict-origin-when-cross-origin
-  # Coupe l'accès aux capteurs inutiles (caméra, micro, géolocalisation)
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Cross-Origin-Opener-Policy: same-origin
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://i.scdn.co https://www.universalstations.com https://wsrv.nl; media-src 'self' https://anchor.fm https://*.cloudfront.net; frame-src https://open.spotify.com; connect-src 'self' https://anchor.fm https://api.rss2json.com https://api.allorigins.win; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests

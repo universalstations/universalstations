@@ -2,11 +2,9 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="theme-color" content="#faf6f0" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#15130f" media="(prefers-color-scheme: dark)">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Playlists · Universal Stations</title>
-<meta name="description" content="Une playlist officielle par saison : Nuance (rap), Caviar (pop), Caramel (reggae), Lotus (RnB). 400 titres curés sur Spotify.">
+<title>Bruno Mars · Le Groove : Luxe · Universal Stations</title>
+<meta name="description" content="Du petit imitateur d&#x27;Elvis de Honolulu au showman le plus complet de sa génération : le parcours de Bruno Mars.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,500;0,700;0,800;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -16,16 +14,16 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="manifest" href="../manifest.json">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Universal Stations">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="Playlists · Universal Stations">
-<meta property="og:description" content="Une playlist officielle par saison : Nuance (rap), Caviar (pop), Caramel (reggae), Lotus (RnB). 400 titres curés sur Spotify.">
-<meta property="og:url" content="https://www.universalstations.com/playlists/">
-<meta property="og:image" content="https://www.universalstations.com/og-image.jpg">
+<meta property="og:title" content="Bruno Mars · Le Groove : Luxe · Universal Stations">
+<meta property="og:description" content="Du petit imitateur d&#x27;Elvis de Honolulu au showman le plus complet de sa génération : le parcours de Bruno Mars.">
+<meta property="og:url" content="https://www.universalstations.com/magazine/saison-2-03-bruno-mars-le-groove-luxe.html">
+<meta property="og:image" content="https://i.scdn.co/image/ab6765630000ba8a436fa5765357f78ba2f351d8">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<link rel="canonical" href="https://www.universalstations.com/playlists/">
+<link rel="canonical" href="https://www.universalstations.com/magazine/saison-2-03-bruno-mars-le-groove-luxe.html">
 </head>
 <body>
 
@@ -35,61 +33,43 @@
   <a class="logo" href="../index.html">Universal <em>Stations</em></a>
   <div class="links">
     <a href="../episodes/index.html">Épisodes</a>
-    <a href="index.html" style="color:var(--ink)">Playlists</a>
+    <a href="../playlists/index.html">Playlists</a>
     <a href="../livres/index.html">Livres</a>
-    <a href="../magazine/index.html">Magazine</a>
+    <a href="index.html" style="color:var(--ink)">Magazine</a>
     <a href="../a-propos/index.html">À propos</a>
   </div>
   <a class="nav-cta" href="https://open.spotify.com/show/4Drtr3vcLpNsiYZVmGoprn">Écouter</a>
 </nav>
 
 <main id="main">
-
-<header class="page-hero">
-  <p class="kicker">Curation Spotify</p>
-  <h1><strong>Le son de</strong> <em>chaque saison</em>.</h1>
-  <p class="hero-sub">Une playlist officielle par saison, 100 titres chacune. Des sélections curées qui prolongent chaque épisode et font vibrer la culture.</p>
-</header>
-
-<div class="jam" id="jam" hidden></div>
-
-<script>
-fetch('../jam.json',{cache:'no-store'}).then(r=>r.json()).then(j=>{
-  if(j.status!=='on'||!j.url) return;
-  const el=document.getElementById('jam');
-  el.hidden=false;
-  el.innerHTML=`<div class="jam-card">
-    <span class="jam-dot" aria-hidden="true"></span>
-    <h3>Jam en cours · ${(j.label||'Écoute collective').replace(/</g,'&lt;')}</h3>
-    <a class="jam-join" href="${j.url.replace(/"/g,'')}" target="_blank" rel="noopener">Rejoindre le Jam ↗</a>
-    <p>Écoute la même musique, en même temps que tout le monde, sur Spotify.</p>
-  </div>`;
-}).catch(()=>{});
-</script>
-
-<div class="plists">
-  <div class="plist" id="saison-1">
-    <div class="head"><h3>Nuance</h3><span class="g">Saison 1 · Rap</span></div>
-    <p>La sélection complète des artistes de la Saison 1 : les sons qui définissent le rap francophone contemporain.</p>
-    <iframe src="https://open.spotify.com/embed/playlist/3OmEq4Shr3SvNgWq9m8wgV?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Playlist Nuance"></iframe>
-  </div>
-  <div class="plist" id="saison-2">
-    <div class="head"><h3>Caviar</h3><span class="g">Saison 2 · Pop</span></div>
-    <p>La sélection complète des artistes de la Saison 2 : la pop mondiale, des fondations aux avant-gardes.</p>
-    <iframe src="https://open.spotify.com/embed/playlist/1nJf1uFnETKvIbK2f0i5V3?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Playlist Caviar"></iframe>
-  </div>
-  <div class="plist" id="saison-3">
-    <div class="head"><h3>Caramel</h3><span class="g">Saison 3 · Reggae</span></div>
-    <p>La sélection complète des artistes de la Saison 3 : les sons qui définissent le reggae contemporain.</p>
-    <iframe src="https://open.spotify.com/embed/playlist/54is6RvS5F3thhUomIUPN0?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Playlist Caramel"></iframe>
-  </div>
-  <div class="plist" id="saison-4">
-    <div class="head"><h3>Lotus</h3><span class="g">Saison 4 · RnB</span></div>
-    <p>La sélection de la Saison 4 : la soul et le RnB, des fondations de Ray Charles aux voix d'aujourd'hui.</p>
-    <iframe src="https://open.spotify.com/embed/playlist/6JdqN6rJ3DpmKSYkMipuCG?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Playlist Lotus"></iframe>
-  </div>
-</div>
-
+<article>
+  <p class="art-back"><a href="index.html">← Retour au Magazine</a></p>
+  <header class="art-hero">
+    <p class="kicker">Saison 2 · Pop</p>
+    <h1>Bruno Mars · Le Groove : Luxe</h1>
+    <p class="date">16 Avril 2026</p>
+  </header>
+  <div class="art-cover"><div class="imgw"><img src="https://i.scdn.co/image/ab6765630000ba8a436fa5765357f78ba2f351d8" alt=""></div></div>
+  <div id="voice-mount"></div>
+  <div class="art-wrap"><div id="art-body">
+<p><em>Bienvenue dans Universal Stations. Vous écoutez le troisième épisode de la deuxième saison. Aujourd'hui, place au plaisir pur, au groove et à l'élégance. Voici l'histoire d'un homme qui n'a jamais eu de plan de secours, parce qu'il était né pour la scène. Voici l'histoire de Bruno Mars.</em></p>
+<p>Il y a des artistes que l'on respecte, et d'autres qui, dès les premières notes, vous donnent envie de bouger. Bruno Mars appartient à cette seconde famille. C'est un musicien complet, un chanteur, un danseur, un compositeur et un showman, capable de réunir des générations entières sur une même piste de danse. Pour comprendre d'où vient ce talent, il faut remonter jusqu'à une petite île du Pacifique.</p>
+<p>Peter Gene Hernandez, que le monde connaît sous le nom de Bruno Mars, naît au début du mois d'octobre de l'année mille neuf cent quatre-vingt-cinq, à Honolulu, dans l'archipel de Hawaï. Il grandit au sein d'une famille de musiciens, aux origines multiples, où l'on joue de tout, du rock au reggae en passant par la soul. Surnommé Bruno dès le berceau, il monte sur scène alors qu'il n'a que quatre ans, pour imiter le grand Elvis Presley. Le public est conquis, et l'enfant comprend très tôt qu'il est fait pour cela.</p>
+<h2>Le faiseur de tubes de l'ombre</h2>
+<p>Devenu jeune adulte, il quitte Hawaï pour la Californie, bien décidé à percer. Mais le succès ne vient pas immédiatement sous son propre nom. Avant de briller en pleine lumière, Bruno Mars devient l'un des compositeurs les plus demandés de l'industrie. Avec son équipe d'auteurs, il signe des refrains imparables pour d'autres artistes, et ses premières apparitions en tant que chanteur invité le révèlent au grand public. Sa voix souple et chaleureuse fait mouche.</p>
+<p>Puis vient son propre tour. Son premier album, paru au début des années deux mille dix, le propulse au sommet, porté par des chansons devenues des classiques modernes, tendres ou explosives. Le monde découvre un artiste capable de passer de la ballade au cri du cœur, du romantisme le plus sincère à l'énergie la plus communicative.</p>
+<h2>Le retour du funk et l'art du spectacle</h2>
+<p>Là où Bruno Mars se distingue vraiment, c'est dans sa manière de faire revivre les musiques du passé sans jamais les imiter. Avec son album consacré au funk, il ramène sur le devant de la scène les cuivres, les basses rondes et les chorégraphies, et signe l'un des plus grands succès de la décennie. Sur scène, c'est un perfectionniste absolu, héritier direct des grands maîtres de la soul. Ses prestations lors des grandes finales sportives américaines, devant des centaines de millions de spectateurs, sont restées dans les mémoires comme des modèles du genre.</p>
+<p>Sa rencontre avec le musicien Anderson Paak donne naissance à un duo baptisé Silk Sonic, hommage somptueux à la soul des années soixante-dix. Le résultat est un triomphe, salué par le public comme par la critique, et récompensé par de nombreux prix. Au fil de sa carrière, Bruno Mars a accumulé une quinzaine de récompenses Grammy, preuve d'une reconnaissance qui ne se dément pas.</p>
+<h2>Pour conclure ce troisième épisode</h2>
+<p>Que ce soit à travers ses tournées, sa résidence très courue dans la ville de Las Vegas ou ses collaborations les plus récentes, qui confirment qu'il n'a rien perdu de sa magie, Bruno Mars reste l'un des artistes les plus complets et les plus aimés de sa génération. Le petit garçon de Honolulu qui imitait Elvis est devenu incontournable sur toutes les scènes du monde, sans jamais cesser de prendre du plaisir. Et c'est sans doute là le secret de son éclat.</p>
+<p><em>Vous venez d'écouter le troisième épisode de la deuxième saison d'Universal Stations. Pour prolonger ce voyage, écoutez la playlist de cette saison : recherchez simplement Caviar sur votre plateforme d'écoute préférée. Abonnez-vous à Universal Stations pour ne manquer aucun épisode. À très bientôt.</em></p>
+  </div></div>
+  <nav class="art-nav" aria-label="Articles voisins">
+    <a href="saison-2-02-madonna-la-reine-evolution.html">← Article précédent<b>Madonna · La Reine : Évolution</b></a>
+    <a href="saison-2-04-lana-del-rey-licone-melancolie-chic.html" style="text-align:right">Article suivant →<b>Lana Del Rey · L&#x27;Icône : Mélancolie Chic</b></a>
+  </nav>
+</article>
 <section class="news" aria-labelledby="t-news">
   <h2 id="t-news" class="rv">Ne manquez aucune histoire.</h2>
   <div class="rv" style="transition-delay:.12s">
@@ -141,6 +121,7 @@ fetch('../jam.json',{cache:'no-store'}).then(r=>r.json()).then(j=>{
 </footer>
 
 <script src="../assets/app.js" defer></script>
+<script src="../assets/voice.js" defer></script>
 <script src="../assets/rss.js" defer></script>
 <script src="../assets/search-data.js" defer></script>
 <script src="../assets/search.js" defer></script>

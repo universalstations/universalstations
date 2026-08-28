@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#faf6f0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15130f" media="(prefers-color-scheme: dark)">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Livres · Ce que ça coûte de rester soi · Universal Stations</title>
+<meta name="description" content="La Saison 1 devient un livre : Ce que ça coûte de rester soi. Douze chapitres, un épilogue. En papier, ebook et audiobook sur toutes les plateformes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,500;0,700;0,800;1,400;1,500;1,700&family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="manifest" href="../manifest.json">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Universal Stations">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Livres · Ce que ça coûte de rester soi">
+<meta property="og:description" content="La Saison 1 devient un livre : douze chapitres, un épilogue, une seule question. En papier, ebook et audiobook.">
+<meta property="og:url" content="https://www.universalstations.com/livres/">
+<meta property="og:image" content="https://www.universalstations.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="canonical" href="https://www.universalstations.com/livres/">
+<style>
+  /* ── styles propres à la page Livres ── */
+  .lv-hero{padding:0 0 3.4rem;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+
+  .bookzone{display:flex;justify-content:center;perspective:1200px}
+  .bk{width:250px;height:360px;position:relative;transform-style:preserve-3d;transform:rotateY(-24deg) rotateX(4deg);transition:transform .5s ease;box-shadow:24px 30px 60px rgba(20,18,16,.28);border-radius:3px 8px 8px 3px}
+  .bookzone:hover .bk{transform:rotateY(-10deg) rotateX(2deg)}
+  @media (prefers-reduced-motion: reduce){.bookzone:hover .bk{transform:rotateY(-24deg) rotateX(4deg)}}
+  .bk .face{position:absolute;inset:0;border-radius:3px 8px 8px 3px;color:#f0ece3;padding:30px 18px 22px;display:flex;flex-direction:column;align-items:center;text-align:center;overflow:hidden;
+    background:
+      radial-gradient(90% 34% at 50% 104%, rgba(255,178,64,.75) 0%, rgba(214,120,26,.4) 34%, rgba(120,60,10,.12) 62%, transparent 78%),
+      radial-gradient(120% 60% at 78% 12%, rgba(200,140,60,.16) 0%, transparent 55%),
+      radial-gradient(1px 1px at 20% 18%, rgba(255,255,255,.8) 50%, transparent 51%),
+      radial-gradient(1px 1px at 64% 8%, rgba(255,255,255,.6) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 84% 30%, rgba(255,220,170,.7) 50%, transparent 51%),
+      radial-gradient(1px 1px at 38% 34%, rgba(255,255,255,.5) 50%, transparent 51%),
+      radial-gradient(1px 1px at 10% 46%, rgba(255,255,255,.45) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 52% 24%, rgba(255,255,255,.55) 50%, transparent 51%),
+      #060504}
+  .bk .face::after{content:"";position:absolute;left:-10%;right:-10%;bottom:-34%;height:52%;border-radius:50%;background:#020202;box-shadow:0 -2px 18px rgba(255,170,60,.55)}
+  .bk .spine{position:absolute;left:-26px;top:0;bottom:0;width:26px;transform:rotateY(-90deg) translateX(-13px);transform-origin:right;background:#0e0c0a;border-radius:3px 0 0 3px}
+  .bk .pages{position:absolute;right:-8px;top:5px;bottom:5px;width:8px;background:repeating-linear-gradient(to bottom,#efe9dd 0 2px,#ddd5c8 2px 3px);border-radius:0 3px 3px 0;transform:translateZ(-6px)}
+  .bk .us{font:600 17px 'Oswald',var(--sans);letter-spacing:3.5px;color:#d99b3c;margin-top:16px}
+  .bk .s1{font:600 9.5px 'Oswald',var(--sans);letter-spacing:5px;color:#e6ddcf;margin-top:22px}
+  .bk .bt{font:700 33px/1.04 'Oswald',var(--sans);text-transform:uppercase;color:#f2eee6;margin-top:12px;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+  .bk .arts{margin-top:auto;font:600 8.5px 'Oswald',var(--sans);letter-spacing:2.2px;color:#e0d6c4;position:relative;z-index:2;padding-bottom:2px}
+
+  .lv{max-width:1080px;margin:0 auto;padding:0 22px}
+  .lv section{padding:54px 0;border-top:1px solid var(--line)}
+  .lv h2{font:300 clamp(26px,3.4vw,38px) var(--serif);color:var(--ink);margin-bottom:10px}
+  .lv h2 em{font-style:italic;color:var(--accent)}
+  .slead{color:var(--ink-2);max-width:640px;margin-bottom:34px}
+
+  .fils{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .fil{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 24px;position:relative}
+  .fil .n{font:800 44px var(--serif);font-style:italic;color:var(--accent);opacity:.25;position:absolute;top:12px;right:20px}
+  .fil h3{font:700 20px var(--serif);color:var(--ink);margin-bottom:4px}
+  .fil .st{font:600 11px var(--sans);letter-spacing:2px;text-transform:uppercase;color:var(--accent-ink);margin-bottom:12px}
+  .fil p{font-size:14px;color:var(--body-ink)}
+
+  .chaps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .ch{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:3px}
+  .ch b{font:700 17px var(--serif);color:var(--ink)}
+  .ch span{font-size:13px;color:var(--ink-2)}
+  .ch.q{background:var(--ink);border-color:var(--ink)}
+  .ch.q b{color:var(--paper);font-style:italic}
+  .ch.q span{color:#b5aea2}
+  @media (prefers-color-scheme: dark){.ch.q{background:var(--accent);border-color:var(--accent)}.ch.q b{color:#1a0d05}.ch.q span{color:#4a2413}}
+
+  .eds{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .ed{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:30px 26px;display:flex;flex-direction:column}
+  .ed h3{font:700 24px var(--serif);color:var(--ink)}
+  .ed .fmt{font:600 11px var(--sans);letter-spacing:2px;text-transform:uppercase;color:var(--ink-3);margin:4px 0 18px}
+  .ed ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:13.8px;margin:0 0 24px;padding:0}
+  .ed li{padding-left:22px;position:relative}
+  .ed li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:700}
+  .ed li.no{color:var(--ink-3)}
+  .ed li.no::before{content:"·";color:var(--ink-3)}
+  .ed .cta{margin-top:auto;text-align:center;font:600 13.5px var(--sans);padding:13px;border-radius:99px;background:var(--ink);color:var(--paper);text-decoration:none}
+  .ed .cta:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .ed.hot{border:2px solid var(--accent);position:relative}
+  .ed.hot::before{content:"Recommandé";position:absolute;top:-11px;left:24px;background:var(--accent);color:#fff;font:600 10.5px var(--sans);letter-spacing:1.5px;text-transform:uppercase;padding:3px 12px;border-radius:99px}
+  .ed.hot .cta{background:var(--accent);color:#fff}
+  .ed.gold{border:2px solid #c99a3c;position:relative}
+  .ed.gold::before{content:"Exclusivité du site";position:absolute;top:-11px;left:24px;background:#c99a3c;color:#241a06;font:600 10.5px var(--sans);letter-spacing:1.5px;text-transform:uppercase;padding:3px 12px;border-radius:99px}
+  .ed.gold .cta{background:#c99a3c;color:#241a06}
+
+  .pfs{display:flex;flex-wrap:wrap;gap:12px}
+  .pf-l{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);background:var(--card);border-radius:99px;padding:11px 20px;font:600 13.5px var(--sans);color:var(--ink);text-decoration:none}
+  .pf-l i{width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none}
+  .lv .note{margin-top:18px;font-size:13px;color:var(--ink-3)}
+
+  .fils4{grid-template-columns:repeat(4,1fr)}
+  .szn-badge{display:inline-block;font:700 9.5px var(--sans);letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:99px;margin-top:10px}
+  .szn-badge.open{background:var(--accent);color:#fff}
+  .szn-badge.soon{background:var(--paper-2);color:var(--ink-3);border:1px solid var(--line)}
+
+  .pc-form{display:flex;flex-wrap:wrap;gap:12px;align-items:center;max-width:640px}
+  .pc-form select,.pc-form input[type="email"]{padding:.85rem 1.1rem;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:500 .88rem var(--sans)}
+  .pc-form select{flex:1;min-width:180px;cursor:pointer}
+  .pc-form input[type="email"]{flex:2;min-width:220px}
+  .pc-form button{flex:none;font:600 13.5px var(--sans);padding:13px 26px;border-radius:99px;background:var(--ink);color:var(--paper);border:0;cursor:pointer;transition:background .2s}
+  .pc-form button:hover{background:var(--accent)}
+
+  .pf-l{cursor:default}
+
+  @media (max-width:860px){
+    .lv-hero{grid-template-columns:1fr;gap:44px;text-align:center}
+    .lv-hero .hero-sub{margin:0 auto}
+    .fils,.eds,.chaps,.fils4{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:600px){.fils,.eds,.chaps,.fils4{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Aller au contenu principal</a>
+
+<nav aria-label="Navigation principale">
+  <a class="logo" href="../index.html">Universal <em>Stations</em></a>
+  <div class="links">
+    <a href="../episodes/index.html">Épisodes</a>
+    <a href="../playlists/index.html">Playlists</a>
+    <a href="index.html" style="color:var(--ink)">Livres</a>
+    <a href="../magazine/index.html">Magazine</a>
+    <a href="../a-propos/index.html">À propos</a>
+  </div>
+  <a class="nav-cta" href="https://open.spotify.com/show/4Drtr3vcLpNsiYZVmGoprn">Écouter</a>
+</nav>
+
+<main id="main">
+
+<header class="page-hero">
+  <p class="kicker">La collection Livres · Volume 1 · Saison 1</p>
+  <h1><strong>Ce que ça coûte</strong> <em>de rester soi</em>.</h1>
+  <p class="hero-sub">La Saison 1 retranscrite en livre : douze chapitres et un épilogue, reliés par une seule question, que paie-t-on pour rester soi-même quand le monde entier écoute.</p>
+</header>
+
+<div class="lv">
+
+<section class="lv-hero" style="border-top:0;padding-top:1.4rem">
+  <div>
+    <h2>Un livre, <em>pas une compilation</em>.</h2>
+    <p class="slead" style="margin-bottom:0">De Zaho à J. Cole, de Diam's à Ye, chaque artiste répond différemment à la même question. Ce n'est plus une suite d'analyses : c'est une histoire qui se lit d'une traite. En précommande dès maintenant, en librairie en septembre 2026 : livre papier, ebook et audiobook.</p>
+  </div>
+  <div class="bookzone" aria-hidden="true">
+    <div class="bk">
+      <div class="spine"></div>
+      <div class="pages"></div>
+      <div class="face">
+        <span class="us">UNIVERSAL STATIONS</span>
+        <span class="s1">S A I S O N&nbsp;&nbsp;1</span>
+        <span class="bt">Ce que ça coûte de rester soi</span>
+        <span class="arts">DOUZE HISTOIRES. UNE SAISON ENTIÈRE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Quatre saisons, <em>quatre livres</em></h2>
+  <p class="slead">Le podcast est en pause jusqu'à l'année prochaine le temps de publier chaque saison en livre, un volume par mois.</p>
+  <div class="fils fils4">
+    <div class="fil">
+      <span class="n">1</span>
+      <h3>Nuance</h3>
+      <p class="st">Rap</p>
+      <p>Septembre 2026</p>
+      <span class="szn-badge open">Précommande ouverte</span>
+    </div>
+    <div class="fil">
+      <span class="n">2</span>
+      <h3>Caviar</h3>
+      <p class="st">Pop</p>
+      <p>Octobre 2026</p>
+      <span class="szn-badge soon">Bientôt</span>
+    </div>
+    <div class="fil">
+      <span class="n">3</span>
+      <h3>Caramel</h3>
+      <p class="st">Reggae</p>
+      <p>Novembre 2026</p>
+      <span class="szn-badge soon">Bientôt</span>
+    </div>
+    <div class="fil">
+      <span class="n">4</span>
+      <h3>Lotus</h3>
+      <p class="st">RnB</p>
+      <p>Décembre 2026</p>
+      <span class="szn-badge soon">Bientôt</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Un fil narratif à <em>trois niveaux</em></h2>
+  <p class="slead">Ce n'est pas un thème, c'est une mécanique. La même question traverse tout le livre et se resserre à mesure qu'on avance.</p>
+  <div class="fils">
+    <div class="fil"><span class="n">1</span>
+      <h3>Le prix payé</h3>
+      <p class="st">Concret, chapitre par chapitre</p>
+      <p>Chaque chapitre documente un prix réel et tangible payé par un artiste pour ne pas se trahir. Pas de morale, pas de leçon : des faits, des dates, des choix. Et à chaque fois, la même question qui reste : est-ce que moi, je paierais ce prix-là ?</p>
+    </div>
+    <div class="fil"><span class="n">2</span>
+      <h3>Les chapitres en miroir</h3>
+      <p class="st">Des réponses qui se contredisent</p>
+      <p>Le livre est construit comme une conversation. Booba construit un empire, Diam's quitte tout : deux chapitres qui se répondent. Ye explose, J. Cole retient. Disiz se transforme pour survivre, Théodora refuse de changer. Le livre ne tranche jamais : c'est au lecteur de le faire.</p>
+    </div>
+    <div class="fil"><span class="n">3</span>
+      <h3>L'épilogue</h3>
+      <p class="st">On ne vous dira rien ici</p>
+      <p>Il y a un dernier mouvement, après le dernier chapitre. Il change rétrospectivement tout ce que vous venez de lire ou d'écouter. C'est la raison pour laquelle ce livre se termine ailleurs que là où il a commencé. On n'en dit pas plus.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Douze chapitres, <em>une seule question</em></h2>
+  <p class="slead">Chaque artiste a payé son prix. Aucun n'a payé le même.</p>
+  <div class="chaps">
+    <div class="ch"><b>Zaho</b><span>le prix des portes fermées</span></div>
+    <div class="ch"><b>Disiz</b><span>le prix de perdre son public de départ</span></div>
+    <div class="ch"><b>Théodora</b><span>le prix de refuser de changer</span></div>
+    <div class="ch"><b>MC Solaar</b><span>le prix de vingt ans d'invisibilité forcée</span></div>
+    <div class="ch"><b>Booba</b><span>le prix de l'empire, enfermé dans son propre personnage</span></div>
+    <div class="ch"><b>Diam's</b><span>le prix de la gloire elle-même</span></div>
+    <div class="ch"><b>Pit Baccardi</b><span>le prix de l'ombre</span></div>
+    <div class="ch"><b>Oxmo Puccino</b><span>le prix de n'entrer dans aucune case</span></div>
+    <div class="ch"><b>PLK</b><span>le prix de la discrétion dans un monde qui récompense le bruit</span></div>
+    <div class="ch"><b>Ye</b><span>le prix de la solitude totale</span></div>
+    <div class="ch"><b>J. Cole</b><span>le prix du silence que personne ne comprend</span></div>
+    <div class="ch q"><b>Et vous ?</b><span>est-ce que vous paieriez ce prix-là ?</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Le livre, <em>trois façons de l'acheter</em></h2>
+  <p class="slead">Un vrai livre qui se tient, se prête, s'offre et se range dans une bibliothèque, saison après saison. À chacun son format, et une édition réservée au site.</p>
+  <div class="eds">
+    <div class="ed">
+      <h3>Broché · Papier</h3>
+      <p class="fmt">Livre physique · Impression à la demande</p>
+      <ul>
+        <li>La couverture officielle Saison 1 en pleine page</li>
+        <li>Le texte intégral : douze chapitres et l'épilogue</li>
+        <li>Impression à la demande, jamais de rupture de stock</li>
+        <li>Livré partout via Amazon et les librairies en ligne</li>
+      </ul>
+      <a class="cta" href="#precommande" data-format="Broché">Précommander le livre</a>
+    </div>
+    <div class="ed">
+      <h3>Ebook</h3>
+      <p class="fmt">Liseuse · Tablette · Téléphone</p>
+      <ul>
+        <li>Le même texte, lisible partout, tout de suite</li>
+        <li>Kindle, Kobo, Apple Books, Google Play Livres</li>
+        <li>Typographie adaptable, mode sombre, marque-page</li>
+        <li>Le prix le plus accessible de la collection</li>
+      </ul>
+      <a class="cta" href="#precommande" data-format="Ebook / Kindle">Précommander l'ebook</a>
+    </div>
+    <div class="ed gold">
+      <h3>Pack Collector</h3>
+      <p class="fmt">Exclusivité du site · Vente directe</p>
+      <ul>
+        <li>Le broché + l'ebook + l'audiobook Version 1, réunis</li>
+        <li>Exemplaire numéroté, tirage limité par saison</li>
+        <li>Bonus exclusif : un contenu introuvable ailleurs</li>
+        <li>Vendu uniquement ici, sans intermédiaire</li>
+      </ul>
+      <a class="cta" href="#precommande" data-format="Pack Collector">Réserver le pack</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>L'audiobook, <em>trois façons de l'écouter</em></h2>
+  <p class="slead">La Version 1 pour être partout tout de suite, la Version 2 pour l'expérience définitive, et le Pack Audio pour tout avoir.</p>
+  <div class="eds">
+    <div class="ed">
+      <h3>Version 1 · Simple</h3>
+      <p class="fmt">Narration IA · 7,99 €</p>
+      <ul>
+        <li>Narration ElevenLabs, voix Martin Dupont Profond</li>
+        <li>Le texte intégral, fil narratif complet, les douze chapitres et l'épilogue</li>
+        <li>Distribution large et non-exclusive</li>
+        <li>Sur Audible, Apple, Google Play, Kobo, Scribd, Storytel, OverDrive et une quarantaine d'autres</li>
+        <li class="no">Sans les contenus enrichis</li>
+      </ul>
+      <a class="cta" href="#precommande" data-format="Audiobook Version 1">Précommander la Version 1</a>
+    </div>
+    <div class="ed hot">
+      <h3>Version 2 · Premium</h3>
+      <p class="fmt">Narration humaine · 14,95 $</p>
+      <ul>
+        <li>Narration par un comédien professionnel, incarnée et dirigée</li>
+        <li>Contenu enrichi : extraits musicaux et éléments supplémentaires absents de la Version 1</li>
+        <li>Production Audible exclusive, prix fixé par la plateforme</li>
+        <li>Sur Audible, Amazon et Apple iTunes</li>
+        <li>À venir : production en cours</li>
+      </ul>
+      <a class="cta" href="#precommande" data-format="Audiobook Version 2 (Premium)">Être prévenu·e de la sortie</a>
+    </div>
+    <div class="ed gold">
+      <h3>Pack Audio Intégral</h3>
+      <p class="fmt">Bundle · Exclusivité du site</p>
+      <ul>
+        <li>L'audiobook Version 1, tout de suite</li>
+        <li>La Version 2 offerte à sa sortie, sans repasser à la caisse</li>
+        <li>Les contenus exclusifs de la Saison 1 inclus</li>
+        <li>Réservé au site : le seul endroit où tout est réuni</li>
+      </ul>
+      <a class="cta" href="#precommande" data-format="Pack Audio Intégral">Précommander le Pack Audio</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Deux circuits, <em>une stratégie</em></h2>
+  <p class="slead">La Version 1 occupe tout le terrain, partout, tout de suite. La Version 2 arrive ensuite comme l'édition de référence sur le circuit Amazon. Les deux coexistent sans se cannibaliser.</p>
+  <div class="pfs">
+    <span class="pf-l"><i></i>Audible</span>
+    <span class="pf-l"><i></i>Spotify</span>
+    <span class="pf-l"><i></i>Apple</span>
+    <span class="pf-l"><i></i>Google Play</span>
+    <span class="pf-l"><i></i>Kobo</span>
+    <span class="pf-l"><i></i>Scribd</span>
+    <span class="pf-l"><i></i>Storytel</span>
+    <span class="pf-l"><i></i>OverDrive</span>
+    <span class="pf-l"><i></i>+ 40 autres</span>
+  </div>
+  <p class="note">Les liens seront activés à l'ouverture de chaque plateforme. Chaque saison suivante devient un volume : Caviar (pop, octobre), Caramel (reggae, novembre), Lotus (RnB, décembre).</p>
+</section>
+
+<section id="precommande">
+  <h2>Précommandez <em>la Saison 1</em></h2>
+  <p class="slead">Le livre sort en septembre 2026. Laissez votre email pour être prévenu·e dès l'ouverture des précommandes du format qui vous intéresse.</p>
+  <form class="pc-form" name="book-precommande" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="book-precommande">
+    <p class="sr-only" aria-hidden="true"><label>Ne pas remplir si vous êtes humain : <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+    <label class="sr-only" for="pc-format">Format souhaité</label>
+    <select id="pc-format" name="format">
+      <option>Broché</option>
+      <option>Ebook / Kindle</option>
+      <option>Audiobook Version 1</option>
+      <option>Audiobook Version 2 (Premium)</option>
+      <option>Pack Collector</option>
+      <option>Pack Audio Intégral</option>
+    </select>
+    <label class="sr-only" for="pc-mail">Votre adresse email</label>
+    <input id="pc-mail" type="email" name="email" placeholder="Votre adresse email" required>
+    <button type="submit">Me prévenir</button>
+  </form>
+  <p class="note">Un seul email, à l'ouverture des précommandes de ce format. Rien d'autre, désinscription en un clic.</p>
+</section>
+
+</div>
+
+<section class="news" aria-labelledby="t-news">
+  <h2 id="t-news" class="rv">Ne manquez aucune histoire.</h2>
+  <div class="rv" style="transition-delay:.12s">
+    <form name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="newsletter">
+      <p class="sr-only" aria-hidden="true"><label>Ne pas remplir si vous êtes humain : <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <label class="sr-only" for="nl-mail">Votre adresse email</label>
+      <input id="nl-mail" type="email" name="email" placeholder="Votre adresse email" required>
+      <button type="submit">Recevoir la newsletter</button>
+    </form>
+    <p class="note">Un email par épisode. Pas de spam, désinscription en un clic.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot">
+    <div>
+      <a class="logo" href="../index.html">Universal <em>Stations</em></a>
+      <p>Le magazine sonore de la culture musicale. Chaque épisode, un artiste. Chaque artiste, une histoire.</p>
+      <div class="soc">
+        <a href="https://instagram.com/universalstations" target="_blank" rel="noopener" aria-label="Universal Stations sur Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23a3.7 3.7 0 0 1-.9 1.38c-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.9 5.9 0 0 0-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.8.72 1.47 1.38 2.13a5.9 5.9 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.38 5.9 5.9 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.15A4 4 0 1 1 16 12a4 4 0 0 1-4 3.99zm7.85-10.4a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg></a>
+        <a href="https://www.facebook.com/UniversalStations1/" target="_blank" rel="noopener" aria-label="Universal Stations sur Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.1 24 12.07z"/></svg></a>
+      </div>
+    </div>
+    <div><h4>Explorer</h4><ul>
+      <li><a href="../episodes/index.html">Épisodes</a></li><li><a href="../playlists/index.html">Playlists</a></li>
+      <li><a href="../livres/index.html">Livres</a></li><li><a href="../magazine/index.html">Magazine</a></li>
+      <li><a href="../a-propos/index.html">À propos</a></li>
+    </ul></div>
+    <div><h4>Écouter sur</h4><ul>
+      <li><a href="https://open.spotify.com/show/4Drtr3vcLpNsiYZVmGoprn">Spotify</a></li>
+      <li><a href="https://podcasts.apple.com/fr/podcast/universal-stations/id1880446318">Apple Podcasts</a></li>
+      <li><a href="https://link.deezer.com/s/33bSPrRevXk4BwAjqvfks">Deezer</a></li>
+      <li><a href="https://music.amazon.fr/podcasts/ae46a138-d2ee-4730-9da2-9173c016283f/universal-stations">Amazon Music</a></li>
+      <li><a href="https://music.youtube.com/playlist?list=PLDiBOGBrbxCa_8cgQym8wxR8ZCbUovhGR">YouTube Music</a></li>
+    </ul></div>
+    <div><h4>Infos</h4><ul>
+      <li><a href="mailto:contact@universalstations.com">Contact</a></li>
+      <li><a href="../mentions-legales.html">Mentions légales</a></li>
+      <li><a href="../privacy-policy.html">Confidentialité</a></li>
+    </ul></div>
+  </div>
+  <div class="legal">
+    <span>© 2026 Universal Stations · universalstations.com</span>
+    <span>Le magazine sonore de la culture musicale</span>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+<script src="../assets/rss.js" defer></script>
+<script src="../assets/search-data.js" defer></script>
+<script src="../assets/search.js" defer></script>
+<script>
+document.querySelectorAll('.eds .cta[data-format]').forEach(a => {
+  a.addEventListener('click', () => {
+    const sel = document.getElementById('pc-format');
+    if (sel) sel.value = a.dataset.format;
+  });
+});
+</script>
+</body>
+</html>

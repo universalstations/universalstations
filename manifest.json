@@ -1,13 +1,13 @@
 {
-  "name": "Universal Stations — Music & Urban Culture Podcast",
+  "name": "Universal Stations · Music & Urban Culture Podcast",
   "short_name": "Universal Stations",
-  "description": "Le podcast qui met la culture musicale à l'honneur. Chaque épisode, un artiste, une playlist. Rap, Pop, Reggae, RnB.",
+  "description": "Le magazine sonore de la culture musicale. Podcast, playlists, magazine.",
   "lang": "fr",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#06060b",
-  "theme_color": "#050A04",
+  "background_color": "#faf6f0",
+  "theme_color": "#141210",
   "icons": [
     {
       "src": "/favicon-32x32.png",
@@ -32,22 +32,25 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["music", "entertainment"],
+  "categories": [
+    "music",
+    "entertainment"
+  ],
   "shortcuts": [
     {
       "name": "Épisodes",
-      "url": "/podcast",
-      "description": "Tous les épisodes du podcast"
+      "url": "/episodes/",
+      "description": "Tous les épisodes"
     },
     {
       "name": "Playlists",
-      "url": "/playlists",
-      "description": "Les playlists Spotify par saison"
+      "url": "/playlists/",
+      "description": "Les playlists par saison"
     },
     {
-      "name": "Blog",
-      "url": "/blog",
-      "description": "Articles et dossiers musique"
+      "name": "Magazine",
+      "url": "/magazine/",
+      "description": "Articles et dossiers"
     }
   ]
 }
