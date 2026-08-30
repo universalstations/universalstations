@@ -360,6 +360,13 @@ nav .search-btn{margin-left:2rem}
 .bell-toggle.on{background:var(--accent);color:#fff}
 @media(max-width:1000px){.bell-toggle{margin-left:.5rem}}
 
+/* ── Popup notifications OneSignal (reprend le style du site) ── */
+#onesignal-slidedown-dialog,[id*="onesignal-slidedown" i]{font-family:var(--sans)!important;border-radius:16px!important;box-shadow:0 20px 50px rgba(0,0,0,.18)!important;border:none!important}
+#onesignal-slidedown-dialog svg,[id*="onesignal-slidedown" i] svg{color:var(--accent)!important;fill:var(--accent)!important}
+#onesignal-slidedown-allow-button,[id*="allow-button" i]{background:var(--accent)!important;border-color:var(--accent)!important;border-radius:99px!important;font-family:var(--sans)!important;font-weight:600!important}
+#onesignal-slidedown-allow-button:hover,[id*="allow-button" i]:hover{background:var(--accent-ink)!important;border-color:var(--accent-ink)!important}
+#onesignal-slidedown-cancel-button,[id*="cancel-button" i]{color:var(--ink-2)!important;border-radius:99px!important;font-family:var(--sans)!important;font-weight:600!important}
+
 /* ── Page article ── */
 .art-back{max-width:820px;margin:0 auto;padding:4.5vh 6vw 0}
 .art-back a{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--sans);font-size:.82rem;font-weight:600;color:var(--ink-2);text-decoration:none;border:1.5px solid var(--line);border-radius:99px;padding:.55rem 1.2rem;transition:all .2s}

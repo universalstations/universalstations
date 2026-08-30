@@ -108,6 +108,21 @@
     await OneSignal.init({
       appId: '172d5529-e572-48db-acfc-42ba2f8d89fb',
       notifyButton: { enable: false },
+      promptOptions: {
+        slidedown: {
+          prompts: [
+            {
+              type: 'push',
+              autoPrompt: false,
+              text: {
+                actionMessage: "Sois prévenu·e dès qu'un nouvel épisode, un article ou un livre sort. Pas de spam, désabonnement en un clic.",
+                acceptButton: "Autoriser",
+                cancelButton: "Plus tard",
+              },
+            },
+          ],
+        },
+      },
     });
 
     const nav = document.querySelector('nav');
