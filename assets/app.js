@@ -108,22 +108,29 @@
     await OneSignal.init({
       appId: '172d5529-e572-48db-acfc-42ba2f8d89fb',
       notifyButton: { enable: false },
-      promptOptions: {
-        slidedown: {
-          prompts: [
-            {
-              type: 'push',
-              autoPrompt: false,
-              text: {
-                actionMessage: "Sois prévenu·e dès qu'un nouvel épisode, un article ou un livre sort. Pas de spam, désabonnement en un clic.",
-                acceptButton: "Autoriser",
-                cancelButton: "Plus tard",
-              },
-            },
-          ],
-        },
-      },
     });
+
+    /* Traduit le popup OneSignal en français directement dans le DOM
+       (contourne un bug connu de leur config promptOptions qui peut
+       empêcher le popup de s'afficher). */
+    const FR = {
+      "We'd like to show you notifications for the latest news and updates.":
+        "Sois prévenu·e dès qu'un nouvel épisode, un article ou un livre sort. Pas de spam, désabonnement en un clic.",
+      'Allow': 'Autoriser',
+      'Cancel': 'Plus tard',
+    };
+    new MutationObserver((muts) => {
+      for (const m of muts) {
+        for (const n of m.addedNodes) {
+          if (n.nodeType !== 1) continue;
+          n.querySelectorAll?.('*').forEach((el) => {
+            if (el.children.length) return;
+            const t = el.textContent.trim();
+            if (FR[t]) el.textContent = FR[t];
+          });
+        }
+      }
+    }).observe(document.body, { childList: true, subtree: true });
 
     const nav = document.querySelector('nav');
     if (!nav) return;
