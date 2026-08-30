@@ -96,6 +96,49 @@
 })();
 
 
+/* ── Notifications push (OneSignal) — cloche dans la nav, en haut ── */
+(() => {
+  const s = document.createElement('script');
+  s.src = 'https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js';
+  s.defer = true;
+  document.head.appendChild(s);
+
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async (OneSignal) => {
+    await OneSignal.init({
+      appId: '172d5529-e572-48db-acfc-42ba2f8d89fb',
+      notifyButton: { enable: false },
+    });
+
+    const nav = document.querySelector('nav');
+    if (!nav) return;
+
+    const BELL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>';
+
+    const btn = document.createElement('button');
+    btn.className = 'bell-toggle';
+    btn.innerHTML = BELL;
+    nav.appendChild(btn);
+
+    const paint = () => {
+      const on = OneSignal.User.PushSubscription.optedIn;
+      btn.classList.toggle('on', !!on);
+      btn.setAttribute('aria-label', on ? 'Se désabonner des notifications' : "S'abonner aux notifications");
+    };
+    paint();
+    OneSignal.User.PushSubscription.addEventListener('change', paint);
+
+    btn.addEventListener('click', async () => {
+      if (OneSignal.User.PushSubscription.optedIn) {
+        await OneSignal.User.PushSubscription.optOut();
+      } else {
+        await OneSignal.Slidedown.promptPush();
+      }
+    });
+  });
+})();
+
+
 /* ── Bascule thème clair / sombre (mémorisée, prioritaire sur le système) ── */
 (() => {
   const KEY = 'us-theme';
