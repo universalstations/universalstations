@@ -1,3 +1,77 @@
+/* ── Consentement cookies (bandeau + chargement différé des lecteurs Spotify) ──
+   Les iframes Spotify ne portent pas de src au chargement (data-spotify-src
+   à la place) : elles ne se chargent — et ne posent leurs cookies tiers —
+   qu'après acceptation du bandeau, ou au clic ponctuel sur un lecteur. */
+(() => {
+  const KEY = 'us-cookies';
+
+  const gate = (f) => {
+    if (f.src || f.dataset.gated) return;
+    f.dataset.gated = '1';
+    const h = f.getAttribute('height') || '152';
+    const wrap = document.createElement('div');
+    wrap.className = 'sp-embed-gate';
+    wrap.style.minHeight = h + 'px';
+    wrap.innerHTML = '<p>Ce lecteur Spotify dépose des cookies tiers.</p><button type="button" class="sp-embed-btn">Charger le lecteur</button>';
+    f.style.display = 'none';
+    f.parentNode.insertBefore(wrap, f);
+    wrap.querySelector('button').addEventListener('click', () => {
+      f.src = f.dataset.spotifySrc;
+      f.style.display = '';
+      wrap.remove();
+    });
+  };
+
+  const activate = (f) => {
+    if (!f.src) f.src = f.dataset.spotifySrc;
+    f.style.display = '';
+    f.parentNode.querySelector(':scope > .sp-embed-gate')?.remove();
+  };
+
+  const apply = (root) => {
+    (root || document).querySelectorAll?.('iframe[data-spotify-src]').forEach(
+      localStorage.getItem(KEY) === 'accepted' ? activate : gate
+    );
+  };
+
+  apply();
+  new MutationObserver((muts) => {
+    for (const m of muts) for (const n of m.addedNodes) {
+      if (n.nodeType !== 1) continue;
+      if (n.matches?.('iframe[data-spotify-src]')) {
+        (localStorage.getItem(KEY) === 'accepted' ? activate : gate)(n);
+      } else {
+        apply(n);
+      }
+    }
+  }).observe(document.body, { childList: true, subtree: true });
+
+  if (localStorage.getItem(KEY)) {
+    // rien à faire de plus : choix déjà fait lors d'une visite précédente
+  } else {
+    const bar = document.createElement('div');
+    bar.className = 'cookie-bar';
+    bar.innerHTML = `
+      <p>Ce site utilise des cookies tiers (lecteurs Spotify intégrés), uniquement si vous les acceptez. <a href="/privacy-policy.html">En savoir plus</a>.</p>
+      <div class="cookie-bar-actions">
+        <button type="button" class="cookie-decline">Refuser</button>
+        <button type="button" class="cookie-accept">Accepter</button>
+      </div>`;
+    document.body.appendChild(bar);
+
+    bar.querySelector('.cookie-accept').addEventListener('click', () => {
+      localStorage.setItem(KEY, 'accepted');
+      bar.remove();
+      apply();
+    });
+    bar.querySelector('.cookie-decline').addEventListener('click', () => {
+      localStorage.setItem(KEY, 'declined');
+      bar.remove();
+    });
+  }
+})();
+
+
 /* ── Universal Stations v2 — animations partagées ──
    Compteurs, révélations au scroll (y compris contenu dynamique),
    lecteur démo. Tout respecte prefers-reduced-motion. */
